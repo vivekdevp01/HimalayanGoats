@@ -2,150 +2,215 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Car, Hotel, ExternalLink, Moon } from "lucide-react";
 
-export default function PackageItinerary({ 
-  // You can pass different package data here
+export default function PackageItinerary({
   days = [
     {
       day: 1,
       title: "Arrival in Siliguri | Transfer to Gangtok",
-      description: "Welcome to Siliguri! Upon arrival at NJP Railway Station, board your transfer for a scenic journey to Gangtok. Post check-in, relax and explore MG Marg.",
+      description:
+        "Welcome to Siliguri! Upon arrival at NJP Railway Station, board your transfer for a scenic journey to Gangtok. Post check-in, relax and explore MG Marg.",
       transfer: {
         vehicle: "Transfer in SUV",
         from: "New Jalpaiguri Railway Station / Bagdogra Airport",
-        to: "Standard Hotel In Gangtok"
+        to: "Standard Hotel in Gangtok",
       },
-      stay: { hotelName: "Standard Hotel", checkIn: "12:00 PM", checkOut: "11:00 AM", nights: "2N" }
+      stay: {
+        hotelName: "Standard Hotel",
+        checkIn: "12:00 PM",
+        checkOut: "11:00 AM",
+        nights: "2N",
+      },
     },
     {
       day: 2,
       title: "Tsomgo Lake & Baba Mandir Excursion",
-      description: "After breakfast, head towards Tsomgo Lake, a high-altitude lake. Followed by a visit to the Baba Harbhajan Singh Memorial.",
+      description:
+        "After breakfast, head towards Tsomgo Lake, a high-altitude glacial lake. Later visit the Baba Harbhajan Singh Memorial.",
       transfer: {
         vehicle: "Non-AC Scorpio / Bolero",
         from: "Gangtok Hotel",
-        to: "Tsomgo Lake Excursion"
+        to: "Tsomgo Lake Excursion",
       },
-      stay: { hotelName: "Standard Hotel", checkIn: "06:00 PM", checkOut: "11:00 AM", nights: "1N" }
-    }
-    // Add more days as needed...
-  ] 
+      stay: {
+        hotelName: "Standard Hotel",
+        checkIn: "06:00 PM",
+        checkOut: "11:00 AM",
+        nights: "1N",
+      },
+    },
+  ],
 }) {
   const [openDay, setOpenDay] = useState(0);
 
   return (
-    <div className="max-w-4xl mx-auto p-4 space-y-4 font-sans text-slate-700">
-      {days.map((item, idx) => (
-        <div key={idx} className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white">
-          {/* Header Button */}
-          <button
-            onClick={() => setOpenDay(openDay === idx ? null : idx)}
-            className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
-          >
-            <div className="flex items-center gap-4">
-              <span className="bg-[#F37021] text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shrink-0">
-                Day {item.day}
-              </span>
-              <span className="font-bold text-slate-800 text-base md:text-lg leading-tight">
-                {item.title}
-              </span>
-            </div>
-            <ChevronDown 
-              className={`text-slate-400 shrink-0 transition-transform duration-500 ${openDay === idx ? "rotate-180" : ""}`} 
-            />
-          </button>
+    <section className="max-w-4xl mx-auto px-4 md:px-6 py-14 font-sans">
+      {/* Section Header */}
+      <div className="mb-10">
+        <h2 className="text-3xl font-bold text-slate-800">
+          Day-wise Itinerary
+        </h2>
+        <p className="text-slate-500 mt-1 text-sm">
+          Detailed schedule for your trip
+        </p>
+      </div>
 
-          {/* Expandable Content */}
-          <AnimatePresence>
-            {openDay === idx && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="overflow-hidden border-t border-slate-100"
+      <div className="space-y-6">
+        {days.map((item, idx) => {
+          const isOpen = openDay === idx;
+
+          return (
+            <div
+              key={idx}
+              className="rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(0,0,0,0.05)] overflow-hidden"
+            >
+              {/* Header */}
+              <button
+                onClick={() => setOpenDay(isOpen ? null : idx)}
+                className="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-slate-50 transition"
               >
-                <div className="p-6 space-y-8">
-                  {/* General Description */}
-                  <p className="text-slate-600 text-[15px] leading-relaxed">
-                    {item.description}
-                  </p>
+                <div className="flex items-start gap-4">
+                  <span className="shrink-0 bg-orange-500 text-white text-[11px] font-black px-3 py-1.5 rounded-full tracking-widest">
+                    DAY {item.day}
+                  </span>
 
-                  {/* Transfer Visual Route */}
-                  {item.transfer && (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-slate-500 text-sm">
-                        <Car size={18} className="text-slate-400" />
-                        <span className="font-medium">Shared Transfer</span>
-                      </div>
-                      <h4 className="font-bold text-slate-800">{item.transfer.vehicle}</h4>
-                      
-                      <div className="relative pl-8 space-y-6">
-                        {/* Dotted Line */}
-                        <div className="absolute left-[11px] top-2 bottom-2 border-l-2 border-dotted border-slate-300" />
-                        
-                        {/* From Location */}
-                        <div className="relative">
-                          <div className="absolute -left-[27px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-orange-400 bg-white" />
-                          <div className="p-3 border border-slate-200 rounded-lg bg-slate-50/50 flex justify-between items-center group">
-                            <div>
-                              <p className="text-[10px] font-bold text-orange-400 uppercase tracking-tighter">From</p>
-                              <p className="text-sm font-semibold text-slate-700">{item.transfer.from}</p>
-                            </div>
-                            <ExternalLink size={14} className="text-slate-300" />
-                          </div>
-                        </div>
+                  <div>
+                    <h3 className="font-bold text-slate-800 text-base md:text-lg leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-1">
+                      Click to view details
+                    </p>
+                  </div>
+                </div>
 
-                        {/* To Location */}
-                        <div className="relative">
-                          <div className="absolute -left-[27px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-orange-400 bg-white" />
-                          <div className="p-3 border border-slate-200 rounded-lg bg-slate-50/50">
-                            <p className="text-[10px] font-bold text-orange-400 uppercase tracking-tighter">To</p>
-                            <div className="flex items-center gap-2">
-                              <Hotel size={14} className="text-slate-400" />
-                              <p className="text-sm font-semibold text-slate-700">{item.transfer.to}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                <ChevronDown
+                  className={`mt-1 text-slate-400 transition-transform duration-300 ${
+                    isOpen ? "rotate-180 text-orange-500" : ""
+                  }`}
+                />
+              </button>
 
-                  {/* Stay Visual Schedule */}
-                  {item.stay && (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-slate-500 text-sm">
-                        <Hotel size={18} className="text-slate-400" />
-                        <span className="font-medium">Stay At</span>
-                      </div>
-                      <h4 className="font-bold text-slate-800 text-lg">Check-In At {item.stay.hotelName}</h4>
-                      
-                      <div className="bg-slate-50/80 rounded-xl p-4 flex items-center justify-between text-center border border-slate-100">
-                        <div className="flex-1">
-                          <p className="text-[10px] text-blue-600 font-bold uppercase mb-1">Check In</p>
-                          <p className="font-bold text-slate-800">{item.stay.checkIn}</p>
-                        </div>
-                        
-                        <div className="flex-[2] px-4">
-                          <div className="w-full border-b border-dashed border-slate-300 relative">
-                            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-50 px-2 text-[11px] font-bold text-slate-500 flex items-center gap-1">
-                              {item.stay.nights} <Moon size={12} className="text-slate-400" />
+              {/* Expandable Content */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="overflow-hidden border-t border-slate-100"
+                  >
+                    <div className="p-6 md:p-8 space-y-10">
+                      {/* Description */}
+                      <p className="text-[15px] leading-relaxed text-slate-600">
+                        {item.description}
+                      </p>
+
+                      {/* Transfer Section */}
+                      {item.transfer && (
+                        <div className="space-y-5">
+                          <div className="flex items-center gap-2 text-sm text-slate-500">
+                            <Car size={18} />
+                            <span className="font-semibold">
+                              Transfer Included
                             </span>
                           </div>
-                        </div>
 
-                        <div className="flex-1">
-                          <p className="text-[10px] text-orange-600 font-bold uppercase mb-1">Check Out</p>
-                          <p className="font-bold text-slate-800">{item.stay.checkOut}</p>
+                          <h4 className="font-bold text-slate-800">
+                            {item.transfer.vehicle}
+                          </h4>
+
+                          <div className="relative pl-10 space-y-6">
+                            <div className="absolute left-[17px] top-1 bottom-1 border-l-2 border-dotted border-slate-300" />
+
+                            {/* From */}
+                            <div className="relative">
+                              <span className="absolute -left-[29px] top-4 w-4 h-4 rounded-full border-2 border-orange-400 bg-white" />
+                              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                                <div>
+                                  <p className="text-[10px] uppercase font-bold text-orange-500 tracking-wider">
+                                    From
+                                  </p>
+                                  <p className="text-sm font-semibold text-slate-700">
+                                    {item.transfer.from}
+                                  </p>
+                                </div>
+                                <ExternalLink
+                                  size={14}
+                                  className="text-slate-300"
+                                />
+                              </div>
+                            </div>
+
+                            {/* To */}
+                            <div className="relative">
+                              <span className="absolute -left-[29px] top-4 w-4 h-4 rounded-full border-2 border-orange-400 bg-white" />
+                              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center gap-2">
+                                <Hotel size={16} className="text-slate-400" />
+                                <div>
+                                  <p className="text-[10px] uppercase font-bold text-orange-500 tracking-wider">
+                                    To
+                                  </p>
+                                  <p className="text-sm font-semibold text-slate-700">
+                                    {item.transfer.to}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      )}
+
+                      {/* Stay Section */}
+                      {item.stay && (
+                        <div className="space-y-5">
+                          <div className="flex items-center gap-2 text-sm text-slate-500">
+                            <Hotel size={18} />
+                            <span className="font-semibold">Stay Included</span>
+                          </div>
+
+                          <h4 className="font-bold text-slate-800">
+                            Check-in at {item.stay.hotelName}
+                          </h4>
+
+                          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex items-center justify-between text-center">
+                            <div className="flex-1">
+                              <p className="text-[10px] uppercase font-bold text-blue-600">
+                                Check In
+                              </p>
+                              <p className="font-bold text-slate-800 mt-1">
+                                {item.stay.checkIn}
+                              </p>
+                            </div>
+
+                            <div className="flex-[2] px-4">
+                              <div className="relative border-b border-dashed border-slate-300">
+                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-50 px-3 text-[11px] font-bold text-slate-500 flex items-center gap-1">
+                                  {item.stay.nights}
+                                  <Moon size={12} />
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex-1">
+                              <p className="text-[10px] uppercase font-bold text-orange-600">
+                                Check Out
+                              </p>
+                              <p className="font-bold text-slate-800 mt-1">
+                                {item.stay.checkOut}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      ))}
-    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }

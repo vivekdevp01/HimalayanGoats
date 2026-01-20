@@ -1,101 +1,121 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-/**
- * PolicyAccordion Component
- * Reusable for Confirmation, Refund, Cancellation, and Payment policies.
- * * @param {Array} policies - Array of objects { title: string, points: string[] }
- */
-export default function PolicyAccordion({ policies = [
-  {
-    "id": "confirmation",
-    "title": "Confirmation Policy",
-    "points": [
-      "The customer receives a confirmation voucher via email within 24 hours of successful booking",
-      "In case the preferred slots are unavailable, an alternate schedule of the customer's preference will be arranged and a new confirmation voucher will be sent via email.",
-      "Alternatively, the customer may choose to cancel their booking before confirmation and a full refund will be processed."
-    ]
-  },
-  {
-    "id": "refund",
-    "title": "Refund Policy",
-    "points": [
-      "The applicable refund amount will be processed within 10 business days.",
-      "All applicable refunds will be done in the traveler's Thrillophilia wallet as Thrillcash."
-    ]
-  },
-  {
-    "id": "cancellation",
-    "title": "Cancellation Policy",
-    "points": [
-      "If cancellation are made 30 days before the date of travel then 25.0% of total tour cost will be charged as cancellation fees",
-      "If cancellation are made 15 days to 30 days before the date of travel then 50.0% of total tour cost will be charged as cancellation fees",
-      "If cancellation are made 0 days to 15 days before the date of travel then 100.0% of total tour cost will be charged as cancellation fees",
-      "In the event of unforeseen weather conditions, union issues, government restrictions, or any other circumstances beyond human control, certain trips or activities may be cancelled. In such cases, alternate feasible options will be provided. However, a cash refund will not be available."
-    ]
-  },
-  {
-    "id": "payment",
-    "title": "Payment Policy",
-    "points": [
-      "100.0% of total tour cost will have to be paid 0 days before the date of booking"
-    ]
-  }
-] }) {
+export default function PolicyAccordion({
+  policies = [
+    {
+      id: "confirmation",
+      title: "Confirmation Policy",
+      points: [
+        "The customer receives a confirmation voucher via email within 24 hours of successful booking.",
+        "If preferred slots are unavailable, an alternate schedule will be arranged.",
+        "Customers may cancel before confirmation for a full refund.",
+      ],
+    },
+    {
+      id: "refund",
+      title: "Refund Policy",
+      points: [
+        "Refunds are processed within 10 business days.",
+        "Refunds are credited to the Thrillophilia wallet as Thrillcash.",
+      ],
+    },
+    {
+      id: "cancellation",
+      title: "Cancellation Policy",
+      points: [
+        "30+ days before travel: 25% cancellation fee.",
+        "15–30 days before travel: 50% cancellation fee.",
+        "0–15 days before travel: 100% cancellation fee.",
+        "No cash refunds for cancellations due to unforeseen circumstances.",
+      ],
+    },
+    {
+      id: "payment",
+      title: "Payment Policy",
+      points: ["100% of the tour cost must be paid at the time of booking."],
+    },
+  ],
+}) {
   const [openIndex, setOpenIndex] = useState(null);
 
-  // If no policies are provided by backend, don't render the section
-  if (!policies || policies.length === 0) return null;
+  if (!policies?.length) return null;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-4 bg-white font-sans text-slate-700">
-      <div className="divide-y divide-slate-100">
-        {policies.map((policy, index) => (
-          <div key={index} className="py-2">
-            <button
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full flex items-center justify-between py-5 text-left transition-all group"
-            >
-              <h3 className="text-xl font-bold text-slate-800 group-hover:text-[#F37021] transition-colors">
-                {policy.title}
-              </h3>
-              <ChevronDown 
-                className={`text-slate-400 transition-transform duration-300 ${
-                  openIndex === index ? "rotate-180 text-[#F37021]" : ""
-                }`} 
-                size={22}
-              />
-            </button>
+    <section className="w-full">
+      {/* OUTER CARD */}
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm px-6 md:px-10 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
+            Policies
+          </h2>
+          <p className="text-slate-500 mt-1">
+            Please read the following policies carefully before booking.
+          </p>
+        </div>
 
-            <AnimatePresence>
-              {openIndex === index && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "circOut" }}
-                  className="overflow-hidden"
+        {/* Accordion */}
+        <div className="divide-y divide-slate-200">
+          {policies.map((policy, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div key={policy.id} className="py-2">
+                {/* Header */}
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between py-5 text-left group"
                 >
-                  <div className="pb-6 pr-4">
-                    <ul className="space-y-4">
-                      {policy.points.map((point, pIdx) => (
-                        <li key={pIdx} className="flex gap-3 items-start">
-                          {/* Bullet Point matching your design */}
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0" />
-                          <p className="text-[15px] leading-relaxed text-slate-500">
-                            {point}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
+                  <h3
+                    className={`text-lg font-semibold transition-colors ${
+                      isOpen
+                        ? "text-orange-600"
+                        : "text-slate-800 group-hover:text-orange-500"
+                    }`}
+                  >
+                    {policy.title}
+                  </h3>
+
+                  <ChevronDown
+                    size={22}
+                    className={`transition-transform duration-300 ${
+                      isOpen ? "rotate-180 text-orange-500" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+
+                {/* Content */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-6 pr-6">
+                        <ul className="space-y-4">
+                          {policy.points.map((point, i) => (
+                            <li key={i} className="flex gap-3 items-start">
+                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0" />
+                              <p className="text-[15px] leading-relaxed text-slate-600">
+                                {point}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
