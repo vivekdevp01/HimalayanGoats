@@ -1,0 +1,5 @@
+@import "tailwindcss";
+.site-serif {
+  font-family: 'Merriweather', serif;
+  letter-spacing: 0.06em;
+}
