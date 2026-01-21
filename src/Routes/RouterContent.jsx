@@ -25,7 +25,9 @@ export default function RouterContent() {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-  const isPackage = location.pathname === "/packages";
+  const isPackage = location.pathname.startsWith("/packages");
+  // const isTour = location.pathname.startsWith("/trek/");
+
   const isTour =
     location.pathname === "/tour" || location.pathname.startsWith("/trek/");
 
@@ -33,26 +35,27 @@ export default function RouterContent() {
     <>
       {/* ===== HEADER CONTROL ===== */}
       {isHome ? (
-  <BaseHeader />
-) : isPackage ? ( // New condition for the cinematic hero
-  <HeroHeader/>
-) : (
-  <Header
-    variant={isTour ? "tour" : "default"}
-    title={isTour ? "Kedarkantha Trek" : "ABOUT US"}
-    subtitle={
-      isTour ? "Snow Trek • Beginner Friendly • Uttarakhand" : undefined
-    }
-    badges={isTour ? ["5 Days", "12,500 ft", "Easy–Moderate"] : []}
-    bgImage={isTour ? "/src/assets/1.jpg" : "/src/assets/9.jpg"}
-  />
-)}
+        <BaseHeader />
+      ) : isPackage ? ( // New condition for the cinematic hero
+        <HeroHeader />
+      ) : (
+        <Header
+          variant={isTour ? "tour" : "default"}
+          title={isTour ? "Kedarkantha Trek" : "ABOUT US"}
+          subtitle={
+            isTour ? "Snow Trek • Beginner Friendly • Uttarakhand" : undefined
+          }
+          badges={isTour ? ["5 Days", "12,500 ft", "Easy–Moderate"] : []}
+          bgImage={isTour ? "/src/assets/1.jpg" : "/src/assets/9.jpg"}
+        />
+      )}
 
       {/* ===== ROUTES ===== */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tour" element={<Tour />} />
-        <Route path="/packages" element={<Packages/>} />
+        <Route path="/packages" element={<Packages />} />
+        <Route path="/packages/:category" element={<Packages />} />
 
         <Route path="/trek/:id" element={<TrekDetails />} />
         <Route path="/aboutus" element={<Aboutus />} />
