@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import EnquiryModal from "./Packages/EnquiryModal";
-
+import { useLocation, useParams } from "react-router-dom";
 export default function HeroHeader({
   slides = [
     {
@@ -39,6 +39,8 @@ export default function HeroHeader({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+    const location = useLocation();
+    const pathSegment = location.pathname.split("/").pop();
   // Auto-scroll logic
   useEffect(() => {
     const timer = setInterval(() => {
@@ -114,7 +116,7 @@ export default function HeroHeader({
           transition={{ delay: 0.2 }}
           className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight"
         >
-          <span className="text-yellow-400">INDIA</span> Tour Packages
+          <span className="text-yellow-400">{pathSegment}</span> Tour Packages
         </motion.h1>
 
         <motion.div

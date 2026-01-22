@@ -5,9 +5,6 @@
 // - Hero image now covers the entire upper viewport (nav is overlaid on top)
 // - Lightweight floating animation for plane/balloons using component-scoped CSS
 
-import React from "react";
-import { NavLink } from "react-router-dom";
-
 // props.links should be an array of { key, label, to } items. If not provided, defaults are used.
 // export default function Header({ links }) {
 //   const navLinks = links || [
@@ -197,7 +194,9 @@ import { NavLink } from "react-router-dom";
 // }
 // import React from "react";
 // import { NavLink } from "react-router-dom";
-
+import React, { useState } from "react"; // 1. Added useState
+import { NavLink } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 export default function Header({
   links,
   variant = "default", // "default" | "tour"
@@ -206,10 +205,21 @@ export default function Header({
   badges = [],
   bgImage = "/src/assets/9.jpg",
 }) {
-  const navLinks = links || [
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navLinks = links ||[
     { key: "home", label: "Home", to: "/" },
     { key: "about", label: "About", to: "/aboutus" },
-    { key: "packages", label: "Packages", to: "/packages" },
+    { 
+      key: "packages", 
+      label: "Packages", 
+      // Removed 'to' so it doesn't navigate on click
+      hasDropdown: true,
+      subLinks: [
+        { label: "Camps", to: "/packages/camps" },
+        { label: "Treks", to: "/packages/treks" },
+        { label: "Rafting", to: "/packages/rafting" },
+      ]
+    },
     { key: "destination", label: "Destination", to: "/destination" },
     { key: "tour", label: "Tour", to: "/tour" },
     { key: "blog", label: "Gallery", to: "/gallery" },
@@ -217,37 +227,70 @@ export default function Header({
   ];
 
   return (
-    <header className="relative w-full h-[70vh] overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
+   <header className="relative w-full h-[70vh]  overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${bgImage})` }} />
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* NAVBAR */}
       <nav className="absolute top-6 left-0 right-0 z-40 px-6">
-        <div className="max-w-7xl mx-auto bg-white backdrop-blur rounded-2xl shadow-md px-6 py-3 flex items-center justify-between">
-          {/* left nav links */}
-          <ul className="hidden md:flex gap-6 items-center text-sm">
+        <div className="max-w-7xl mx-auto bg-white backdrop-blur-md rounded-2xl shadow-md px-6 py-3 flex items-center justify-between">
+          
+          <ul className="hidden md:flex gap-6 items-center text-sm h-12"> {/* Fixed height for alignment */}
             {navLinks.map((item) => (
-              <li key={item.key}>
-                <NavLink
-                  to={item.to}
-                  className={({ isActive }) =>
-                    `group px-1 py-1 transition-transform transform inline-block ${
-                      isActive
-                        ? "text-amber-500 font-semibold"
-                        : "text-slate-700"
-                    } hover:text-amber-500 hover:-translate-y-1 hover:scale-105`
-                  }
-                >
-                  <span className="relative">
-                    {item.label}
-                    {/* animated underline on hover (uses group hover) */}
-                    <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-amber-400 scale-x-0 origin-left transition-transform duration-200 group-hover:scale-x-100" />
-                  </span>
-                </NavLink>
+              <li 
+                key={item.key} 
+                className="relative h-full flex items-center group cursor-pointer"
+                onMouseEnter={() => item.hasDropdown && setIsDropdownOpen(true)}
+                onMouseLeave={() => item.hasDropdown && setIsDropdownOpen(false)}
+              >
+               {item.hasDropdown ? (
+  /* Renders as a trigger that matches the style of other links */
+  <div className="flex items-center gap-1 text-slate-700 cursor-pointer text-sm font-medium transition-colors group-hover:text-amber-500">
+    {item.label}
+    <ChevronDown 
+      size={14} 
+      className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} 
+    />
+  </div>
+) : (
+  /* Standard links */
+  <NavLink
+    to={item.to}
+    className={({ isActive }) =>
+      `text-sm transition-all ${
+        isActive ? "text-amber-500 font-semibold" : "text-slate-700 font-medium"
+      } hover:text-amber-500`
+    }
+  >
+    {item.label}
+  </NavLink>
+)}
+                {/* DROPDOWN MENU */}
+                {item.hasDropdown && isDropdownOpen && (
+                  <div 
+                    className="absolute top-full left-0 w-48 bg-white border border-slate-100 rounded-xl shadow-2xl py-2 z-[60]"
+                    // This ensures the menu stays open when mouse is over it
+                    onMouseEnter={() => setIsDropdownOpen(true)}
+                  >
+                    {item.subLinks.map((sub) => (
+                      <NavLink
+                        key={sub.to}
+                        to={sub.to}
+                        // This closes the menu after clicking a link
+                        onClick={() => setIsDropdownOpen(false)} 
+                        className={({ isActive }) => 
+                          `block px-4 py-2.5 text-xs font-bold uppercase transition-colors ${
+                            isActive ? "text-amber-600 bg-amber-50" : "text-slate-700 hover:bg-amber-50 hover:text-amber-600"
+                          }`
+                        }
+                      >
+                        {sub.label}
+                     </NavLink>
+                    ))}
+                  </div>
+                )}
+                
+                {/* Underline decoration */}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-amber-400 scale-x-0 origin-left transition-transform duration-200 group-hover:scale-x-100" />
               </li>
             ))}
           </ul>
@@ -399,3 +442,5 @@ export default function Header({
     </header>
   );
 }
+
+

@@ -25,7 +25,7 @@ export default function RouterContent() {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-  const isPackage = location.pathname.startsWith("/packages");
+  const isPackage = location.pathname.startsWith("/packages") ;
   // const isTour = location.pathname.startsWith("/trek/");
 
   const isTour =
