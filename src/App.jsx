@@ -54,11 +54,13 @@
 // App.jsx
 import { BrowserRouter } from "react-router-dom";
 import RouterContent from "./Routes/RouterContent";
+import ScrollToTop from "./components/ScrollToTop";
 // import RouterContent from "./RouterContent";
 
 export default function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <RouterContent />
     </BrowserRouter>
   );

@@ -70,18 +70,35 @@ export default function Footer() {
 
             {/* LINKS */}
             <div className="md:col-span-2 grid grid-cols-3 gap-6 text-sm">
-              <FooterCol
-                title="Explore"
-                items={["About", "FAQ", "Services", "Team", "News"]}
-              />
-              <FooterCol
-                title="Destinations"
-                items={["Tokyo", "France", "Dubai", "Kenya", "Vietnam"]}
-              />
-              <FooterCol
-                title="Legal"
-                items={["Terms", "Privacy", "Contact", "Careers", "Help"]}
-              />
+           <FooterCol
+  title="Explore"
+  items={[
+    { label: "FAQ", to: "/faq" },
+    { label: "Services", to: "/services" },
+    { label: "Team", to: "/team" },
+    { label: "News", to: "/news" },
+  ]}
+/>
+
+<FooterCol
+  title="Destinations"
+  items={[
+    { label: "France", to: "/destination/france" },
+    { label: "Dubai", to: "/destination/dubai" },
+    { label: "Kenya", to: "/destination/kenya" },
+    { label: "Vietnam", to: "/destination/vietnam" },
+  ]}
+/>
+
+<FooterCol
+  title="Legal"
+  items={[
+    { label: "Terms", to: "/terms" },
+    { label: "Privacy", to: "/privacy" },
+    { label: "Contact", to: "/contact" },
+    { label: "Help", to: "/help" },
+  ]}
+/>
             </div>
 
             {/* CONTACT */}
@@ -132,14 +149,30 @@ export default function Footer() {
 }
 
 /* ===== HELPER COMPONENT ===== */
+import { NavLink } from "react-router-dom";
+
 function FooterCol({ title, items }) {
+  // items should now look like: [{ label: "Home", to: "/" }, ...]
   return (
     <div>
-      <h4 className="font-semibold mb-3">{title}</h4>
-      <ul className="space-y-2 text-emerald-100/80">
-        {items.map((i) => (
-          <li key={i} className="hover:text-amber-300 cursor-pointer">
-            {i}
+      <h4 className="font-semibold mb-3 text-white uppercase tracking-wider">
+        {title}
+      </h4>
+      <ul className="space-y-2">
+        {items.map((item) => (
+          <li key={item.to}>
+            <NavLink
+              to={item.to}
+              className={({ isActive }) =>
+                `block transition-colors duration-200 cursor-pointer ${
+                  isActive 
+                    ? "text-amber-400 font-medium" 
+                    : "text-emerald-100/80 hover:text-amber-300"
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
           </li>
         ))}
       </ul>
