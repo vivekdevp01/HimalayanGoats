@@ -30,7 +30,7 @@ export default function RouterContent() {
 
   const isHome = location.pathname === "/";
   const isPackage = location.pathname.startsWith("/packages");
-   const isAbout = location.pathname.startsWith("/aboutus"); 
+  const isAbout = location.pathname.startsWith("/aboutus");
   // const isTour = location.pathname.startsWith("/trek/");
 
   const isTour =
@@ -43,7 +43,7 @@ export default function RouterContent() {
         <BaseHeader />
       ) : isPackage ? ( // New condition for the cinematic hero
         <HeroHeader />
-      ) : (isTour || isAbout)?(
+      ) : isTour || isAbout ? (
         <Header
           variant={isTour ? "tour" : "default"}
           title={isTour ? "Kedarkantha Trek" : "ABOUT US"}
@@ -53,8 +53,9 @@ export default function RouterContent() {
           badges={isTour ? ["5 Days", "12,500 ft", "Easy–Moderate"] : []}
           bgImage={isTour ? "/src/assets/1.jpg" : "/src/assets/9.jpg"}
         />
-      ): <Header3/>}
-      
+      ) : (
+        <Header3 />
+      )}
 
       {/* ===== ROUTES ===== */}
       <Routes>
@@ -62,8 +63,9 @@ export default function RouterContent() {
         <Route path="/tour" element={<Tour />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/packages/:category" element={<Packages />} />
+        <Route path="/trek/:slug" element={<Tour />} />
 
-        <Route path="/trek/:id" element={<TrekDetails />} />
+        {/* <Route path="/trek/:id" element={<TrekDetails />} /> */}
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />

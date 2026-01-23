@@ -374,7 +374,7 @@
 //                     </div>
 //                     <div className="flex gap-3">
 //                       {" "}
-//                       <button 
+//                       <button
 //                       onClick={(e) => {
 //                     e.stopPropagation(); // Prevents navigating to the detail page
 //                     window.location.href = "tel:+1234567890"; // Example action
@@ -452,16 +452,19 @@ export default function TourSlider() {
 
     const { data: packagesData, error } = await supabase
       .from("packages")
-      .select(`
-        id,
-        name,
-        tagline,
-        duration_days,
-        starting_price,
-        old_price,
-        rating,
-        review_count
-      `)
+      .select(
+        `
+   id,
+   name,
+  slug,
+  tagline,
+  duration_days,
+  starting_price,
+  old_price,
+  rating,
+  review_count
+`,
+      )
       .eq("category", resolvedCategory)
       .eq("is_active", true);
 
@@ -541,7 +544,7 @@ export default function TourSlider() {
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              onClick={() => navigate(`/tour/${pkg.id}`)} // Entire card acts as NavLink
+              onClick={() => navigate(`/trek/${pkg.slug}`)} // Entire card acts as NavLink
               className="min-w-[300px] md:min-w-[380px] h-[520px] relative rounded-2xl overflow-hidden snap-start shadow-lg group/card cursor-pointer"
             >
               <img
@@ -550,7 +553,9 @@ export default function TourSlider() {
                 className="absolute inset-0 w-full h-full object-cover z-0 group-hover/card:scale-110 transition-transform duration-500"
               />
 
-              <div className={`absolute inset-0 bg-gradient-to-t ${overlayByCategory.overlayColor} z-10`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-t ${overlayByCategory.overlayColor} z-10`}
+              />
 
               <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 text-white">
                 <div className="flex justify-between items-center mb-3">
@@ -558,7 +563,10 @@ export default function TourSlider() {
                     {pkg.duration_days} Days & {pkg.duration_days - 1} Nights
                   </span>
                   <div className="flex items-center gap-1 text-xs font-bold bg-black/30 backdrop-blur-md px-2 py-1 rounded-full">
-                    <Star size={14} className="fill-yellow-400 text-yellow-400" />
+                    <Star
+                      size={14}
+                      className="fill-yellow-400 text-yellow-400"
+                    />
                     {pkg.rating}
                   </div>
                 </div>
@@ -566,19 +574,23 @@ export default function TourSlider() {
                 <h3 className="text-xl font-bold leading-tight mb-3 group-hover/card:text-orange-400 transition-colors">
                   {pkg.name}
                 </h3>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   <span className="text-[10px] font-medium bg-white/10 px-2 py-1 rounded backdrop-blur-sm border border-white/10">
                     {pkg.tagline}
                   </span>
                 </div>
-                
+
                 <div className="my-[0.5px] h-[2px] w-full bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
                 <div className="space-y-4 pt-4">
                   <div className="flex items-end gap-2">
-                    <span className="text-2xl font-black italic">INR {pkg.starting_price}</span>
-                    <span className="text-xs line-through opacity-60 mb-1">INR {pkg.old_price}</span>
+                    <span className="text-2xl font-black italic">
+                      INR {pkg.starting_price}
+                    </span>
+                    <span className="text-xs line-through opacity-60 mb-1">
+                      INR {pkg.old_price}
+                    </span>
                     <span className="text-[9px] bg-white text-black px-2 py-0.5 rounded-sm font-black mb-1">
                       SAVE INR {pkg.old_price - pkg.starting_price}
                     </span>
@@ -594,7 +606,7 @@ export default function TourSlider() {
                     >
                       <Phone size={20} />
                     </button>
-                    
+
                     <button
                       onClick={(e) => {
                         e.stopPropagation(); // Prevents card navigation

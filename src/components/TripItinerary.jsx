@@ -1,216 +1,220 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Car, Hotel, ExternalLink, Moon } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Car,
+  Hotel,
+  Utensils,
+  Moon,
+} from "lucide-react";
 
-export default function PackageItinerary({
-  days = [
-    {
-      day: 1,
-      title: "Arrival in Siliguri | Transfer to Gangtok",
-      description:
-        "Welcome to Siliguri! Upon arrival at NJP Railway Station, board your transfer for a scenic journey to Gangtok. Post check-in, relax and explore MG Marg.",
-      transfer: {
-        vehicle: "Transfer in SUV",
-        from: "New Jalpaiguri Railway Station / Bagdogra Airport",
-        to: "Standard Hotel in Gangtok",
-      },
-      stay: {
-        hotelName: "Standard Hotel",
-        checkIn: "12:00 PM",
-        checkOut: "11:00 AM",
-        nights: "2N",
-      },
-    },
-    {
-      day: 2,
-      title: "Tsomgo Lake & Baba Mandir Excursion",
-      description:
-        "After breakfast, head towards Tsomgo Lake, a high-altitude glacial lake. Later visit the Baba Harbhajan Singh Memorial.",
-      transfer: {
-        vehicle: "Non-AC Scorpio / Bolero",
-        from: "Gangtok Hotel",
-        to: "Tsomgo Lake Excursion",
-      },
-      stay: {
-        hotelName: "Standard Hotel",
-        checkIn: "06:00 PM",
-        checkOut: "11:00 AM",
-        nights: "1N",
-      },
-    },
-  ],
-}) {
+export default function PackageItinerary({ days = [] }) {
   const [openDay, setOpenDay] = useState(0);
+  const [activeImage, setActiveImage] = useState({});
+
+  const nextImage = (dayId, total) => {
+    setActiveImage((prev) => ({
+      ...prev,
+      [dayId]: ((prev[dayId] || 0) + 1) % total,
+    }));
+  };
+
+  const prevImage = (dayId, total) => {
+    setActiveImage((prev) => ({
+      ...prev,
+      [dayId]:
+        (prev[dayId] || total - 1) === 0 ? total - 1 : (prev[dayId] || 0) - 1,
+    }));
+  };
+
+  if (!days.length) {
+    return (
+      <div className="text-center py-20 text-slate-500">
+        Detailed itinerary will be updated soon.
+      </div>
+    );
+  }
 
   return (
-    <section className="max-w-4xl mx-auto px-4 md:px-6 py-14 font-sans">
-      {/* Section Header */}
-      <div className="mb-10">
-        <h2 className="text-3xl font-bold text-slate-800">
+    <section className="space-y-12">
+      {/* Header */}
+      <div>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
           Day-wise Itinerary
         </h2>
-        <p className="text-slate-500 mt-1 text-sm">
-          Detailed schedule for your trip
+        <p className="text-slate-500 mt-2 max-w-xl">
+          A carefully planned journey to give you the best experience every day
         </p>
       </div>
 
-      <div className="space-y-6">
-        {days.map((item, idx) => {
-          const isOpen = openDay === idx;
+      {days.map((item, idx) => {
+        const isOpen = openDay === idx;
+        const images = item.images || [];
+        const currentImage = activeImage[item.id] || 0;
 
-          return (
-            <div
-              key={idx}
-              className="rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(0,0,0,0.05)] overflow-hidden"
+        return (
+          <div
+            key={item.id}
+            className="rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden"
+          >
+            {/* HEADER */}
+            <button
+              onClick={() => setOpenDay(isOpen ? null : idx)}
+              className="w-full p-6 flex justify-between items-start text-left bg-gradient-to-r from-orange-50 to-white"
             >
-              {/* Header */}
-              <button
-                onClick={() => setOpenDay(isOpen ? null : idx)}
-                className="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-slate-50 transition"
-              >
-                <div className="flex items-start gap-4">
-                  <span className="shrink-0 bg-orange-500 text-white text-[11px] font-black px-3 py-1.5 rounded-full tracking-widest">
-                    DAY {item.day}
-                  </span>
+              <div>
+                <span className="inline-block bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full mb-2">
+                  DAY {item.day}
+                </span>
+                <h3 className="text-lg md:text-xl font-semibold text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500 mt-1">
+                  Tap to explore the day’s plan
+                </p>
+              </div>
 
-                  <div>
-                    <h3 className="font-bold text-slate-800 text-base md:text-lg leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Click to view details
+              <ChevronDown
+                className={`mt-2 transition-transform duration-300 ${
+                  isOpen ? "rotate-180 text-orange-500" : "text-slate-400"
+                }`}
+              />
+            </button>
+
+            {/* CONTENT */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-6 md:p-8 space-y-10">
+                    {/* DESCRIPTION */}
+                    <p className="text-slate-600 leading-relaxed text-[15px]">
+                      {item.description}
                     </p>
-                  </div>
-                </div>
 
-                <ChevronDown
-                  className={`mt-1 text-slate-400 transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-orange-500" : ""
-                  }`}
-                />
-              </button>
+                    {/* IMAGE CAROUSEL */}
+                    {images.length > 0 && (
+                      <div className="relative rounded-2xl overflow-hidden">
+                        <img
+                          src={images[currentImage].media_url}
+                          className="w-full h-64 md:h-80 object-cover"
+                          alt=""
+                        />
 
-              {/* Expandable Content */}
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="overflow-hidden border-t border-slate-100"
-                  >
-                    <div className="p-6 md:p-8 space-y-10">
-                      {/* Description */}
-                      <p className="text-[15px] leading-relaxed text-slate-600">
-                        {item.description}
-                      </p>
+                        {/* Arrows */}
+                        {images.length > 1 && (
+                          <>
+                            <button
+                              onClick={() => prevImage(item.id, images.length)}
+                              className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow"
+                            >
+                              <ChevronLeft size={18} />
+                            </button>
 
-                      {/* Transfer Section */}
-                      {item.transfer && (
-                        <div className="space-y-5">
-                          <div className="flex items-center gap-2 text-sm text-slate-500">
-                            <Car size={18} />
-                            <span className="font-semibold">
-                              Transfer Included
-                            </span>
-                          </div>
+                            <button
+                              onClick={() => nextImage(item.id, images.length)}
+                              className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow"
+                            >
+                              <ChevronRight size={18} />
+                            </button>
+                          </>
+                        )}
 
-                          <h4 className="font-bold text-slate-800">
+                        {/* Dots */}
+                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                          {images.map((_, i) => (
+                            <span
+                              key={i}
+                              className={`w-2 h-2 rounded-full ${
+                                i === currentImage ? "bg-white" : "bg-white/50"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TRANSFER */}
+                    {item.transfer && (
+                      <div className="rounded-2xl bg-orange-50 p-5 flex gap-4">
+                        <Car className="text-orange-500 mt-1" size={20} />
+                        <div>
+                          <p className="font-semibold text-slate-800">
+                            Transfer Included
+                          </p>
+                          <p className="text-sm text-slate-700">
                             {item.transfer.vehicle}
-                          </h4>
+                          </p>
+                          <p className="text-sm text-slate-500 mt-1">
+                            {item.transfer.from_location} →{" "}
+                            {item.transfer.to_location}
+                          </p>
+                        </div>
+                      </div>
+                    )}
 
-                          <div className="relative pl-10 space-y-6">
-                            <div className="absolute left-[17px] top-1 bottom-1 border-l-2 border-dotted border-slate-300" />
+                    {/* STAY */}
+                    {item.stay && (
+                      <div className="rounded-2xl bg-blue-50 p-5 flex gap-4">
+                        <Hotel className="text-blue-500 mt-1" size={20} />
+                        <div>
+                          <p className="font-semibold text-slate-800">
+                            Stay Included
+                          </p>
+                          <p className="text-sm text-slate-700">
+                            {item.stay.hotel_name}
+                          </p>
+                          <p className="text-sm text-slate-500 mt-1 flex items-center gap-1">
+                            {item.stay.nights} <Moon size={12} />
+                          </p>
+                        </div>
+                      </div>
+                    )}
 
-                            {/* From */}
-                            <div className="relative">
-                              <span className="absolute -left-[29px] top-4 w-4 h-4 rounded-full border-2 border-orange-400 bg-white" />
-                              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
-                                <div>
-                                  <p className="text-[10px] uppercase font-bold text-orange-500 tracking-wider">
-                                    From
-                                  </p>
-                                  <p className="text-sm font-semibold text-slate-700">
-                                    {item.transfer.from}
-                                  </p>
-                                </div>
-                                <ExternalLink
-                                  size={14}
-                                  className="text-slate-300"
-                                />
-                              </div>
-                            </div>
-
-                            {/* To */}
-                            <div className="relative">
-                              <span className="absolute -left-[29px] top-4 w-4 h-4 rounded-full border-2 border-orange-400 bg-white" />
-                              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center gap-2">
-                                <Hotel size={16} className="text-slate-400" />
-                                <div>
-                                  <p className="text-[10px] uppercase font-bold text-orange-500 tracking-wider">
-                                    To
-                                  </p>
-                                  <p className="text-sm font-semibold text-slate-700">
-                                    {item.transfer.to}
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
+                    {/* MEALS */}
+                    {(item.meals?.breakfast ||
+                      item.meals?.lunch ||
+                      item.meals?.dinner) && (
+                      <div className="rounded-2xl bg-green-50 p-5 flex gap-4">
+                        <Utensils className="text-green-600 mt-1" size={20} />
+                        <div>
+                          <p className="font-semibold text-slate-800">
+                            Meals Included
+                          </p>
+                          <div className="flex flex-wrap gap-2 mt-2 text-sm">
+                            {item.meals.breakfast && (
+                              <span className="bg-white px-3 py-1 rounded-full border">
+                                🍳 Breakfast
+                              </span>
+                            )}
+                            {item.meals.lunch && (
+                              <span className="bg-white px-3 py-1 rounded-full border">
+                                🥗 Lunch
+                              </span>
+                            )}
+                            {item.meals.dinner && (
+                              <span className="bg-white px-3 py-1 rounded-full border">
+                                🍲 Dinner
+                              </span>
+                            )}
                           </div>
                         </div>
-                      )}
-
-                      {/* Stay Section */}
-                      {item.stay && (
-                        <div className="space-y-5">
-                          <div className="flex items-center gap-2 text-sm text-slate-500">
-                            <Hotel size={18} />
-                            <span className="font-semibold">Stay Included</span>
-                          </div>
-
-                          <h4 className="font-bold text-slate-800">
-                            Check-in at {item.stay.hotelName}
-                          </h4>
-
-                          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex items-center justify-between text-center">
-                            <div className="flex-1">
-                              <p className="text-[10px] uppercase font-bold text-blue-600">
-                                Check In
-                              </p>
-                              <p className="font-bold text-slate-800 mt-1">
-                                {item.stay.checkIn}
-                              </p>
-                            </div>
-
-                            <div className="flex-[2] px-4">
-                              <div className="relative border-b border-dashed border-slate-300">
-                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-50 px-3 text-[11px] font-bold text-slate-500 flex items-center gap-1">
-                                  {item.stay.nights}
-                                  <Moon size={12} />
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="flex-1">
-                              <p className="text-[10px] uppercase font-bold text-orange-600">
-                                Check Out
-                              </p>
-                              <p className="font-bold text-slate-800 mt-1">
-                                {item.stay.checkOut}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          );
-        })}
-      </div>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
     </section>
   );
 }

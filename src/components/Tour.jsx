@@ -11,9 +11,331 @@ import GroupOfferCard from "./Packages/GroupOfferCard";
 import FAQs from "./Packages/Faqs";
 import StickyWhatsApp from "./Packages/StickyWhatsappButton";
 import PriceCard from "./Packages/PriceCard";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
 // import Header from "./Header";
 
 export default function Tour() {
+  const { slug } = useParams();
+
+  const [pkg, setPkg] = useState(null);
+  const [media, setMedia] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [itinerary, setItinerary] = useState([]);
+  const [pricing, setPricing] = useState(null);
+  const [policies, setPolicies] = useState([]);
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    fetchPackage();
+  }, [slug]);
+
+  // async function fetchPackage() {
+  //   setLoading(true);
+
+  //   /* =======================
+  //    1️⃣ FETCH PACKAGE
+  // ======================= */
+  //   const { data: packageData, error } = await supabase
+  //     .from("packages")
+  //     .select("*")
+  //     .eq("slug", slug)
+  //     .single();
+
+  //   if (error || !packageData) {
+  //     console.error(error);
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   setPkg(packageData);
+
+  //   /* =======================
+  //    2️⃣ FETCH PACKAGE MEDIA
+  // ======================= */
+  //   const { data: mediaData } = await supabase
+  //     .from("media")
+  //     .select("*")
+  //     .eq("entity_type", "package")
+  //     .eq("entity_id", packageData.id)
+  //     .order("order_no");
+
+  //   setMedia(mediaData || []);
+
+  //   /* =======================
+  //    3️⃣ FETCH ITINERARY DATA
+  // ======================= */
+  //   const { data: itineraryData, error: itineraryError } = await supabase
+  //     .from("itineraries")
+  //     .select(
+  //       `
+  //     id,
+  //     day_no,
+  //     title,
+  //     description,
+
+  //     itinerary_transfers (
+  //       vehicle,
+  //       from_location,
+  //       to_location
+  //     ),
+
+  //     itinerary_stays (
+  //       hotel_name,
+  //       check_in,
+  //       check_out,
+  //       nights
+  //     ),
+
+  //     itinerary_meals (
+  //       breakfast,
+  //       lunch,
+  //       dinner,
+  //       note
+  //     )
+  //   `,
+  //     )
+  //     .eq("package_id", packageData.id)
+  //     .order("day_no", { ascending: true });
+
+  //   if (itineraryError) {
+  //     console.error(itineraryError);
+  //     setLoading(false);
+  //     return;
+  //   }
+
+  //   /* =======================
+  //    4️⃣ FETCH ITINERARY IMAGES
+  // ======================= */
+  //   const itineraryIds = itineraryData.map((d) => d.id);
+
+  //   const { data: itineraryMedia } = await supabase
+  //     .from("media")
+  //     .select("entity_id, media_url")
+  //     .eq("entity_type", "itinerary")
+  //     .in("entity_id", itineraryIds)
+  //     .order("order_no");
+
+  //   /* =======================
+  //    5️⃣ MERGE EVERYTHING
+  // ======================= */
+  //   const finalItinerary = itineraryData.map((day) => ({
+  //     id: day.id,
+  //     day: day.day_no,
+  //     title: day.title,
+  //     description: day.description,
+
+  //     transfer: day.itinerary_transfers?.[0] || null,
+  //     stay: day.itinerary_stays?.[0] || null,
+  //     meals: day.itinerary_meals?.[0] || null,
+
+  //     images: itineraryMedia?.filter((img) => img.entity_id === day.id) || [],
+  //   }));
+
+  //   setItinerary(finalItinerary);
+  //   setLoading(false);
+  // }
+  async function fetchPackage() {
+    try {
+      console.log("🚀 FETCH START", slug);
+      setLoading(true);
+
+      /* =======================
+       1️⃣ PACKAGE
+    ======================= */
+      const { data: packageData, error: packageError } = await supabase
+        .from("packages")
+        .select("*")
+        .eq("slug", slug)
+        .single();
+
+      if (packageError || !packageData) {
+        console.error("❌ PACKAGE ERROR", packageError);
+        setLoading(false);
+        return;
+      }
+
+      console.log("✅ PACKAGE", packageData);
+      setPkg(packageData);
+      /* =======================
+   4️⃣ FETCH PACKAGE PRICING
+======================= */
+      const { data: pricingData, error: pricingError } = await supabase
+        .from("package_pricing_options")
+        .select("*")
+        .eq("package_id", packageData.id)
+        .order("order_no", { ascending: true })
+        .limit(1)
+        .single();
+
+      if (pricingError) {
+        console.warn("PRICING ERROR:", pricingError);
+      } else {
+        setPricing(pricingData);
+      }
+
+      /* =======================
+       2️⃣ PACKAGE MEDIA
+    ======================= */
+      const { data: mediaData } = await supabase
+        .from("media")
+        .select("*")
+        .eq("entity_type", "package")
+        .eq("entity_id", packageData.id)
+        .order("order_no");
+
+      console.log("🖼 PACKAGE MEDIA", mediaData);
+      setMedia(mediaData || []);
+
+      /* =======================
+       3️⃣ ITINERARIES (BASE)
+    ======================= */
+      const { data: itineraries } = await supabase
+        .from("itineraries")
+        .select("*")
+        .eq("package_id", packageData.id)
+        .order("day_no");
+
+      console.log("📅 ITINERARIES", itineraries);
+
+      if (!itineraries?.length) {
+        setItinerary([]);
+        setLoading(false);
+        return;
+      }
+
+      const itineraryIds = itineraries.map((d) => d.id);
+
+      /* =======================
+       4️⃣ TRANSFERS
+    ======================= */
+      const { data: transfers } = await supabase
+        .from("itinerary_transfers")
+        .select("*")
+        .in("itinerary_id", itineraryIds);
+
+      console.log("🚗 TRANSFERS", transfers);
+
+      /* =======================
+       5️⃣ STAYS
+    ======================= */
+      const { data: stays } = await supabase
+        .from("itinerary_stays")
+        .select("*")
+        .in("itinerary_id", itineraryIds);
+
+      console.log("🏨 STAYS", stays);
+
+      /* =======================
+       6️⃣ MEALS
+    ======================= */
+      const { data: meals } = await supabase
+        .from("itinerary_meals")
+        .select("*")
+        .in("itinerary_id", itineraryIds);
+
+      console.log("🍽 MEALS", meals);
+      /* =======================
+   9️⃣ FETCH POLICIES
+======================= */
+      const { data: policyData, error: policyError } = await supabase
+        .from("package_policies")
+        .select("*")
+        .eq("package_id", packageData.id)
+        .order("order_no", { ascending: true });
+
+      if (policyError) {
+        console.error("📜 POLICY ERROR", policyError);
+      } else {
+        console.log("📜 POLICIES", policyData);
+        setPolicies(
+          (policyData || []).map((p) => ({
+            id: p.id,
+            title: p.title,
+            points: p.content.split("\n"),
+          })),
+        );
+      }
+      /* =======================
+   🔟 FETCH FAQs
+======================= */
+      const { data: faqData, error: faqError } = await supabase
+        .from("faqs")
+        .select("id, question, answer")
+        .eq("package_id", packageData.id)
+        .order("order_no", { ascending: true });
+
+      if (faqError) {
+        console.error("❓ FAQ ERROR", faqError);
+      } else {
+        console.log("❓ FAQs", faqData);
+        setFaqs(
+          (faqData || []).map((f) => ({
+            q: f.question,
+            a: f.answer,
+          })),
+        );
+      }
+
+      /* =======================
+       7️⃣ ITINERARY IMAGES
+    ======================= */
+      const { data: itineraryImages } = await supabase
+        .from("media")
+        .select("*")
+        .eq("entity_type", "itinerary")
+        .in("entity_id", itineraryIds)
+        .order("order_no");
+
+      console.log("🖼 ITINERARY IMAGES", itineraryImages);
+
+      /* =======================
+       8️⃣ MERGE EVERYTHING
+    ======================= */
+      const final = itineraries.map((day) => {
+        const dayTransfers =
+          transfers?.filter((t) => t.itinerary_id === day.id) || [];
+
+        const dayStay = stays?.find((s) => s.itinerary_id === day.id) || null;
+
+        const dayMealsArr =
+          meals?.filter((m) => m.itinerary_id === day.id) || [];
+
+        const mealsObj = { breakfast: null, lunch: null, dinner: null };
+        dayMealsArr.forEach((m) => {
+          mealsObj[m.meal_type] = m.description;
+        });
+
+        const dayImages =
+          itineraryImages?.filter((i) => i.entity_id === day.id) || [];
+
+        const result = {
+          id: day.id,
+          day: day.day_no,
+          title: day.title,
+          description: day.description,
+          transfer: dayTransfers[0] || null,
+          stay: dayStay,
+          meals: mealsObj,
+          images: dayImages,
+        };
+
+        console.log(`📅 DAY ${day.day_no} FINAL`, result);
+        return result;
+      });
+
+      setItinerary(final);
+      setLoading(false);
+      console.log("✅ FETCH COMPLETE");
+    } catch (err) {
+      console.error("🔥 FETCH CRASH", err);
+      setLoading(false);
+    }
+  }
+
+  if (loading) return <div className="p-10">Loading trek...</div>;
+  if (!pkg) return <div className="p-10">Trek not found</div>;
   return (
     <main className="bg-[#FAFAFA]">
       {/* <Header
@@ -23,7 +345,7 @@ export default function Tour() {
         badges={["5 Days", "12,500 ft", "Easy–Moderate"]}
         bgImage="/src/assets/1.jpg"
       /> */}
-      <ExplorationGrid />
+      <ExplorationGrid media={media} />
 
       {/* ================= MAIN CONTENT + STICKY ================= */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 mt-10">
@@ -37,7 +359,7 @@ export default function Tour() {
               id="itinerary-end"
               className="bg-white rounded-3xl p-6 md:p-8 shadow-sm"
             >
-              <TripItinerary />
+              <TripItinerary days={itinerary} />
             </section>
           </div>
 
@@ -47,7 +369,7 @@ export default function Tour() {
             <div className="h-full flex flex-col">
               {/* Normal cards */}
               <div className="space-y-8 mb-8">
-                <PriceCard />
+                <PriceCard pricing={pricing} />
                 <GotAQuestionCard />
                 <GroupOfferCard />
                 <WhyChooseUs />
@@ -72,13 +394,13 @@ export default function Tour() {
 
         <section className="bg-white py-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <PolicyAccordion />
+            <PolicyAccordion policies={policies} />
           </div>
         </section>
 
         <section className="bg-[#FAFAFA] py-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <FAQs />
+            <FAQs trekName={pkg?.title} faqs={faqs} />
           </div>
         </section>
       </section>

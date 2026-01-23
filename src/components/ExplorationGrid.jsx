@@ -1,37 +1,67 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { HiOutlinePhotograph } from "react-icons/hi";
+import {
+  HiOutlinePhotograph,
+  HiX,
+  HiChevronLeft,
+  HiChevronRight,
+} from "react-icons/hi";
 
-export default function ExplorationGrid({
-  items = [
-    { src: "/src/assets/1.jpg", label: "", type: "large" },
-    { src: "/src/assets/2.jpg", label: "Destinations", type: "small" },
-    { src: "/src/assets/3.jpg", label: "Stays", type: "small" },
-    {
-      src: "/src/assets/2.jpg",
-      label: "Activities & Sightseeing",
-      type: "small",
-    },
-    { src: "/src/assets/1.jpg", label: "", type: "small" },
-  ],
-}) {
+export default function ExplorationGrid({ media = [] }) {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.25 });
   const controls = useAnimation();
+
+  const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
     if (isInView) controls.start("show");
   }, [isInView, controls]);
 
+  // ---------- MEDIA GROUPING ----------
+  const hero = media.find((m) => m.media_role === "hero");
+  const destination = media.find((m) => m.media_role === "destination");
+  const stay = media.find((m) => m.media_role === "stay");
+  const activity = media.find((m) => m.media_role === "activity");
+  const gallery = media.filter((m) => m.media_role === "gallery");
+
+  const previewItems = [
+    hero?.media_url,
+    destination?.media_url,
+    stay?.media_url,
+    activity?.media_url,
+    gallery?.[0]?.media_url,
+  ].filter(Boolean);
+
+  const allImages = media.map((m) => m.media_url);
+
+  // ---------- NAVIGATION ----------
+  const nextImage = () =>
+    setActiveIndex((prev) => (prev + 1) % allImages.length);
+
+  const prevImage = () =>
+    setActiveIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+
+  // ---------- KEYBOARD ----------
+  useEffect(() => {
+    function handleKey(e) {
+      if (activeIndex === null) return;
+      if (e.key === "Escape") setActiveIndex(null);
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeIndex]);
+
+  // ---------- ANIMATION ----------
   const containerVariants = {
     hidden: {},
-    show: {
-      transition: { staggerChildren: 0.12, delayChildren: 0.15 },
-    },
+    show: { transition: { staggerChildren: 0.12 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.96, y: 24 },
+    hidden: { opacity: 0, scale: 0.95, y: 30 },
     show: {
       opacity: 1,
       scale: 1,
@@ -41,94 +71,128 @@ export default function ExplorationGrid({
   };
 
   return (
-    <section className="bg-white py-14">
-      <div className="max-w-7xl mx-auto px-4 md:px-6" ref={containerRef}>
-        {/* Section Header */}
-        <div className="mb-8 md:mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-            About This Trip
-          </h2>
-          <p className="text-slate-500 mt-2 text-sm md:text-base max-w-2xl">
-            A glimpse of destinations, stays, and experiences included in your
-            journey
-          </p>
-        </div>
+    <>
+      {/* ================= GRID ================= */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-6" ref={containerRef}>
+          <div className="mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">
+              About This Trip
+            </h2>
+            <p className="text-slate-500 mt-3 max-w-2xl">
+              Destinations, stays, and experiences you’ll enjoy on this journey.
+            </p>
+          </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 h-[620px] md:h-[560px]"
-        >
-          {/* Main Large Image */}
           <motion.div
-            variants={itemVariants}
-            className="relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden group
-                       shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+            variants={containerVariants}
+            initial="hidden"
+            animate={controls}
+            className="grid grid-cols-1 md:grid-cols-4 gap-5 h-[640px]"
           >
-            <img
-              src={items[0].src}
-              alt="Trip overview"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-
-            {/* Optional Title Overlay */}
-            <div className="absolute bottom-6 left-6">
-              <span className="text-white text-xl md:text-2xl font-bold drop-shadow-lg">
-                Trip Highlights
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Small Cards */}
-          {items.slice(1, 4).map((item, idx) => (
+            {/* HERO IMAGE */}
             <motion.div
-              key={idx}
               variants={itemVariants}
-              className="relative rounded-2xl overflow-hidden group
-                         shadow-[0_14px_35px_rgba(0,0,0,0.12)]"
+              onClick={() => setActiveIndex(0)}
+              className="md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden cursor-pointer group shadow-xl relative"
             >
               <img
-                src={item.src}
-                alt={item.label}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                src={previewItems[0]}
+                className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
               />
-              <div className="absolute inset-0 bg-black/35" />
-
-              <span className="absolute bottom-4 left-4 text-white font-bold text-lg drop-shadow-md leading-tight">
-                {item.label}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <span className="absolute bottom-6 left-6 text-white text-xl font-bold">
+                Trip Highlights
               </span>
             </motion.div>
-          ))}
 
-          {/* View All Images Card */}
-          <motion.div
-            variants={itemVariants}
-            className="relative rounded-2xl overflow-hidden group
-                       shadow-[0_14px_35px_rgba(0,0,0,0.12)]"
-          >
-            <img
-              src={items[4].src}
-              alt="View all images"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-
-            {/* CTA Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button
-                className="flex items-center gap-2 bg-white/95 text-slate-800
-                           px-6 py-3 rounded-full font-semibold text-sm
-                           shadow-xl hover:bg-white transition"
+            {/* SMALL CARDS */}
+            {previewItems.slice(1, 4).map((src, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                onClick={() => setActiveIndex(i + 1)}
+                className="rounded-3xl overflow-hidden cursor-pointer group shadow-lg relative"
               >
-                <HiOutlinePhotograph className="text-lg" />
-                View All Images
-              </button>
-            </div>
+                <img
+                  src={src}
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-black/40" />
+              </motion.div>
+            ))}
+
+            {/* VIEW ALL */}
+            {gallery.length > 0 && (
+              <motion.div
+                variants={itemVariants}
+                onClick={() => setActiveIndex(0)}
+                className="rounded-3xl overflow-hidden cursor-pointer shadow-lg relative"
+              >
+                <img
+                  src={gallery[0].media_url}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-white">
+                  <HiOutlinePhotograph className="text-4xl mb-2" />
+                  <span className="font-semibold text-lg">View All Photos</span>
+                  <span className="text-sm opacity-80">
+                    {allImages.length} Images
+                  </span>
+                </div>
+              </motion.div>
+            )}
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+
+      {/* ================= FULLSCREEN MODAL ================= */}
+      {activeIndex !== null && (
+        <div
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+          onClick={() => setActiveIndex(null)} // click outside = close
+        >
+          {/* LEFT */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            className="absolute left-6 text-white text-5xl hover:scale-110 transition"
+          >
+            <HiChevronLeft />
+          </button>
+
+          {/* IMAGE */}
+          <img
+            src={allImages[activeIndex]}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[90vh] max-w-[90vw] rounded-2xl shadow-2xl"
+          />
+
+          {/* RIGHT */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-6 text-white text-5xl hover:scale-110 transition"
+          >
+            <HiChevronRight />
+          </button>
+
+          {/* CLOSE */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIndex(null);
+            }}
+            className="absolute top-6 right-6 text-white text-3xl"
+          >
+            <HiX />
+          </button>
+        </div>
+      )}
+    </>
   );
 }
