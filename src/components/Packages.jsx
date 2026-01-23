@@ -4,6 +4,7 @@ import TourSlider from "./TourSlider";
 import GroupOfferBanner from "./GroupOfferBanner";
 import EnquiryModal from "./Packages/EnquiryModal";
 import WhyChooseHimalayan from "./WhyChooseHimalayan";
+import PopularActivitiesCardGrid from "./PopularActivitiesCardGrid";
 
 export default function Packages() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function Packages() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="my-10 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       </div>
-      Popular Activites
+    <PopularActivitiesCardGrid/>
       <div className="max-w-7xl mx-auto px-6">
         <div className="my-10 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       </div>

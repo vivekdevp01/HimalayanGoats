@@ -64,7 +64,7 @@ export default function HeroHeader({
   // ];
 
   return (
-    <header className="relative h-screen w-full bg-black">
+    <header className="relative overflow-hidden h-screen w-full bg-black">
       {/* Background Images */}
       <AnimatePresence mode="wait">
         <motion.div

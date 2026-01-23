@@ -541,7 +541,7 @@ export default function TourSlider() {
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              onClick={() => navigate(`/package/${pkg.id}`)} // Entire card acts as NavLink
+              onClick={() => navigate(`/tour/${pkg.id}`)} // Entire card acts as NavLink
               className="min-w-[300px] md:min-w-[380px] h-[520px] relative rounded-2xl overflow-hidden snap-start shadow-lg group/card cursor-pointer"
             >
               <img
