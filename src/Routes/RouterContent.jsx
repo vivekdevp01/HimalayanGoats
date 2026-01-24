@@ -17,6 +17,7 @@ import Terms from "../components/Terms";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import CopyrightPolicy from "../components/CopyrightPolicy";
 import Header3 from "../components/Header3";
+import { useState } from "react";
 
 // import Home from "./Pages/Home";
 // import Tour from "./components/Tour";
@@ -35,7 +36,7 @@ export default function RouterContent() {
 
   const isTour =
     location.pathname === "/tour" || location.pathname.startsWith("/trek/");
-
+ const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   return (
     <>
       {/* ===== HEADER CONTROL ===== */}
@@ -45,6 +46,8 @@ export default function RouterContent() {
         <HeroHeader />
       ) : isTour || isAbout ? (
         <Header
+        isDropdownOpen={isDropdownOpen}
+        setIsDropdownOpen={setIsDropdownOpen}
           variant={isTour ? "tour" : "default"}
           title={isTour ? "Kedarkantha Trek" : "ABOUT US"}
           subtitle={
@@ -54,7 +57,9 @@ export default function RouterContent() {
           bgImage={isTour ? "/src/assets/1.jpg" : "/src/assets/9.jpg"}
         />
       ) : (
-        <Header3 />
+        <Header3
+         isDropdownOpen={isDropdownOpen}
+        setIsDropdownOpen={setIsDropdownOpen} />
       )}
 
       {/* ===== ROUTES ===== */}

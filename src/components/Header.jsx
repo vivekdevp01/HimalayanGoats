@@ -198,6 +198,8 @@ import React, { useState } from "react"; // 1. Added useState
 import { NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 export default function Header({
+  isDropdownOpen,
+  setIsDropdownOpen,
   links,
   variant = "default", // "default" | "tour"
   title = "ABOUT US",
@@ -205,7 +207,7 @@ export default function Header({
   badges = [],
   bgImage = "/src/assets/9.jpg",
 }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+ 
   const navLinks = links || [
     { key: "home", label: "Home", to: "/" },
     { key: "about", label: "About", to: "/aboutus" },
