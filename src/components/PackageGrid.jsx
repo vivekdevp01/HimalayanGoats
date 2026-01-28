@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase";
 import { useParams, useNavigate } from "react-router-dom";
 import EnquiryModal from "./Packages/EnquiryModal";
 import { motion } from "framer-motion";
+import AdventureLoader from "./AdventureLoader";
 
 const overlayByCategory = {
   overlayColor: "from-amber-900/90 via-amber-900/40 to-transparent",
@@ -28,6 +29,8 @@ export default function PackageGrid({
   useEffect(() => {
     fetchPackages();
   }, [resolvedCategory]);
+
+
 
   async function fetchPackages() {
     setLoading(true);
@@ -119,23 +122,28 @@ export default function PackageGrid({
   return (
     <section className="max-w-7xl mx-auto px-6 py-12">
       {/* HEADING */}
-      <div className="mb-10">
-        <h2 className="text-3xl font-bold text-slate-800 flex items-center gap-2">
-          <span className="text-orange-500">
-            {resolvedCategory.toUpperCase()}
-          </span>
-          Packages of the Week ✨
-        </h2>
-        <p className="text-gray-400 text-sm mt-1">
-          Price updated as of 21st Jan
-        </p>
-      </div>
+  <div className="mb-8 md:mb-10 px-2">
+  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">
+    {/* Use inline-flex and items-baseline to keep text on the same visual line */}
+    <span className="inline-flex flex-wrap items-baseline gap-x-2">
+      <span className="text-orange-500 whitespace-nowrap">
+        {resolvedCategory.toUpperCase()}
+      </span>
+      <span className="text-slate-800">
+        Packages of the Week ✨
+      </span>
+    </span>
+  </h2>
+  
+  <p className="text-gray-400 text-xs md:text-sm mt-2 flex items-center gap-1">
+    <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+    Price updated as of 21st Jan
+  </p>
+</div>
 
       {/* LOADING */}
       {loading && (
-        <div className="text-center py-24 text-slate-500">
-          Loading packages...
-        </div>
+        <AdventureLoader/>
       )}
 
       {/* NO RESULTS */}

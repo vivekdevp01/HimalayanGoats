@@ -52,20 +52,37 @@
 // export default RouterContent;
 
 // App.jsx
+import React, { useState, useEffect } from "react"; // Added React and hooks
 import { BrowserRouter } from "react-router-dom";
 import RouterContent from "./Routes/RouterContent";
 import ScrollToTop from "./components/ScrollToTop";
-import StickyContactButtons from "./components/StickyContactButtons";
 import StickyWhatsApp from "./components/Packages/StickyWhatsappButton";
-// import RouterContent from "./RouterContent";
+import AdventureLoader from "./components/AdventureLoader"; // Import your new loader
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // This timer simulates the time taken to load assets
+    // You can adjust '2000' (2 seconds) to your liking
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      {/* <StickyContactButtons /> */}
-      <StickyWhatsApp />
-      <RouterContent />
+      {/* 1. Show loader if isLoading is true */}
+      {isLoading && <AdventureLoader />}
+
+      {/* 2. Wrap the rest in a div that fades in once loading is done */}
+      <div className={`transition-opacity duration-700 ${isLoading ? "opacity-0" : "opacity-100"}`}>
+        <ScrollToTop />
+        <StickyWhatsApp />
+        <RouterContent />
+      </div>
     </BrowserRouter>
   );
 }

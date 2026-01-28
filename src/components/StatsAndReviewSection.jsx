@@ -10,7 +10,7 @@ import { useInView } from "react-intersection-observer";
  * - Strong CTA
  */
 
-export default function StatsAndReviewsSection() {
+export default function StatsAndReviewsSection({ onOpenEnquiry }) {
   return (
     <section className="bg-[#0D6773] py-20 text-white">
       <div className="max-w-7xl mx-auto px-6 space-y-16">
@@ -33,10 +33,13 @@ export default function StatsAndReviewsSection() {
 
         {/* ---------- CTA ---------- */}
         <div className="text-center">
-          <button className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-amber-400 text-teal-900 font-bold hover:bg-amber-300 transition shadow-lg">
-            Talk to a Local Expert
-          </button>
-        </div>
+  <button 
+   onClick={onOpenEnquiry} // This triggers the modal
+    className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-amber-400 text-teal-900 font-bold hover:bg-amber-300 transition-all hover:-translate-y-1 shadow-lg active:scale-95"
+  >
+    Talk to a Local Expert
+  </button>
+</div>
       </div>
     </section>
   );

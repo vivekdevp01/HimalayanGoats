@@ -49,7 +49,7 @@ export default function Home() {
       <LocalAdvantageSection />
       {/* <ActivityCategories /> */}
       {/* <WhyChooseUsSection /> */}
-      <StatsAndReviewsSection />
+      <StatsAndReviewsSection onOpenEnquiry={() => setShowEnquiry(true)} />
       <ContactCTASection />
       {/* <StepsSection />
       <TopDestination />

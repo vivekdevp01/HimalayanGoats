@@ -14,3 +14,12 @@ html {
 .section-text {
   @apply mt-3 text-slate-700 leading-relaxed;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}

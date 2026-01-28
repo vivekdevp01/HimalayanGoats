@@ -1,181 +1,115 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { 
+  FaFacebookF, 
+  FaInstagram, 
+  FaLinkedinIn, 
+  FaYoutube, 
+  FaPhoneAlt,
+  FaEnvelope,
+  FaExclamationTriangle
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
-  const instaThumbs = [
-    "/src/assets/insta1.jpg",
-    "/src/assets/insta2.jpg",
-    "/src/assets/insta3.jpg",
-    "/src/assets/insta4.jpg",
-    "/src/assets/insta5.jpg",
-    "/src/assets/insta6.jpg",
-  ];
-
   return (
-    <footer className="w-full mt-10">
-      {/* ===== SUBSCRIBE STRIP (SMALLER) ===== */}
-      <div className="bg-amber-400">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-5">
+    <footer className="w-full bg-[#111111] text-[#bbbbbb] font-sans">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Main Footer Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          
+          {/* Column 1: About Thrillophilia */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-emerald-900">
-              <span className="kaushan">Subscribe</span> Now!
-            </h2>
-            <p className="text-sm text-emerald-900/80">
-              Get weekly travel updates & offers.
-            </p>
+            <h4 className="text-white font-bold mb-6 text-base">About Tripshalla</h4>
+            <ul className="space-y-3 text-sm">
+              <li><NavLink to="/aboutus" className="hover:text-white transition">About Us</NavLink></li>
+              <li><NavLink to="/careers" className="hover:text-white transition">Careers</NavLink></li>
+              <li><NavLink to="/reviews" className="hover:text-white transition">Tripshalla Reviews</NavLink></li>
+              <li><NavLink to="/news" className="hover:text-white transition">News</NavLink></li>
+              <li className="flex items-center gap-2 text-red-500 font-medium pt-2">
+                <FaExclamationTriangle size={14} />
+                <NavLink to="/fraud-alert" className="hover:underline text-[13px]">Beware Of Frauds</NavLink>
+              </li>
+            </ul>
           </div>
 
-          <form
-            className="flex items-center bg-white rounded-full px-3 py-1 w-full md:w-[380px]"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              placeholder="Email address..."
-              className="flex-1 px-4 py-2 rounded-full focus:outline-none text-sm"
-              type="email"
+          {/* Column 2: Policies */}
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Policies</h4>
+            <ul className="space-y-3 text-sm">
+              <li><NavLink to="/terms" className="hover:text-white transition">Terms & Conditions</NavLink></li>
+              <li><NavLink to="/privacy" className="hover:text-white transition">Privacy Policies</NavLink></li>
+              <li><NavLink to="/copyright" className="hover:text-white transition">Copyright Policies</NavLink></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Contact Us */}
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Contact Us</h4>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-center gap-3">
+                <FaPhoneAlt size={14} className="text-gray-400" />
+                <a href="tel:+918046287300" className="hover:text-white transition">+91 8046287300</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <FaEnvelope size={14} className="text-gray-400" />
+                <a href="mailto:support@thrillophilia.com" className="hover:text-white transition">support@thrillophilia.com</a>
+              </li>
+              <li><NavLink to="/support" className="hover:text-white transition pl-7 block">Support</NavLink></li>
+              <li><NavLink to="/blog" className="hover:text-white transition pl-7 block">Blog</NavLink></li>
+              <li><NavLink to="/sitemap" className="hover:text-white transition pl-7 block">Sitemap</NavLink></li>
+              <li><NavLink to="/partner" className="hover:text-white transition pl-7 block">Partner With Thrillophilia</NavLink></li>
+              <li><NavLink to="/marketing" className="hover:text-white transition pl-7 block">Destination Marketing</NavLink></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Social */}
+          <div>
+            <h4 className="text-white font-bold mb-6 text-base">Social</h4>
+            <ul className="space-y-4 text-sm">
+              <li>
+                <a href="#" className="flex items-center gap-3 hover:text-white transition">
+                  <FaFacebookF size={16} /> Facebook
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center gap-3 hover:text-white transition">
+                  <FaInstagram size={16} /> Instagram
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center gap-3 hover:text-white transition">
+                  <FaXTwitter size={16} /> X.com
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center gap-3 hover:text-white transition">
+                  <FaLinkedinIn size={16} /> Linkedin
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center gap-3 hover:text-white transition">
+                  <FaYoutube size={16} /> Youtube
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Logo and Copyright */}
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center">
+            <img 
+              src="/src/assets/logo-main.png" 
+              alt="Thrillophilia Logo" 
+              className="h-10 object-contain brightness-110" 
             />
-            <button className="ml-2 w-8 h-8 rounded-full bg-emerald-900 text-white flex items-center justify-center">
-              →
-            </button>
-          </form>
+          </div>
+          <p className="text-[13px] text-gray-500">
+            © 2026 Thrillophilia.com All rights reserved.
+          </p>
         </div>
       </div>
-
-      {/* ===== MAIN FOOTER ===== */}
-      <div className="bg-emerald-900 text-emerald-50">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          {/* TOP GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {/* BRAND */}
-            <div className="md:col-span-2">
-              <img
-                src="/src/assets/logo-white.png"
-                alt="Travlla"
-                className="w-24"
-              />
-              <p className="mt-3 text-sm text-emerald-100/80 max-w-sm">
-                Travlla is a multi-award-winning travel marketing agency.
-              </p>
-
-              <div className="flex gap-3 mt-3">
-                {["X", "F", "I", "P"].map((s, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border border-amber-400/70 flex items-center justify-center text-xs"
-                  >
-                    {s}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* LINKS */}
-            <div className="md:col-span-2 grid grid-cols-3 gap-6 text-sm">
-           <FooterCol
-  title="Explore"
-  items={[
-    { label: "FAQ", to: "/faq" },
-    { label: "Services", to: "/services" },
-    { label: "Team", to: "/team" },
-    { label: "News", to: "/news" },
-  ]}
-/>
-
-<FooterCol
-  title="Destinations"
-  items={[
-    { label: "France", to: "/destination/france" },
-    { label: "Dubai", to: "/destination/dubai" },
-    { label: "Kenya", to: "/destination/kenya" },
-    { label: "Vietnam", to: "/destination/vietnam" },
-  ]}
-/>
-
-<FooterCol
-  title="Legal"
-  items={[
-    { label: "Terms", to: "/terms" },
-    { label: "Privacy", to: "/privacy" },
-    { label: "Contact", to: "/contact" },
-    { label: "Help", to: "/help" },
-  ]}
-/>
-            </div>
-
-            {/* CONTACT */}
-            <div>
-              <h4 className="text-sm font-semibold mb-3">Get in Touch</h4>
-              <ul className="space-y-3 text-sm">
-                <li className="text-amber-300 font-medium">123 654 0214</li>
-                <li>travllainfo@gmail.com</li>
-                <li>55/11 Ronin Tower, New York</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* INSTAGRAM (COMPACT) */}
-          <div className="mt-6">
-            <h5 className="text-xs uppercase tracking-wide mb-2">
-              Follow Instagram
-            </h5>
-            <div className="grid grid-cols-6 gap-3 max-w-sm">
-              {instaThumbs.map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt="insta"
-                  className="w-12 h-12 rounded-lg object-cover"
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* COPYRIGHT */}
-          <div className="mt-6 pt-4 border-t border-emerald-800 text-center text-xs text-emerald-100/70">
-            © 2025 <span className="text-amber-300 font-semibold">TRAVLLA</span>{" "}
-            — All Rights Reserved
-          </div>
-        </div>
-      </div>
-
-      {/* FONT */}
-      <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
-        .kaushan {
-          font-family: "Kaushan Script", cursive;
-        }
-      `}</style>
     </footer>
-  );
-}
-
-/* ===== HELPER COMPONENT ===== */
-import { NavLink } from "react-router-dom";
-
-function FooterCol({ title, items }) {
-  // items should now look like: [{ label: "Home", to: "/" }, ...]
-  return (
-    <div>
-      <h4 className="font-semibold mb-3 text-white uppercase tracking-wider">
-        {title}
-      </h4>
-      <ul className="space-y-2">
-        {items.map((item) => (
-          <li key={item.to}>
-            <NavLink
-              to={item.to}
-              className={({ isActive }) =>
-                `block transition-colors duration-200 cursor-pointer ${
-                  isActive 
-                    ? "text-amber-400 font-medium" 
-                    : "text-emerald-100/80 hover:text-amber-300"
-                }`
-              }
-            >
-              {item.label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

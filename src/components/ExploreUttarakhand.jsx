@@ -6,19 +6,19 @@ const categories = [
   {
     title: "Treks",
     icon: Mountain,
-    slug: "/treks",
+    slug: "/packages/treks",
     desc: "Himalayan treks & guided trails",
   },
   {
     title: "Camping",
     icon: Tent,
-    slug: "/camping",
+    slug: "/packages/camping",
     desc: "Riverside & alpine camps",
   },
   {
     title: "Rafting",
     icon: Waves,
-    slug: "/rafting",
+    slug: "/packages/rafting",
     desc: "White water rafting in Rishikesh",
   },
   {

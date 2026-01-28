@@ -14,6 +14,7 @@ import PriceCard from "./Packages/PriceCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
+import AdventureLoader from "./AdventureLoader";
 // import Header from "./Header";
 
 export default function Tour() {
@@ -334,7 +335,9 @@ export default function Tour() {
     }
   }
 
-  if (loading) return <div className="p-10">Loading trek...</div>;
+  if (loading) return <div className="p-10">
+    <AdventureLoader/>
+  </div>;
   if (!pkg) return <div className="p-10">Trek not found</div>;
   return (
     <main className="bg-[#FAFAFA]">
