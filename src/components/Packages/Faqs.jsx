@@ -3,14 +3,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
 export default function FAQs({
-  trekName = "Trek",
+  title = "Package",
+  type = "package", // trek | camp | tour | expedition
   faqs = [],
   initialCount = 4,
 }) {
   const [openIndex, setOpenIndex] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
-  if (!faqs.length) return null;
+  // If no FAQs, render nothing (safe)
+  if (!faqs?.length) return null;
+
+  // Dynamic label based on package type
+  const typeLabelMap = {
+    trek: "trek",
+    camp: "camping experience",
+    tour: "tour",
+    expedition: "expedition",
+    package: "package",
+  };
+
+  const typeLabel = typeLabelMap[type] || "package";
 
   const visibleFaqs = expanded ? faqs : faqs.slice(0, initialCount);
 
@@ -20,10 +33,10 @@ export default function FAQs({
         {/* HEADER */}
         <div className="mb-10">
           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">
-            {trekName} FAQs
+            {title} FAQs
           </h2>
           <p className="text-slate-500 mt-2">
-            Everything you need to know before booking your trek.
+            Everything you need to know before booking this {typeLabel}.
           </p>
         </div>
 

@@ -1,153 +1,215 @@
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { HiOutlineHome, HiOutlineCake, HiOutlineMap } from "react-icons/hi";
+import {
+  HiOutlineUsers,
+  HiOutlineClock,
+  HiOutlineSparkles,
+  HiOutlineCheckCircle,
+} from "react-icons/hi";
 
-export default function TourDetails() {
-  const [selectedDuration, setSelectedDuration] = useState("6 days");
-  const [selectedRoute, setSelectedRoute] = useState(3);
+export default function TourDetails({
+  title,
+  highlight,
+  summary = [],
+  amenities = [],
+  durations = [],
+  details = null,
+}) {
+  const [selectedDuration, setSelectedDuration] = useState(
+    durations?.[0]?.id || null,
+  );
 
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.15 });
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
-  const durations = [
-    { days: "4 days", price: "₹12,526", img: "/src/assets/1.jpg" },
-    { days: "6 days", price: "₹25,372", img: "/src/assets/2.jpg" },
-    { days: "7 days", price: "₹25,000", img: "/src/assets/3.jpg" },
-    { days: "8 days", price: "₹33,047", img: "/src/assets/2.jpg" },
-    { days: "9 days", price: "₹40,000", img: "/src/assets/1.jpg" },
-  ];
-
-  const routes = [
-    "Gangtok → Darjeeling → Siliguri",
-    "Gangtok → Lachung → Gangtok",
-    "Gangtok → Lachung → Gangtok → Bagdogra",
-    "Gangtok → Lachen → Lachung → Gangtok → Siliguri",
-  ];
+  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
 
   return (
     <section ref={containerRef}>
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "show" : "hidden"}
-        className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="space-y-12"
       >
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-800 leading-tight mb-6">
-          Highlights of North Sikkim <br />
-          <span className="text-orange-500 text-xl md:text-2xl font-semibold">
-            FREE Visit to Bhim Nala Falls
-          </span>
-        </h1>
+        {/* ================= HEADER ================= */}
+        <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-800">
+            {title}
+          </h1>
 
-        {/* Summary */}
-        <div className="flex flex-wrap gap-6 text-sm text-slate-600 mb-8">
-          <span className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-600 font-bold">
-            6D / 5N
-          </span>
-          <span>
-            <b>2</b> Days in Gangtok
-          </span>
-          <span>
-            <b>1</b> Day in Lachen
-          </span>
-          <span>
-            <b>1</b> Day in Lachung
-          </span>
-        </div>
+          {highlight && (
+            <p className="mt-3 text-orange-500 text-lg font-semibold">
+              {highlight}
+            </p>
+          )}
 
-        <hr className="mb-8 border-slate-100" />
-
-        {/* Amenities */}
-        <div className="flex flex-wrap gap-8 mb-10 text-slate-600">
-          <div className="flex items-center gap-2">
-            <HiOutlineHome className="text-xl" /> Stay Included
-          </div>
-          <div className="flex items-center gap-2">
-            <HiOutlineCake className="text-xl" /> Meals Included
-          </div>
-          <div className="flex items-center gap-2">
-            <HiOutlineMap className="text-xl" /> Sightseeing Included
-          </div>
-        </div>
-
-        {/* Duration Selector */}
-        <div className="mb-12">
-          <h3 className="font-bold text-lg mb-4">Choose Trip Duration</h3>
-          <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-            {durations.map((item) => {
-              const isSelected = selectedDuration === item.days;
-              return (
-                <div
-                  key={item.days}
-                  onClick={() => setSelectedDuration(item.days)}
-                  className="min-w-[140px] cursor-pointer"
+          {summary.length > 0 && (
+            <div className="flex flex-wrap gap-3 mt-6">
+              {summary.map((item, i) => (
+                <span
+                  key={i}
+                  className="px-4 py-1.5 rounded-full bg-orange-100 text-orange-600 text-sm font-bold"
                 >
+                  {item}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* ================= QUICK FACTS ================= */}
+        {details && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <FactCard
+              icon={<HiOutlineSparkles />}
+              label="Best Time"
+              value={details.best_time}
+            />
+            <FactCard
+              icon={<HiOutlineUsers />}
+              label="Capacity"
+              value={`${details.capacity}+ Guests`}
+            />
+            <FactCard
+              icon={<HiOutlineClock />}
+              label="Check-in"
+              value={details.check_in_time}
+            />
+            <FactCard
+              icon={<HiOutlineClock />}
+              label="Check-out"
+              value={details.check_out_time}
+            />
+          </div>
+        )}
+
+        {/* ================= AMENITIES ================= */}
+        {amenities.length > 0 && (
+          <div className="bg-white rounded-3xl p-8 shadow-sm">
+            <h3 className="text-xl font-bold mb-6">What’s Included</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {amenities.map((a, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-4 p-4 rounded-xl bg-slate-50"
+                >
+                  <span className="text-xl text-orange-500">{a.icon}</span>
+                  <span className="font-medium text-slate-700">{a.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ================= HIGHLIGHTS ================= */}
+        {details?.highlights?.length > 0 && (
+          <div className="bg-white rounded-3xl p-8 shadow-sm">
+            <h3 className="text-xl font-bold mb-6">Camp Highlights</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {details.highlights.map((h, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-3 p-4 rounded-xl bg-emerald-50"
+                >
+                  <HiOutlineCheckCircle className="text-emerald-600 text-xl mt-0.5" />
+                  <span className="text-slate-700">{h}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ================= PACKAGE OPTIONS ================= */}
+        {durations.length > 0 && (
+          <div className="bg-white rounded-3xl p-8 shadow-sm">
+            <h3 className="text-xl font-bold mb-6">Choose Package Option</h3>
+
+            <div className="flex gap-5 overflow-x-auto no-scrollbar pb-2">
+              {durations.map((item) => {
+                const isSelected = selectedDuration === item.id;
+
+                return (
                   <div
-                    className={`relative h-32 rounded-2xl overflow-hidden border-2 transition
+                    key={item.id}
+                    onClick={() => setSelectedDuration(item.id)}
+                    className={`min-w-[180px] rounded-2xl overflow-hidden cursor-pointer border-2 transition
                       ${
                         isSelected
                           ? "border-orange-500 shadow-lg"
-                          : "border-transparent opacity-70 hover:opacity-100"
+                          : "border-slate-100 hover:border-orange-300"
                       }`}
                   >
-                    <img
-                      src={item.img}
-                      alt={item.days}
-                      className={`w-full h-full object-cover transition-transform duration-500 ${
-                        isSelected ? "scale-110" : ""
-                      }`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                      <span className="text-white font-bold text-sm">
-                        {item.days}
-                      </span>
+                    <div className="relative h-36">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
+                        <span className="text-white font-bold text-sm">
+                          {item.title}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-4">
+                      <p className="text-[11px] uppercase text-slate-400">
+                        Starting From
+                      </p>
+                      <p className="text-lg font-extrabold text-orange-600">
+                        ₹{item.final_price}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-[10px] text-slate-400 uppercase mt-2">
-                    Starting From
-                  </p>
-                  <p
-                    className={`font-bold ${isSelected ? "text-orange-600" : "text-slate-800"}`}
-                  >
-                    {item.price}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Routes */}
-        <div>
-          <h3 className="font-bold text-lg mb-4">Destination Routes</h3>
-          <div className="space-y-3">
-            {routes.map((route, idx) => (
-              <div
-                key={idx}
-                onClick={() => setSelectedRoute(idx)}
-                className={`p-4 rounded-xl border-2 cursor-pointer transition
-                  ${
-                    selectedRoute === idx
-                      ? "border-orange-500 bg-orange-50 text-orange-600"
-                      : "border-slate-100 hover:border-slate-200 text-slate-600"
-                  }`}
-              >
-                {route}
-              </div>
-            ))}
+        {/* ================= IDEAL FOR ================= */}
+        {details?.ideal_for?.length > 0 && (
+          <div className="bg-white rounded-3xl p-8 shadow-sm">
+            <h3 className="text-xl font-bold mb-4">Ideal For</h3>
+            <div className="flex flex-wrap gap-3">
+              {details.ideal_for.map((i, idx) => (
+                <span
+                  key={idx}
+                  className="px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold"
+                >
+                  {i}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* ================= BOOKING NOTES ================= */}
+        {details?.booking_notes?.length > 0 && (
+          <div className="bg-orange-50 border border-orange-200 rounded-3xl p-8">
+            <h3 className="text-xl font-bold mb-4 text-orange-700">
+              Important Notes
+            </h3>
+            <ul className="space-y-2 text-slate-700 text-sm">
+              {details.booking_notes.map((n, i) => (
+                <li key={i}>• {n}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </motion.div>
     </section>
+  );
+}
+
+/* ================= FACT CARD ================= */
+function FactCard({ icon, label, value }) {
+  return (
+    <div className="bg-white rounded-2xl p-6 shadow-sm flex items-center gap-4">
+      <span className="text-3xl text-orange-500">{icon}</span>
+      <div>
+        <p className="text-xs uppercase text-slate-400">{label}</p>
+        <p className="font-bold text-slate-800">{value}</p>
+      </div>
+    </div>
   );
 }

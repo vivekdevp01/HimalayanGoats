@@ -15,6 +15,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import AdventureLoader from "./AdventureLoader";
+import Header from "./Header";
+import { HiOutlineCake, HiOutlineHome, HiOutlineMap } from "react-icons/hi";
 // import Header from "./Header";
 
 export default function Tour() {
@@ -27,6 +29,9 @@ export default function Tour() {
   const [pricing, setPricing] = useState(null);
   const [policies, setPolicies] = useState([]);
   const [faqs, setFaqs] = useState([]);
+  const [inclusions, setInclusions] = useState([]);
+  const [exclusions, setExclusions] = useState([]);
+  const [packageDetails, setPackageDetails] = useState(null);
 
   useEffect(() => {
     fetchPackage();
@@ -142,6 +147,16 @@ export default function Tour() {
       console.log("🚀 FETCH START", slug);
       setLoading(true);
 
+      // 🔁 RESET STATE (CRITICAL)
+      setMedia([]);
+      setItinerary([]);
+      setInclusions([]);
+      setExclusions([]);
+
+      setPolicies([]);
+      setFaqs([]);
+      setPricing(null);
+
       /* =======================
        1️⃣ PACKAGE
     ======================= */
@@ -159,6 +174,9 @@ export default function Tour() {
 
       console.log("✅ PACKAGE", packageData);
       setPkg(packageData);
+      console.log("📦 CURRENT PACKAGE ID:", packageData.id);
+      console.log("📦 PACKAGE TYPE:", packageData.type);
+
       /* =======================
    4️⃣ FETCH PACKAGE PRICING
 ======================= */
@@ -188,6 +206,56 @@ export default function Tour() {
 
       console.log("🖼 PACKAGE MEDIA", mediaData);
       setMedia(mediaData || []);
+
+      /* =======================
+   8️⃣ FETCH INCLUSIONS / EXCLUSIONS
+======================= */
+      const { data: ieData, error: ieError } = await supabase
+        .from("package_inclusions_exclusions")
+        .select("type, content")
+        .eq("package_id", packageData.id)
+        .order("order_no", { ascending: true });
+
+      if (ieError) {
+        console.error("❌ INCLUSIONS/EXCLUSIONS ERROR", ieError);
+      } else {
+        const inclusionsArr = ieData
+          .filter((i) => i.type === "inclusion")
+          .map((i) => i.content);
+
+        const exclusionsArr = ieData
+          .filter((i) => i.type === "exclusion")
+          .map((i) => i.content);
+
+        console.log("✅ INCLUSIONS", inclusionsArr);
+        console.log("❌ EXCLUSIONS", exclusionsArr);
+
+        setInclusions(inclusionsArr);
+        setExclusions(exclusionsArr);
+      }
+
+      /* =======================
+   🔟 FETCH FAQs
+======================= */
+      const { data: faqData, error: faqError } = await supabase
+        .from("faqs")
+        .select("id, question, answer")
+        .eq("package_id", packageData.id)
+        .order("order_no", { ascending: true });
+
+      if (faqError) {
+        console.error("❓ FAQ ERROR", faqError);
+      } else {
+        console.log("❓ RAW FAQ DATA FROM DB:", faqData);
+
+        console.log("❓ FAQs", faqData);
+        setFaqs(
+          (faqData || []).map((f) => ({
+            q: f.question,
+            a: f.answer,
+          })),
+        );
+      }
 
       /* =======================
        3️⃣ ITINERARIES (BASE)
@@ -261,23 +329,6 @@ export default function Tour() {
       /* =======================
    🔟 FETCH FAQs
 ======================= */
-      const { data: faqData, error: faqError } = await supabase
-        .from("faqs")
-        .select("id, question, answer")
-        .eq("package_id", packageData.id)
-        .order("order_no", { ascending: true });
-
-      if (faqError) {
-        console.error("❓ FAQ ERROR", faqError);
-      } else {
-        console.log("❓ FAQs", faqData);
-        setFaqs(
-          (faqData || []).map((f) => ({
-            q: f.question,
-            a: f.answer,
-          })),
-        );
-      }
 
       /* =======================
        7️⃣ ITINERARY IMAGES
@@ -290,6 +341,19 @@ export default function Tour() {
         .order("order_no");
 
       console.log("🖼 ITINERARY IMAGES", itineraryImages);
+
+      const { data: details, error: detailsError } = await supabase
+        .from("package_details")
+        .select("*")
+        .eq("package_id", packageData.id)
+        .single();
+
+      if (detailsError) {
+        console.warn("ℹ️ No package_details found");
+      } else {
+        console.log("📘 PACKAGE DETAILS", details);
+        setPackageDetails(details);
+      }
 
       /* =======================
        8️⃣ MERGE EVERYTHING
@@ -341,6 +405,11 @@ export default function Tour() {
         <AdventureLoader />
       </div>
     );
+  const heroImage =
+    media.find((m) => m.media_role === "hero_banner")?.media_url ||
+    media.find((m) => m.media_role === "hero")?.media_url ||
+    media.find((m) => m.media_role === "cover")?.media_url;
+
   if (!pkg) return <div className="p-10">Trek not found</div>;
   return (
     <main className="bg-[#FAFAFA]">
@@ -351,6 +420,22 @@ export default function Tour() {
         badges={["5 Days", "12,500 ft", "Easy–Moderate"]}
         bgImage="/src/assets/1.jpg"
       /> */}
+
+      {pkg && (
+        <Header
+          variant="tour"
+          title={pkg.name}
+          // subtitle={`${pkg.type} • ${pkg.location}`}
+          subtitle={`📍 ${pkg.location}`}
+          badges={[
+            `${pkg.duration_days} Days`,
+            pkg.difficulty || "Easy",
+            pkg.category?.toUpperCase(),
+          ]}
+          bgImage={heroImage}
+        />
+      )}
+
       <ExplorationGrid media={media} />
 
       {/* ================= MAIN CONTENT + STICKY ================= */}
@@ -358,7 +443,37 @@ export default function Tour() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* LEFT CONTENT */}
           <div className="lg:col-span-2 space-y-14">
-            <TourDetails />
+            <TourDetails
+              title={pkg.name}
+              highlight={packageDetails?.tagline}
+              summary={[
+                `${pkg.duration_days} Days`,
+                pkg.difficulty || "Easy",
+                pkg.type?.toUpperCase(),
+              ]}
+              amenities={[
+                { icon: <HiOutlineHome />, label: "Stay Included" },
+                { icon: <HiOutlineCake />, label: "Meals Included" },
+                { icon: <HiOutlineMap />, label: "Sightseeing Included" },
+              ]}
+              durations={
+                pricing
+                  ? [
+                      {
+                        id: pricing.id,
+                        title: pricing.title || `${pkg.duration_days} Days`,
+                        final_price: pricing.final_price,
+                        image:
+                          media.find((m) => m.media_role === "duration")
+                            ?.media_url ||
+                          media.find((m) => m.media_role === "cover")
+                            ?.media_url,
+                      },
+                    ]
+                  : []
+              }
+              details={packageDetails}
+            />
 
             {/* 🔴 STICKY MUST STOP HERE */}
             <section
@@ -394,7 +509,7 @@ export default function Tour() {
       <section className="mt-14">
         <section className="bg-[#FFF7ED] py-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <PackageSummary />
+            <PackageSummary inclusions={inclusions} exclusions={exclusions} />
           </div>
         </section>
 
@@ -406,7 +521,13 @@ export default function Tour() {
 
         <section className="bg-[#FAFAFA] py-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <FAQs trekName={pkg?.title} faqs={faqs} />
+            {/* <FAQs trekName={pkg?.title} faqs={faqs} /> */}
+            {/* <FAQs trekName={pkg?.name} faqs={faqs} /> */}
+            <FAQs
+              title={pkg?.name}
+              type={pkg?.type} // camp | trek | tour
+              faqs={faqs}
+            />
           </div>
         </section>
       </section>

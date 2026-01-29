@@ -214,9 +214,17 @@ export default function PackageGrid({
 "
                 />
 
-                <div
+                {/* <div
                   className={`absolute inset-0 bg-gradient-to-t ${overlayByCategory.overlayColor}`}
-                />
+                /> */}
+                {/* 1️⃣ Soft readability overlay */}
+                <div className="absolute inset-0 bg-black/20" />
+
+                {/* 2️⃣ Bottom gradient (content anchor) */}
+                <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+
+                {/* 3️⃣ Hover polish */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300" />
 
                 <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                   <div className="flex justify-between mb-3">

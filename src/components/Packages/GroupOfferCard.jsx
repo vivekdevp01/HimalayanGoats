@@ -4,7 +4,7 @@ export default function GroupOfferCard() {
       <div className="p-4 flex gap-4">
         {/* Image */}
         <img
-          src="/src/assets/group.jpg" // replace with your image
+          src="/src/assets/1.jpg" // replace with your image
           alt="Group travel"
           className="w-16 h-16 rounded-lg object-cover"
         />

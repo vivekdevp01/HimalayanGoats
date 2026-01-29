@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 export default function Header({
-  isDropdownOpen,
-  setIsDropdownOpen,
   links,
   variant = "default",
   title = "ABOUT US",
@@ -13,6 +11,7 @@ export default function Header({
   bgImage = "/src/assets/15.png",
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const navLinks = links || [
     { key: "home", label: "HOME", to: "/" },
@@ -32,13 +31,18 @@ export default function Header({
   ];
 
   return (
-    <header className="relative w-full h-[70vh] overflow-hidden font-sans">
+    // <header className="relative w-full h-[70vh] overflow-hidden font-sans">
+    // <header className="relative w-full min-h-[85vh] md:min-h-[95vh] overflow-hidden font-sans">
+    // <header className="relative w-full h-[75vh] md:h-[82vh] overflow-hidden font-sans">
+    <header className="relative w-full h-[58vh] sm:h-[65vh] md:h-[80vh] overflow-hidden font-sans">
       {/* 1. HERO BACKGROUND */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
-      <div className="absolute inset-0 bg-black/40" />
+      {/* <div className="absolute inset-0 bg-black/40" /> */}
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20" /> */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/10" />
 
       {/* 2. NAVIGATION BAR */}
       <nav className="absolute top-6 left-0 right-0 z-40 px-6">
@@ -221,24 +225,54 @@ export default function Header({
       </div>
 
       {/* 4. HERO CONTENT */}
-      <div className="relative z-20 h-full flex items-center px-6">
+      {/* <div className="relative z-20 h-full flex items-center px-6"> */}
+      {/* <div className="relative z-20 h-full flex items-end pb-24 md:pb-32 px-6"> */}
+      {/* <div className="relative z-20 h-full flex items-center px-6"> */}
+      <div className="relative z-20 h-full flex items-center px-6 pt-24 md:pt-28">
         <div className="max-w-7xl mx-auto w-full">
-          {variant === "tour" ? (
-            <div className="pt-10">
-              <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-tight drop-shadow-lg">
+          <div className="max-w-2xl">
+            {variant === "tour" ? (
+              <div className="pt-10">
+                <h1
+                  className="text-3xl md:text-5xl xl:text-6xl
+ font-black text-white leading-[1.1] drop-shadow-2xl"
+                >
+                  {title.split("–")[0]}
+                  <br />
+                  <span className="text-white/90">– {title.split("–")[1]}</span>
+                </h1>
+
+                {subtitle && (
+                  // <p className="mt-4 text-white/90 text-lg md:text-2xl max-w-2xl">
+                  <p className="mt-4 text-white/80 text-sm md:text-lg font-medium">
+                    {subtitle}
+                  </p>
+                )}
+                <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
+                  {badges.map((b, i) => (
+                    <span
+                      key={i}
+                      className="
+        inline-flex items-center gap-1
+        px-3.5 py-1.5
+        rounded-full
+        bg-white/20 backdrop-blur-md
+        border border-white/20
+        text-white text-xs font-semibold
+        shadow-sm
+      "
+                    >
+                      {b}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white drop-shadow-2xl">
                 {title}
               </h1>
-              {subtitle && (
-                <p className="mt-4 text-white/90 text-lg md:text-2xl max-w-2xl">
-                  {subtitle}
-                </p>
-              )}
-            </div>
-          ) : (
-            <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white drop-shadow-2xl">
-              {title}
-            </h1>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </header>

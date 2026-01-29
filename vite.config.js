@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     host: true, // allow network access
-    allowedHosts: ["sur-agent-same-decorating.trycloudflare.com"],
+    allowedHosts: ["beast-collector-stopping-fixed.trycloudflare.com"],
   },
 });

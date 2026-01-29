@@ -41,7 +41,7 @@ export default function RouterContent() {
   return (
     <>
       {/* ===== HEADER CONTROL ===== */}
-      {isHome ? (
+      {/* {isHome ? (
         <BaseHeader />
       ) : isPackage ? ( // New condition for the cinematic hero
         <HeroHeader />
@@ -57,6 +57,18 @@ export default function RouterContent() {
           badges={isTour ? ["5 Days", "12,500 ft", "Easy–Moderate"] : []}
           bgImage={isTour ? "/src/assets/1.jpg" : "/src/assets/9.jpg"}
         />
+      ) : (
+        <Header3
+          isDropdownOpen={isDropdownOpen}
+          setIsDropdownOpen={setIsDropdownOpen}
+        />
+      )} */}
+      {isHome ? (
+        <BaseHeader />
+      ) : isPackage ? (
+        <HeroHeader />
+      ) : isTour ? null : isAbout ? ( // 🚫 NO HEADER HERE
+        <Header title="ABOUT US" />
       ) : (
         <Header3
           isDropdownOpen={isDropdownOpen}
