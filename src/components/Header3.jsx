@@ -25,7 +25,7 @@ const Header3 = ({ isDropdownOpen, setIsDropdownOpen }) => {
   ];
 
   return (
-    <nav className="w-full bg-white border-b border-slate-100 px-6 py-4 sticky top-0 z-[100] shadow-sm">
+    <nav className="w-full bg-white border-b border-slate-100 px-6 py-4 sticky top-0 z-[50] shadow-sm">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Left Side: Logo */}
         <div className="flex items-center flex-shrink-0">

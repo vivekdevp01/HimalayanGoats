@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import EnquiryModal from "./Packages/EnquiryModal";
 import { useLocation, useParams } from "react-router-dom";
+import { FiX } from "react-icons/fi";
 // import HeroSearch from "./HeroSearch";
 export default function HeroHeader({
   slides = [
@@ -38,6 +39,7 @@ export default function HeroHeader({
     },
   ],
 }) {
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   // const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
 
@@ -110,26 +112,35 @@ export default function HeroHeader({
 
       {/* Central Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4">
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="text-xl md:text-2xl font-medium mb-2"
-        >
-          Get up to{" "}
-          <span className="text-yellow-400 font-bold">
-            {slides[currentIndex].discount}
-          </span>{" "}
-          on
-        </motion.p>
+       {/* Change your current p tag to this */}
+<motion.p
+  initial={{ y: 20, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  className="text-xl md:text-2xl font-medium mb-2 tracking-wide text-gray-100"
+>
+  {slides[currentIndex].tagline || "Experience the thrill of"} 
+  <span className="text-yellow-400 font-bold ml-2">
+    {slides[currentIndex].discount}
+  </span>
+</motion.p>
 
-        <motion.h1
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight"
-        >
-          <span className="text-yellow-400">{pathSegment}</span> Tour Packages
-        </motion.h1>
+       {/* Replace your current h1 with this conditional logic */}
+<motion.h1
+  initial={{ y: 20, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.2 }}
+  className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight"
+>
+  {pathSegment === 'bungee' ? (
+    <>
+      <span className="text-yellow-400">Splash Bungy</span> 109 Metres
+    </>
+  ) : (
+    <>
+      <span className="text-yellow-400">{pathSegment}</span> Tour Packages
+    </>
+  )}
+</motion.h1>
 
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -146,12 +157,28 @@ export default function HeroHeader({
             /Adult
           </p>
 
-          <button
-            onClick={() => setIsEnquiryOpen(true)}
-            className="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-orange-900/40 transition-all transform hover:scale-105 active:scale-95"
-          >
-            Connect With An Expert
-          </button>
+         <div className="flex flex-col sm:flex-row items-center gap-4">
+  {/* Primary CTA - Expert Connect */}
+  <button
+    onClick={() => setIsEnquiryOpen(true)}
+    className="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-orange-900/40 transition-all transform hover:scale-105 active:scale-95"
+  >
+    Connect With An Expert
+  </button>
+
+  {/* Secondary CTA - Video Preview */}
+{pathSegment === "bungee" ? (
+  <button
+    onClick={() => setIsVideoOpen(true)}
+    className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 active:scale-95"
+  >
+    <div className="w-6 h-6 bg-white text-orange-600 rounded-full flex items-center justify-center">
+      <div className="ml-0.5 w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-current border-b-[5px] border-b-transparent" />
+    </div>
+    Watch Jump
+  </button>
+) : null}
+</div>
           {/* Logic to show the Modal */}
           <EnquiryModal
             isOpen={isEnquiryOpen}
@@ -206,6 +233,49 @@ export default function HeroHeader({
         </div> */}
         {/* <HeroSearch /> */}
       </div>
+<AnimatePresence>
+  {isVideoOpen && (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4"
+    >
+      {/* 1. Close Button (Added FiX check) */}
+      <button 
+        onClick={() => setIsVideoOpen(false)}
+        className="absolute top-8 right-8 text-white hover:text-orange-500 transition-colors z-[210]"
+      >
+        <FiX size={40} />
+      </button>
+      
+      {/* 2. Background Overlay (Click anywhere outside video to close) */}
+      <div 
+        className="absolute inset-0" 
+        onClick={() => setIsVideoOpen(false)} 
+      />
+
+      {/* 3. The Video Frame */}
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+      >
+        <iframe 
+          width="100%" 
+          height="100%" 
+          /* CRITICAL: Use /embed/ and ensure no double question marks */
+          src="https://www.youtube.com/embed/1ZVsxIGs1Kg?autoplay=1&mute=0&rel=0" 
+          title="Bungy Jump Preview"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </motion.div>
+    </motion.div> 
+  )}
+</AnimatePresence>
     </header>
+    
   );
 }

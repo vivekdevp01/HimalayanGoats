@@ -24,7 +24,7 @@ const categories = [
   {
     title: "Adventure",
     icon: Kayak,
-    slug: "/adventure",
+    slug: "/bungee",
     desc: "Bungee, zipline & more",
   },
   {

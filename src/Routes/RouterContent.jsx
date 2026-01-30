@@ -1,25 +1,27 @@
 // RouterContent.jsx
-import { Routes, Route, useLocation } from "react-router-dom";
-import BaseHeader from "../components/BaseHeader";
-import Header from "../components/Header";
-import Home from "../Pages/Home";
-import Tour from "../components/Tour";
-import TrekDetails from "../Pages/TrekDetails";
-import Aboutus from "../Pages/Aboutus";
-import Contact from "../Pages/Contact";
-import Gallery from "../Pages/Gallery";
+import { Routes, Route, useLocation } from 'react-router-dom'
+import BaseHeader from '../components/BaseHeader'
+import Header from '../components/Header'
+import Home from '../Pages/Home'
+import Tour from '../components/Tour'
+import TrekDetails from '../Pages/TrekDetails'
+import Aboutus from '../Pages/Aboutus'
+import Contact from '../Pages/Contact'
+import Gallery from '../Pages/Gallery'
 // import Header from "./components/Header";
 // import BaseHeader from "./components/BaseHeader";
-import Footer from "../components/Footer";
-import HeroHeader from "../components/HeroHeader";
-import Packages from "../components/Packages";
-import Terms from "../components/Terms";
-import PrivacyPolicy from "../components/PrivacyPolicy";
-import CopyrightPolicy from "../components/CopyrightPolicy";
-import Header3 from "../components/Header3";
-import { useState } from "react";
-import StickyContactButtons from "../components/StickyContactButtons";
-import { HiGlobeAlt } from "react-icons/hi2";
+import Footer from '../components/Footer'
+import HeroHeader from '../components/HeroHeader'
+import Packages from '../components/Packages'
+import Terms from '../components/Terms'
+import PrivacyPolicy from '../components/PrivacyPolicy'
+import CopyrightPolicy from '../components/CopyrightPolicy'
+import Header3 from '../components/Header3'
+import { useState } from 'react'
+import StickyContactButtons from '../components/StickyContactButtons'
+import { HiGlobeAlt } from 'react-icons/hi2'
+import ActivityGrid from '../components/ActivityGrid'
+import Tour2 from '../components/Tour2'
 
 // import Home from "./Pages/Home";
 // import Tour from "./components/Tour";
@@ -29,16 +31,42 @@ import { HiGlobeAlt } from "react-icons/hi2";
 // import Gallery from "../Pages/Gallery";
 
 export default function RouterContent() {
-  const location = useLocation();
+  const location = useLocation()
 
-  const isHome = location.pathname === "/";
-  const isPackage = location.pathname.startsWith("/packages");
-  const isAbout = location.pathname.startsWith("/aboutus");
+  const isHome = location.pathname === '/'
+  const isPackage = location.pathname.startsWith('/packages')
+  const isBUngee = location.pathname.startsWith('/bungee')
+  const isAbout = location.pathname.startsWith('/aboutus')
   // const isTour = location.pathname.startsWith("/trek/");
 
   const isTour =
-    location.pathname === "/tour" || location.pathname.startsWith("/trek/");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    location.pathname === '/tour' || location.pathname.startsWith('/trek/') || location.pathname.startsWith('/bungy/') 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const bungySlides = [
+  {
+    url: "/src/assets/18.jpg",
+    tagline: "CONQUER THE HEIGHT OF", // Replaces "Get up to"
+    title: "Splash Bungy Rishikesh",
+    discount: "109 METRES", // Highlights height instead of %
+    price: "3,999",
+  },
+  {
+    url: "/src/assets/19.jpg",
+    tagline: "RELIVE THE MOMENT WITH",
+    title: "Cinematic Memories",
+    discount: "FREE DSLR VIDEO", // Highlights the value-add
+    price: "3,999",
+  },
+  {
+    url: "/src/assets/20.jpg",
+    tagline: "SAVE BIG ON ADRENALINE",
+    title: "Extreme Combo Packs",
+    discount: "30% OFF", 
+    price: "5,000",
+  }
+];
+
   return (
     <>
       {/* ===== HEADER CONTROL ===== */}
@@ -68,6 +96,8 @@ export default function RouterContent() {
         <BaseHeader />
       ) : isPackage ? (
         <HeroHeader />
+      ) : isBUngee ? (
+        <HeroHeader slides={bungySlides} />
       ) : isTour ? null : isAbout ? ( // 🚫 NO HEADER HERE
         <Header title="ABOUT US" />
       ) : (
@@ -84,7 +114,8 @@ export default function RouterContent() {
         <Route path="/packages" element={<Packages />} />
         <Route path="/packages/:category" element={<Packages />} />
         <Route path="/trek/:slug" element={<Tour />} />
-
+        <Route path="/bungee" element={<ActivityGrid />} />
+         <Route path="/bungy/:SLUG" element={<Tour2/>} />
         {/* <Route path="/trek/:id" element={<TrekDetails />} /> */}
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/gallery" element={<Gallery />} />
@@ -96,8 +127,5 @@ export default function RouterContent() {
       {/* <StickyContactButtons /> */}
       <Footer />
     </>
-  );
+  )
 }
-array.forEach(element => {
-   HiGlobeAlt
-});
