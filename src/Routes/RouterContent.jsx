@@ -35,12 +35,15 @@ export default function RouterContent() {
 
   const isHome = location.pathname === '/'
   const isPackage = location.pathname.startsWith('/packages')
-  const isBUngee = location.pathname.startsWith('/bungee')
+const isBungeeMain = location.pathname === '/bungee';
+const isRaftingMain = location.pathname === '/rafting';
   const isAbout = location.pathname.startsWith('/aboutus')
   // const isTour = location.pathname.startsWith("/trek/");
-
-  const isTour =
-    location.pathname === '/tour' || location.pathname.startsWith('/trek/') || location.pathname.startsWith('/bungy/') 
+const isTour =
+  location.pathname === '/tour' || 
+  location.pathname.startsWith('/trek/') || 
+  location.pathname.startsWith('/bungy/') || 
+  location.pathname.startsWith('/raftings/');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const bungySlides = [
@@ -64,6 +67,36 @@ export default function RouterContent() {
     title: "Extreme Combo Packs",
     discount: "30% OFF", 
     price: "5,000",
+  }
+];
+
+ const link = [
+   `1ZVsxIGs1Kg`, // High-quality cinematic Bungee jump
+   `9txxodYuZGc`, // Thrilling White Water Rafting footage
+ `C1XxeN4moaE`, // General Rishikesh Adventure Guide
+ ];
+
+const raftingSlides = [
+  {
+    url: "/src/assets/21.jpg", // Replace with your actual asset
+    tagline: "CONQUER THE ROARING RAPIDS OF",
+    title: "Ganges River Rafting",
+    discount: "GRADE III+ RAPIDS", // Highlights the thrill level
+    price: "1,500",
+  },
+  {
+    url: "/src/assets/22.jpg",
+    tagline: "CHALLENGE THE LONGEST STRETCH",
+    title: "Marine Drive to Rishikesh",
+    discount: "26 KILOMETRES", // Highlights the distance/endurance
+    price: "2,500",
+  },
+  {
+    url: "/src/assets/23.jpg",
+    tagline: "SAFETY IS OUR TOP PRIORITY",
+    title: "Certified Instructors",
+    discount: "US COAST GUARD GEAR", // Highlights the safety equipment
+    price: "1,200",
   }
 ];
 
@@ -96,9 +129,11 @@ export default function RouterContent() {
         <BaseHeader />
       ) : isPackage ? (
         <HeroHeader />
-      ) : isBUngee ? (
-        <HeroHeader slides={bungySlides} />
-      ) : isTour ? null : isAbout ? ( // 🚫 NO HEADER HERE
+      ) : isBungeeMain ? (
+        <HeroHeader slides={bungySlides} videoID={link[0]} />
+      ) :  isRaftingMain ? (
+        <HeroHeader slides={raftingSlides} videoID={link[1]} />
+      ): isTour ? null : isAbout ? ( // 🚫 NO HEADER HERE
         <Header title="ABOUT US" />
       ) : (
         <Header3
@@ -116,6 +151,8 @@ export default function RouterContent() {
         <Route path="/trek/:slug" element={<Tour />} />
         <Route path="/bungee" element={<ActivityGrid />} />
          <Route path="/bungy/:SLUG" element={<Tour2/>} />
+           <Route path="/rafting" element={<ActivityGrid />} />
+            <Route path="/raftings/:SLUG" element={<Tour2/>} />
         {/* <Route path="/trek/:id" element={<TrekDetails />} /> */}
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/gallery" element={<Gallery />} />

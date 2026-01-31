@@ -5,11 +5,58 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 // STATIC BUNGY DATA
+const RAFTING_PACKAGES = [
+  {
+    id: 1,
+    name: "Brahmpuri Club",
+    slug: "raftings/brahmpuri-rafting",
+    tagline: "Perfect for beginners and families. Grade I & II rapids.",
+    distance: "9 Kilometres",
+    price: "600",
+    oldPrice: "1,000",
+    rating: "4.7",
+    image: "/src/assets/21.jpg",
+  },
+  {
+    id: 2,
+    name: "Shivpuri Thrill",
+    slug: "raftings/shivpuri-rafting",
+    tagline: "The most popular stretch. Roller Coaster & Golf Course rapids.",
+    distance: "16 Kilometres",
+    price: "1,000",
+    oldPrice: "1,500",
+    rating: "4.9",
+    image: "/src/assets/22.jpg",
+  },
+  {
+    id: 3,
+    name: "Marine Drive Extreme",
+    slug: "raftings/marine-drive-rafting",
+    tagline: "High adrenaline. Includes the famous 'The Wall' rapid.",
+    distance: "26 Kilometres",
+    price: "1,500",
+    oldPrice: "2,500",
+    rating: "5.0",
+    image: "/src/assets/23.jpg",
+  },
+  {
+    id: 4,
+    name: "Kaudiyala Challenge",
+    slug: "raftings/kaudiyala-rafting",
+    tagline: "Extreme grade IV rapids for experienced thrill-seekers only.",
+    distance: "35 Kilometres",
+    price: "2,500",
+    oldPrice: "3,500",
+    rating: "4.8",
+    image: "/src/assets/22.jpg",
+  }
+];
+
 const BUNGY_PACKAGES = [
   {
     id: 1,
     name: "Splash Bungy",
-    slug: "splash-bungy",
+    slug: "bungy/splash-bungy",
     tagline: "India's highest water-touch jump. Includes free DSLR video.",
     height: "109 Metres",
     price: "3,999",
@@ -20,7 +67,7 @@ const BUNGY_PACKAGES = [
   {
     id: 2,
     name: "Rocket Bungy",
-    slug: "splash-bungy",
+    slug: "bungy/splash-bungy",
     tagline: "Feel the G-force as you are launched into the sky at high speed.",
     height: "85 Metres",
     price: "1,999",
@@ -31,7 +78,7 @@ const BUNGY_PACKAGES = [
   {
     id: 3,
     name: "Extreme Combo 6",
-    slug: "splash-bungy",
+    slug: "bungy/splash-bungy",
     tagline: "Bungy + Zipline + Rocket + Swing + Cycle + Sky Walk.",
     height: "All-in-One",
     price: "5,499",
@@ -42,7 +89,7 @@ const BUNGY_PACKAGES = [
     {
     id: 4,
     name: "Extreme Combo 6",
-    slug: "splash-bungy",
+    slug: "bungy/splash-bungy",
     tagline: "Bungy + Zipline + Rocket + Swing + Cycle + Sky Walk.",
     height: "All-in-One",
     price: "5,499",
@@ -53,7 +100,7 @@ const BUNGY_PACKAGES = [
     {
     id: 5,
     name: "Extreme Combo 6",
-    slug: "splash-bungy",
+    slug: "bungy/splash-bungy",
     tagline: "Bungy + Zipline + Rocket + Swing + Cycle + Sky Walk.",
     height: "All-in-One",
     price: "5,499",
@@ -70,6 +117,9 @@ export default function ActivityGrid() {
   const [selectedPackageId, setSelectedPackageId] = useState(null);
   const gridTopRef = useRef(null);
 const navigate = useNavigate();
+const path = location.pathname.toLowerCase();
+  const isRafting = path.includes("rafting");
+  const currentPackages = isRafting ? RAFTING_PACKAGES : BUNGY_PACKAGES;
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 bg-white">
       <div ref={gridTopRef} />
@@ -92,10 +142,10 @@ const navigate = useNavigate();
       </div>
 
      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {BUNGY_PACKAGES.slice(0, visibleCount).map((pkg) => (
+        {currentPackages.slice(0, visibleCount).map((pkg) => (
           <motion.div
             key={pkg.id}
-            onClick={() => navigate(`/bungy/${pkg.slug}`)} 
+            onClick={() => navigate(`/${pkg.slug}`)} 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -155,7 +205,7 @@ const navigate = useNavigate();
 
       {/* FOOTER BUTTONS (Show More / Show Less) */}
       <div className="mt-16 flex flex-col items-center gap-4">
-        {visibleCount < BUNGY_PACKAGES.length ? (
+        {visibleCount < currentPackages.length ? (
           <button
             onClick={() => setVisibleCount(prev => prev + 3)}
             className="group flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-600 transition-all shadow-xl active:scale-95"

@@ -37,7 +37,7 @@ export default function HeroHeader({
       discount: "30% OFF",
       price: "7,499",
     },
-  ],
+  ],videoID
 }) {
     const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -131,14 +131,12 @@ export default function HeroHeader({
   transition={{ delay: 0.2 }}
   className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight"
 >
-  {pathSegment === 'bungee' ? (
-    <>
-      <span className="text-yellow-400">Splash Bungy</span> 109 Metres
-    </>
+ {pathSegment === 'bungee' ? (
+    <><span className="text-yellow-400">Splash Bungy</span> 109 Metres</>
+  ) : pathSegment === 'rafting' ? (
+    <><span className="text-yellow-400">White Water</span> Rafting</>
   ) : (
-    <>
-      <span className="text-yellow-400">{pathSegment}</span> Tour Packages
-    </>
+    <><span className="text-yellow-400">{pathSegment}</span> Tour Packages</>
   )}
 </motion.h1>
 
@@ -167,7 +165,7 @@ export default function HeroHeader({
   </button>
 
   {/* Secondary CTA - Video Preview */}
-{pathSegment === "bungee" ? (
+{(pathSegment === "bungee" || pathSegment === "rafting") ? (
   <button
     onClick={() => setIsVideoOpen(true)}
     className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 active:scale-95"
@@ -175,7 +173,7 @@ export default function HeroHeader({
     <div className="w-6 h-6 bg-white text-orange-600 rounded-full flex items-center justify-center">
       <div className="ml-0.5 w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-current border-b-[5px] border-b-transparent" />
     </div>
-    Watch Jump
+   {pathSegment === "bungee" ? "Watch Jump" : "Watch Rapids"}
   </button>
 ) : null}
 </div>
@@ -261,16 +259,17 @@ export default function HeroHeader({
         animate={{ scale: 1, opacity: 1 }}
         className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
       >
-        <iframe 
-          width="100%" 
-          height="100%" 
-          /* CRITICAL: Use /embed/ and ensure no double question marks */
-          src="https://www.youtube.com/embed/1ZVsxIGs1Kg?autoplay=1&mute=0&rel=0" 
-          title="Bungy Jump Preview"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+<iframe 
+  width="100%" 
+  height="100%" 
+  // We use a backup ID (Rickroll) just to prove the variable is working
+  src={`https://www.youtube.com/embed/${videoID ? videoID : 'dQw4w9WgXcQ'}?autoplay=1&mute=1&rel=0`} 
+  title="Adventure Preview"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  referrerPolicy="strict-origin-when-cross-origin"
+></iframe>
       </motion.div>
     </motion.div> 
   )}

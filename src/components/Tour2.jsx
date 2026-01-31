@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { HiOutlineVideoCamera, HiOutlineShieldCheck, HiOutlinePhotograph } from "react-icons/hi";
 import { MdOutlineHeight } from "react-icons/md";
 
@@ -21,8 +21,12 @@ import PriceCard from "./Packages/PriceCard";
 export default function Tour2() {
   const { slug } = useParams();
   const [loading, setLoading] = useState(true);
-
+  const { pathname } = useLocation();
+const isRafting = pathname.includes("rafting");
   // STATIC DATA - Replacing Supabase Logic
+  // Determine amenities based on activity type
+
+
   const BUNGY_DATA = {
     "splash-bungy": {
       id: 1,
@@ -50,8 +54,44 @@ export default function Tour2() {
     }
   };
 
-  const pkg = BUNGY_DATA[slug] || BUNGY_DATA["splash-bungy"]; // Fallback for dev
+  const RAFTING_DATA = {
+  "brahmpuri-rafting": {
+    id: 101,
+    name: "Brahmpuri Club Rafting",
+    location: "Brahmpuri to Rishikesh",
+    distance: "9 Kilometres",
+    grade: "Grade I & II",
+    price: "600",
+    oldPrice: "1,000",
+    tagline: "The perfect introduction to white water rafting for families.",
+    media: [
+      { media_url: "/src/assets/21.jpg", media_role: "hero_banner" },
+      { media_url: "/src/assets/22.jpg", media_role: "gallery" },
+    ],
+    inclusions: ["Life Jackets", "Helmets", "Paddle", "Expert Guide"],
+    exclusions: ["Video/Photos", "Pick-up/Drop", "Insurance"],
+    faqs: [{ q: "Do I need to know swimming?", a: "No, life jackets are mandatory and keep you afloat." }],
+    policies: [{ id: 1, title: "Weather Policy", points: ["Full refund if river levels are unsafe."] }]
+  },
+  // Add other rafting slugs here...
+};
 
+  const dataSource = isRafting ? RAFTING_DATA : BUNGY_DATA;
+
+  const pkg = dataSource[slug] || (isRafting ? RAFTING_DATA["brahmpuri-rafting"] : BUNGY_DATA["splash-bungy"]); // Fallback for dev
+const dynamicAmenities = isRafting 
+  ? [
+      { icon: <MdOutlineHeight className="rotate-90" />, label: pkg.distance }, // Rotated height icon for distance
+      { icon: <HiOutlineShieldCheck />, label: pkg.grade },
+      { icon: <HiOutlineVideoCamera />, label: "GoPro Available" },
+      { icon: <HiOutlinePhotograph />, label: "Action Photos" },
+    ]
+  : [
+      { icon: <MdOutlineHeight />, label: pkg.height },
+      { icon: <HiOutlineVideoCamera />, label: "Free DSLR Video" },
+      { icon: <HiOutlineShieldCheck />, label: "International Safety" },
+      { icon: <HiOutlinePhotograph />, label: "Photos Included" },
+    ];
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => setLoading(false), 800); // Simulate light loading
@@ -67,10 +107,10 @@ export default function Tour2() {
         title={pkg.name}
         subtitle={`📍 ${pkg.location}`}
         badges={[
-          pkg.height,
-          pkg.jumpType,
-          "Certified Safety",
-        ]}
+    pkg.height || pkg.distance, // Works for both!
+    pkg.jumpType || pkg.grade,  // Works for both!
+    "Certified Safety",
+  ]}
         bgImage={pkg.media[0].media_url}
       />
 
@@ -86,12 +126,7 @@ export default function Tour2() {
               title={pkg.name}
               highlight={pkg.tagline}
               summary={[pkg.height, pkg.jumpType, "Age: 12-60"]}
-              amenities={[
-                { icon: <MdOutlineHeight />, label: "109m Jump" },
-                { icon: <HiOutlineVideoCamera />, label: "Free DSLR Video" },
-                { icon: <HiOutlineShieldCheck />, label: "Safety Gear" },
-                { icon: <HiOutlinePhotograph />, label: "Photos Included" },
-              ]}
+              amenities={dynamicAmenities}
               // Passing simplified pricing for static view
               durations={[{
                 id: pkg.id,
@@ -104,11 +139,15 @@ export default function Tour2() {
             {/* ITINERARY (Adjusted for "Jump Process") */}
             <section id="itinerary-end" className="bg-white rounded-3xl p-6 md:p-8 shadow-sm">
               <h3 className="text-2xl font-bold mb-6">Your Jump Experience</h3>
-              <TripItinerary days={[
-                { day: 1, title: "Briefing", description: "Safety instructions and gear check." },
-                { day: 2, title: "The Leap", description: "Walk to the platform and take the leap of faith." },
-                { day: 3, title: "Recovery", description: "Lowering to the drop zone and collecting certificate." }
-              ]} />
+              <TripItinerary days={isRafting ? [
+  { day: 1, title: "Preparation", description: "Gear fitting and safety drill at the starting point." },
+  { day: 2, title: "The River", description: "Navigate the rapids with your professional guide." },
+  { day: 3, title: "Finish", description: "Changing clothes and departure from the ending point." }
+] : [
+  { day: 1, title: "Briefing", description: "Safety instructions and gear check." },
+  { day: 2, title: "The Leap", description: "Take the leap of faith from 109m." },
+  { day: 3, title: "Recovery", description: "Lowering to drop zone and certificate collection." }
+]} />
             </section>
           </div>
 
