@@ -38,8 +38,14 @@ export default function LocalAdvantageSection() {
   return (
     <section className="bg-slate-50 py-20">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-        <div className="text-center mb-14">
+        {/* Heading - Animated for consistency */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">
             Why Travel With <span className="text-orange-500">Us</span>
           </h2>
@@ -47,7 +53,7 @@ export default function LocalAdvantageSection() {
             We are not a marketplace — we are your local travel partner in
             Uttarakhand
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -56,19 +62,26 @@ export default function LocalAdvantageSection() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
+                // SNAPPY SCROLL REVEAL
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-xl transition"
+                transition={{ duration: 0.4 }}
+                // SMOOTH INTERACTION
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-white rounded-2xl p-8 shadow-md border border-slate-100 cursor-default group transition-shadow duration-300 hover:shadow-xl"
               >
-                <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-4">
-                  <Icon className="text-orange-500" size={24} />
+                {/* Icon Container with Interaction */}
+                <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-5 group-hover:bg-orange-500 transition-colors duration-300">
+                  <Icon className="text-orange-500 group-hover:text-white transition-colors duration-300" size={24} />
                 </div>
-                <h3 className="font-semibold text-slate-800 text-lg">
+                
+                <h3 className="font-bold text-slate-800 text-lg group-hover:text-orange-600 transition-colors">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm text-slate-500">{item.desc}</p>
+                <p className="mt-2 text-sm text-slate-500 leading-relaxed">
+                  {item.desc}
+                </p>
               </motion.div>
             );
           })}

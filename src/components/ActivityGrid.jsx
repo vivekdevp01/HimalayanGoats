@@ -81,6 +81,7 @@ const BUNGY_PACKAGES = [
     id: 1,
     name: "Splash Bungy",
     slug: "bungy/splash-bungy",
+    platform: "splash",
     tagline: "India's highest water-touch jump. Includes free DSLR video.",
     height: "109 Metres",
     price: "3,999",
@@ -92,6 +93,7 @@ const BUNGY_PACKAGES = [
     id: 2,
     name: "Rocket Bungy",
     slug: "bungy/splash-bungy",
+    platform: "thrillfactory",
     tagline: "Feel the G-force as you are launched into the sky at high speed.",
     height: "85 Metres",
     price: "1,999",
@@ -103,6 +105,7 @@ const BUNGY_PACKAGES = [
     id: 3,
     name: "Extreme Combo 6",
     slug: "bungy/splash-bungy",
+    platform: "thrillfactory",
     tagline: "Bungy + Zipline + Rocket + Swing + Cycle + Sky Walk.",
     height: "All-in-One",
     price: "5,499",
@@ -114,6 +117,7 @@ const BUNGY_PACKAGES = [
     id: 4,
     name: "Extreme Combo 6",
     slug: "bungy/splash-bungy",
+    platform: "splash",
     tagline: "Bungy + Zipline + Rocket + Swing + Cycle + Sky Walk.",
     height: "All-in-One",
     price: "5,499",
@@ -124,6 +128,7 @@ const BUNGY_PACKAGES = [
   {
     id: 5,
     name: "Extreme Combo 6",
+    platform: "thrillfactory",
     slug: "bungy/splash-bungy",
     tagline: "Bungy + Zipline + Rocket + Swing + Cycle + Sky Walk.",
     height: "All-in-One",
@@ -143,6 +148,7 @@ export default function ActivityGrid() {
   const navigate = useNavigate();
   const path = location.pathname.toLowerCase();
   const isRafting = path.includes("rafting");
+  const [activePlatform, setActivePlatform] = useState("all");
 
   const [pricingMap, setPricingMap] = useState({});
 
@@ -193,7 +199,7 @@ export default function ActivityGrid() {
   }, []);
 
   // const currentPackages = isRafting ? raftingUIData : BUNGY_PACKAGES;
-  const currentPackages = isRafting
+const basePackages = isRafting
     ? raftingUIData.map((pkg) => {
         const pricing = pricingMap[pkg.slug];
         return {
@@ -203,6 +209,13 @@ export default function ActivityGrid() {
         };
       })
     : BUNGY_PACKAGES;
+
+
+    const currentPackages = isRafting 
+    ? basePackages 
+    : activePlatform === "all" 
+      ? basePackages 
+      : basePackages.filter(pkg => pkg.platform === activePlatform);
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 bg-white">
@@ -224,6 +237,28 @@ export default function ActivityGrid() {
           </p>
         </div>
       </div>
+
+      {/* --- ADD THIS FILTER UI SECTION --- */}
+      {!isRafting && (
+        <div className="flex flex-wrap gap-3 mb-12 justify-center md:justify-start">
+          {["all", "splash", "thrillfactory"].map((plat) => (
+            <button
+              key={plat}
+              onClick={() => {
+                setActivePlatform(plat);
+                setVisibleCount(3); // Reset view when switching platforms
+              }}
+              className={`px-8 py-3 rounded-2xl font-black text-xs tracking-widest uppercase transition-all border-2 ${
+                activePlatform === plat
+                  ? "bg-emerald-600 border-emerald-600 text-white shadow-xl scale-105"
+                  : "bg-white border-slate-200 text-slate-500 hover:border-emerald-400"
+              }`}
+            >
+              {plat === "all" ? "All Platforms" : plat}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {currentPackages.slice(0, visibleCount).map((pkg) => (

@@ -33,17 +33,21 @@ export default function HowItWorksMini() {
       </div>
 
       {/* Steps */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {steps.map((step, i) => {
           const Icon = step.icon;
           return (
             <motion.div
               key={i}
+              // Consistent Settings:
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              // Removed the staggered delay so cards trigger immediately when seen
+              transition={{ duration: 0.4 }} 
+              // Added the hover effect from your reference code
+              whileHover={{ y: -10, scale: 1.02 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="relative bg-white rounded-2xl p-6 shadow-lg border border-slate-100 text-center hover:-translate-y-1 transition"
+              className="relative bg-white rounded-2xl p-6 shadow-lg border border-slate-100 text-center cursor-pointer"
             >
               {/* Number */}
               <span className="absolute -top-4 left-6 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
