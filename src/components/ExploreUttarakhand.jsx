@@ -36,7 +36,7 @@ const categories = [
   {
     title: "Bike & Scooty Rentals",
     icon: Bike,
-    slug: "/rentals",
+    slug: "/guide",
     desc: "Easy local transport",
   },
 ];
@@ -48,7 +48,7 @@ export default function ExploreUttarakhand() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header - Added Animation for Consistency */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

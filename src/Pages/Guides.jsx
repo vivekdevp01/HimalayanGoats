@@ -1,135 +1,349 @@
-import rishikeshGuide from "../json/Guides.json";
-import { Bike, MapPin, Clock, Phone } from "lucide-react";
+// import React, { useState } from "react";
+import {
+  MapPin,
+  Clock,
+  Phone,
+  Bike,
+  Leaf,
+  Coffee,
+  Sparkles,
+} from "lucide-react";
+import guide from "../json/Guides.json";
+import { useRef, useState } from "react";
 
-export default function Guides() {
+export default function RishikeshGuide() {
+  const [expanded, setExpanded] = useState({});
+  const categoryIcons = {
+    nature: Leaf,
+    spiritual: Sparkles,
+    cafes: Coffee,
+  };
+  const [activeImage, setActiveImage] = useState(null);
+  const sectionRefs = useRef({});
+
   return (
-    <main className="bg-white">
+    <main className="bg-[#FAFAFA] text-slate-800">
       {/* HERO */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-4xl md:text-5xl font-black text-slate-900">
-          {rishikeshGuide.hero.title}
-        </h1>
-        <p className="mt-3 text-emerald-600 font-bold text-lg">
-          {rishikeshGuide.hero.subtitle}
-        </p>
-        <p className="mt-4 max-w-2xl text-slate-600">
-          {rishikeshGuide.hero.description}
-        </p>
+      <section className="relative h-[75vh] overflow-hidden">
+        <img
+          src="/src/assets/rishikesh-hero.jpg"
+          alt="Rishikesh"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+
+        <div className="relative h-full flex items-center justify-center px-6">
+          <div className="max-w-4xl text-center text-white">
+            <span className="inline-block mb-4 px-4 py-2 rounded-full bg-white/10 backdrop-blur text-xs font-bold tracking-widest">
+              UTTARAKHAND • INDIA
+            </span>
+
+            <h1 className="text-4xl md:text-6xl font-black">
+              {guide.hero.title}
+            </h1>
+
+            <p className="mt-4 text-lg opacity-90">{guide.hero.subtitle}</p>
+
+            <p className="mt-3 text-sm opacity-80 max-w-2xl mx-auto">
+              {guide.hero.description}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* MAP */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-3xl md:text-4xl font-black mb-8 text-center">
+          📍 Explore Rishikesh on Map
+        </h2>
+
+        <div className="rounded-[2rem] overflow-hidden shadow-xl border bg-white">
+          <iframe
+            title="Rishikesh Map"
+            src={guide.map.embedUrl}
+            width="100%"
+            height="460"
+            loading="lazy"
+            className="border-0"
+          />
+        </div>
       </section>
 
       {/* WHY SCOOTY */}
-      <section className="bg-emerald-50 border-y border-emerald-200">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <h2 className="text-2xl font-black text-emerald-800 flex items-center gap-2">
-            <Bike /> {rishikeshGuide.whyScooty.title}
-          </h2>
+      <section className="bg-gradient-to-b from-emerald-50 to-white border-y">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <h3 className="text-3xl md:text-4xl font-black mb-12 flex items-center gap-3">
+            <Bike /> {guide.whyScooty.title}
+          </h3>
 
-          <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {rishikeshGuide.whyScooty.points.map((p, i) => (
-              <li
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {guide.whyScooty.points.map((p, i) => (
+              <div
                 key={i}
-                className="bg-white rounded-xl p-4 font-semibold text-slate-700 shadow-sm"
+                className="bg-white rounded-3xl p-6 shadow hover:-translate-y-1 transition flex gap-4"
               >
-                ✔ {p}
-              </li>
+                <Sparkles className="text-emerald-600 mt-1" />
+                <p className="font-semibold">{p}</p>
+              </div>
             ))}
-          </ul>
+          </div>
+        </div>
+      </section>
+      {/* QUICK RENTAL CTA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-12 mb-20">
+        <div className="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-emerald-600 to-emerald-700 text-white shadow-2xl">
+          {/* soft glow */}
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+
+          <div className="relative p-6 sm:p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            {/* TEXT */}
+            <div>
+              <span className="inline-block mb-2 text-xs font-black tracking-widest text-emerald-100">
+                SCOOTY & BIKE RENTAL
+              </span>
+
+              <h3 className="text-2xl sm:text-3xl font-black leading-tight">
+                Need a Scooty or Bike in Rishikesh?
+              </h3>
+
+              <p className="mt-2 text-emerald-100 max-w-xl text-sm sm:text-base">
+                Explore waterfalls, temples & viewpoints easily with our trusted
+                local rental service.
+              </p>
+            </div>
+
+            {/* CTA BUTTONS */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+              <a
+                href={`tel:${guide.bikeRental.cta.call}`}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-emerald-700 font-black px-6 py-4 rounded-xl hover:scale-[1.03] transition"
+              >
+                📞 Call Now
+              </a>
+
+              <a
+                href={`https://wa.me/${guide.bikeRental.cta.call.replace(
+                  "+",
+                  "",
+                )}?text=${encodeURIComponent(guide.bikeRental.cta.whatsappText)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-white/90 px-6 py-4 rounded-xl font-black hover:bg-white hover:text-emerald-700 transition"
+              >
+                💬 WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* PLACES */}
-      {rishikeshGuide.categories.map((cat) => (
-        <section key={cat.id} className="max-w-7xl mx-auto px-6 py-14">
-          <h2 className="text-3xl font-black text-slate-800 mb-8">
-            {cat.title}
-          </h2>
+      {guide.categories.map((cat) => {
+        const Icon = categoryIcons[cat.icon];
+        const isExpanded = expanded[cat.id];
+        const placesToShow = isExpanded ? cat.places : cat.places.slice(0, 3);
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {cat.places.map((place, i) => (
+        return (
+          <section
+            key={cat.id}
+            ref={(el) => (sectionRefs.current[cat.id] = el)}
+            className="max-w-7xl mx-auto px-6 py-14 last:pb-24"
+          >
+            <h3 className="text-3xl md:text-4xl font-black mb-6 flex items-center gap-3">
+              {Icon && <Icon />}
+              {cat.title}
+            </h3>
+            <p className="text-slate-600 max-w-2xl mb-8">
+              {cat.id === "spiritual" &&
+                "Ancient temples, ghats & peaceful spiritual landmarks of Rishikesh."}
+              {cat.id === "nature" &&
+                "Waterfalls, scenic viewpoints & peaceful nature escapes best reached by scooty."}
+              {cat.id === "cafes" &&
+                "Relaxing cafés with river views, great coffee & calm vibes."}
+            </p>
+
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {placesToShow.map((place, i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-[2rem] p-6 shadow-md hover:shadow-xl transition"
+                >
+                  <div className="flex justify-between gap-4">
+                    <div>
+                      <h4 className="text-xl font-black">{place.name}</h4>
+                      <p className="mt-3 text-sm text-slate-600">
+                        {place.description}
+                      </p>
+                    </div>
+
+                    <img
+                      src={place.image}
+                      alt={place.name}
+                      className="w-24 h-24 rounded-xl object-cover cursor-pointer hover:scale-105 transition"
+                      onClick={() => setActiveImage(place.image)}
+                    />
+                  </div>
+
+                  <div className="mt-4 flex gap-3 text-xs font-semibold">
+                    <span className="flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-full">
+                      <Clock size={13} /> {place.best_time}
+                    </span>
+                    <span className="flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-full">
+                      <MapPin size={13} /> {place.distance}
+                    </span>
+                  </div>
+
+                  {place.tips && (
+                    <div className="mt-4 bg-amber-50 border-l-4 border-amber-400 px-4 py-2 text-sm font-semibold">
+                      {place.tips}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* VIEW MORE BUTTON */}
+            {cat.places.length > 3 && (
+              <div className="mt-12 text-center">
+                <button
+                  onClick={() => {
+                    setExpanded((prev) => ({
+                      ...prev,
+                      [cat.id]: !prev[cat.id],
+                    }));
+
+                    setTimeout(() => {
+                      sectionRefs.current[cat.id]?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    }, 100);
+                  }}
+                  className="px-10 py-3 rounded-full border-2 border-emerald-600 text-emerald-700 font-black hover:bg-emerald-600 hover:text-white transition"
+                >
+                  {isExpanded ? "View Less ↑" : "View More ↓"}
+                </button>
+              </div>
+            )}
+          </section>
+        );
+      })}
+      {/* LOCAL TIPS */}
+      <section className="bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <h3 className="text-3xl md:text-4xl font-black mb-12 flex items-center gap-3">
+            🌟 Local Travel Tips
+          </h3>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {guide.localTips.map((tip, i) => (
               <div
                 key={i}
-                className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
+                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition"
               >
-                <h3 className="text-xl font-bold text-emerald-700">
-                  {place.name}
-                </h3>
-
-                <p className="mt-2 text-slate-600">{place.description}</p>
-
-                <div className="mt-4 flex flex-wrap gap-4 text-sm text-slate-700 font-semibold">
-                  <span className="flex items-center gap-1">
-                    <Clock size={14} /> {place.best_time}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <MapPin size={14} /> {place.distance}
-                  </span>
-                </div>
-
-                {place.tips && (
-                  <p className="mt-3 text-sm text-amber-600 font-semibold">
-                    Tip: {place.tips}
-                  </p>
-                )}
+                <span className="text-emerald-600 font-black text-lg">
+                  Tip #{i + 1}
+                </span>
+                <p className="mt-3 text-slate-700 font-semibold leading-relaxed">
+                  {tip}
+                </p>
               </div>
             ))}
-          </div>
-        </section>
-      ))}
-
-      {/* BIKE RENTAL CTA */}
-      <section className="bg-emerald-600 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-14">
-          <h2 className="text-3xl font-black">
-            {rishikeshGuide.bikeRental.title}
-          </h2>
-
-          <p className="mt-4 max-w-2xl">
-            {rishikeshGuide.bikeRental.description}
-          </p>
-
-          <ul className="mt-6 space-y-2 font-semibold">
-            {rishikeshGuide.bikeRental.features.map((f, i) => (
-              <li key={i}>✔ {f}</li>
-            ))}
-          </ul>
-
-          <div className="flex gap-4 mt-8 flex-wrap">
-            <a
-              href={`tel:${rishikeshGuide.bikeRental.cta.call}`}
-              className="bg-white text-emerald-700 px-6 py-3 rounded-xl font-black flex items-center gap-2"
-            >
-              <Phone size={18} /> Call for Rental
-            </a>
-
-            <a
-              href={`https://wa.me/${rishikeshGuide.bikeRental.cta.call.replace(
-                "+",
-                "",
-              )}?text=${encodeURIComponent(
-                rishikeshGuide.bikeRental.cta.whatsappText,
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-white px-6 py-3 rounded-xl font-bold"
-            >
-              WhatsApp Us
-            </a>
           </div>
         </div>
       </section>
 
-      {/* LOCAL TIPS */}
-      <section className="max-w-7xl mx-auto px-6 py-14">
-        <h2 className="text-2xl font-black text-slate-800 mb-6">
-          Local Travel Tips
-        </h2>
+      {/* SCOOTY & BIKE RENTAL CTA */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white shadow-xl">
+          {/* Soft decorative glow */}
+          <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-300/30 rounded-full blur-3xl" />
 
-        <ul className="space-y-2 text-slate-700 font-semibold">
-          {rishikeshGuide.localTips.map((tip, i) => (
-            <li key={i}>• {tip}</li>
-          ))}
-        </ul>
+          <div className="relative grid md:grid-cols-3 gap-10 p-8 md:p-12 items-center">
+            {/* LEFT CONTENT */}
+            <div className="md:col-span-2">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-xs font-black tracking-wide mb-4">
+                <Bike size={14} />
+                LOCAL RENTAL SERVICE
+              </span>
+
+              <h3 className="text-3xl md:text-4xl font-black text-slate-900">
+                {guide.bikeRental.title}
+              </h3>
+
+              <p className="mt-4 text-slate-600 max-w-2xl text-lg">
+                {guide.bikeRental.description}
+              </p>
+
+              {/* FEATURES */}
+              <div className="mt-6 grid sm:grid-cols-2 gap-4 max-w-xl">
+                {guide.bikeRental.features.map((f, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT CTA */}
+            <div className="flex flex-col gap-4">
+              <a
+                href={`tel:${guide.bikeRental.cta.call}`}
+                className="flex items-center justify-center gap-3 rounded-2xl bg-emerald-600 text-white font-black py-4 px-6 hover:bg-emerald-700 transition transform hover:scale-[1.03]"
+              >
+                <Phone size={18} />
+                Call for Scooty / Bike
+              </a>
+
+              <a
+                href={`https://wa.me/${guide.bikeRental.cta.call.replace(
+                  "+",
+                  "",
+                )}?text=${encodeURIComponent(
+                  guide.bikeRental.cta.whatsappText,
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-3 rounded-2xl border-2 border-emerald-600 text-emerald-700 font-black py-4 px-6 hover:bg-emerald-600 hover:text-white transition"
+              >
+                WhatsApp for Availability
+              </a>
+
+              <p className="text-xs text-slate-500 text-center">
+                Helmets included • Flexible timing • Local support
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
+
+      {/* IMAGE MODAL */}
+      {activeImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setActiveImage(null)}
+        >
+          <div className="relative max-w-5xl w-full">
+            <button
+              className="absolute -top-10 right-0 text-white text-3xl font-black"
+              onClick={() => setActiveImage(null)}
+            >
+              ×
+            </button>
+
+            <img
+              src={activeImage}
+              alt="Preview"
+              className="w-full max-h-[85vh] object-contain rounded-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
