@@ -50,6 +50,14 @@ export default function Home() {
       {/* <ActivityCategories /> */}
       {/* <WhyChooseUsSection /> */}
       <StatsAndReviewsSection onOpenEnquiry={() => setShowEnquiry(true)} />
+        <div className="relative -mb-px"> {/* -mb-px prevents a tiny 1px line gap */}
+  <svg 
+    viewBox="0 0 1440 120" 
+    className="fill-[#064E3B] w-full h-auto transform rotate-180"
+  >
+    <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+  </svg>
+</div>
       <ContactCTASection />
       {/* <StepsSection />
       <TopDestination />
