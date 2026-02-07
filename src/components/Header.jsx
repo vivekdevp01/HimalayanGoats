@@ -15,7 +15,6 @@ export default function Header({
 
   const navLinks = links || [
     { key: "home", label: "HOME", to: "/" },
-    { key: "about", label: "ABOUT", to: "/aboutus" },
     {
       key: "packages",
       label: "PACKAGES",
@@ -27,6 +26,7 @@ export default function Header({
       ],
     },
     { key: "blog", label: "GALLERY", to: "/gallery" },
+    { key: "about", label: "ABOUT", to: "/aboutus" },
     { key: "contact", label: "CONTACT", to: "/contact" },
   ];
 

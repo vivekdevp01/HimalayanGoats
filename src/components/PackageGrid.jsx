@@ -16,11 +16,7 @@ export default function PackageGrid({
   category: propCategory,
   onCountChange, // 👈 ADD THIS
 }) {
-  const getInitialLimit = () => {
-    if (window.innerWidth < 640) return 3; // mobile
-    if (window.innerWidth < 1024) return 4; // tablet
-    return 6; // desktop
-  };
+const getInitialLimit = () => 3;
   const [visibleCount, setVisibleCount] = useState(getInitialLimit);
 
   const params = useParams();
@@ -285,53 +281,7 @@ export default function PackageGrid({
               </motion.div>
             ))}
           </div>
-          {filteredPackages.length > visibleCount && (
-            <div className="mt-14 flex justify-center">
-              <button
-                onClick={() =>
-                  setVisibleCount((c) => c + (window.innerWidth < 640 ? 3 : 6))
-                }
-                className="
-        px-8 py-3 rounded-full
-        bg-orange-500 text-white font-semibold
-        shadow-lg
-        hover:bg-orange-600
-        active:scale-95 transition
-      "
-              >
-                Show More Packages ↓
-              </button>
-            </div>
-          )}
-          {visibleCount > getInitialLimit() && (
-            <div className="mt-8 flex justify-center">
-              <button
-                type="button"
-                onClick={() => {
-                  setVisibleCount(getInitialLimit());
-                  requestAnimationFrame(() => {
-                    gridTopRef.current?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  });
-                }}
-                className="
-        inline-flex items-center gap-2
-        px-6 py-2.5
-        rounded-full
-        bg-slate-100 text-slate-600
-        text-sm font-medium
-        shadow-sm
-        hover:bg-orange-50 hover:text-orange-600
-        active:scale-95
-        transition-all
-      "
-              >
-                ↑ Show less packages
-              </button>
-            </div>
-          )}
+       
         </>
       )}
       {/* show less */}

@@ -23,9 +23,6 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6 text-base">About Tripshalla</h4>
             <ul className="space-y-3 text-sm">
               <li><NavLink to="/aboutus" className="hover:text-white transition">About Us</NavLink></li>
-              <li><NavLink to="/careers" className="hover:text-white transition">Careers</NavLink></li>
-              <li><NavLink to="/reviews" className="hover:text-white transition">Tripshalla Reviews</NavLink></li>
-              <li><NavLink to="/news" className="hover:text-white transition">News</NavLink></li>
               <li className="flex items-center gap-2 text-red-500 font-medium pt-2">
                 <FaExclamationTriangle size={14} />
                 <NavLink to="/fraud-alert" className="hover:underline text-[13px]">Beware Of Frauds</NavLink>
@@ -53,13 +50,9 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope size={14} className="text-gray-400" />
-                <a href="mailto:support@thrillophilia.com" className="hover:text-white transition">support@thrillophilia.com</a>
+                <a href="mailto:support@thrillophilia.com" className="hover:text-white transition">support@tripshalla.in</a>
               </li>
-              <li><NavLink to="/support" className="hover:text-white transition pl-7 block">Support</NavLink></li>
-              <li><NavLink to="/blog" className="hover:text-white transition pl-7 block">Blog</NavLink></li>
-              <li><NavLink to="/sitemap" className="hover:text-white transition pl-7 block">Sitemap</NavLink></li>
-              <li><NavLink to="/partner" className="hover:text-white transition pl-7 block">Partner With Thrillophilia</NavLink></li>
-              <li><NavLink to="/marketing" className="hover:text-white transition pl-7 block">Destination Marketing</NavLink></li>
+              <li><NavLink to="/partner" className="hover:text-white transition pl-7 block">Partner With Tripshalla</NavLink></li>
             </ul>
           </div>
 
@@ -106,7 +99,7 @@ export default function Footer() {
             />
           </div>
           <p className="text-[13px] text-gray-500">
-            © 2026 Thrillophilia.com All rights reserved.
+            © 2026 Tripshalla.in All rights reserved.
           </p>
         </div>
       </div>
