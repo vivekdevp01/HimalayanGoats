@@ -24,6 +24,9 @@ import ActivityGrid from "../components/ActivityGrid";
 import Tour2 from "../components/Tour2";
 import Tour3 from "../components/Tour3";
 import Guides from "../Pages/Guides";
+// import CreateBooking from "../Pages/Admin/CreateBooking";
+import CreateInvoice from "../Pages/Admin/CreateInvoice";
+import Dashboard from "../Pages/Admin/Dashboard";
 
 // import Home from "./Pages/Home";
 // import Tour from "./components/Tour";
@@ -146,6 +149,9 @@ export default function RouterContent() {
 
       {/* ===== ROUTES ===== */}
       <Routes>
+        <Route path="/admin/createInvoice" element={<CreateInvoice />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+
         <Route path="/" element={<Home />} />
         <Route path="/tour" element={<Tour />} />
         <Route path="/packages" element={<Packages />} />
@@ -156,6 +162,7 @@ export default function RouterContent() {
         <Route path="/raftings" element={<ActivityGrid />} />
         <Route path="/raftings/:slug" element={<Tour3 />} />
         <Route path="/guide" element={<Guides />} />
+        {/* <Route path="/createbooking" element={<CreateBooking />} /> */}
 
         {/* <Route path="/trek/:id" element={<TrekDetails />} /> */}
         <Route path="/aboutus" element={<Aboutus />} />
