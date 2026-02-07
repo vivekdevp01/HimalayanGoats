@@ -248,9 +248,11 @@ export default function ActivityGrid() {
             SHIVPURI, RISHIKESH
           </p>
           <div className="hidden md:block h-4 w-[1px] bg-slate-200"></div>
-          <p className="text-amber-600 font-bold text-sm flex items-center gap-1 uppercase">
-            <Camera size={16} /> FREE DSLR VIDEO
-          </p>
+         {activePlatform == "splash" && (
+      <p className="text-amber-600 font-bold text-sm flex items-center gap-1 uppercase">
+        <Camera size={16} /> FREE DSLR VIDEO
+      </p>
+    )}
         </div>
       </div>
 

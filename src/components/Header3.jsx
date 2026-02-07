@@ -19,8 +19,6 @@ const Header3 = ({ isDropdownOpen, setIsDropdownOpen }) => {
   const navLinks = [
     { label: "HOME", to: "/" },
     { label: "ABOUT", to: "/aboutus" },
-    { label: "DESTINATION", to: "/destination" },
-    { label: "TOUR", to: "/tour" },
     { label: "CONTACT", to: "/contact" },
   ];
 
@@ -51,18 +49,6 @@ const Header3 = ({ isDropdownOpen, setIsDropdownOpen }) => {
               }
             >
               Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/aboutus"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-emerald-700"
-                  : "hover:text-emerald-600 transition-colors"
-              }
-            >
-              About
             </NavLink>
           </li>
 
@@ -104,22 +90,33 @@ const Header3 = ({ isDropdownOpen, setIsDropdownOpen }) => {
             )}
           </li>
 
-          <li>
+             <li>
             <NavLink
-              to="/destination"
-              className="hover:text-emerald-600 transition-colors"
+              to="/gallery"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-emerald-700"
+                  : "hover:text-emerald-600 transition-colors"
+              }
             >
-              Destination
+              Gallery
             </NavLink>
           </li>
-          <li>
+
+     <li>
             <NavLink
-              to="/tour"
-              className="hover:text-emerald-600 transition-colors"
+              to="/aboutus"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-emerald-700"
+                  : "hover:text-emerald-600 transition-colors"
+              }
             >
-              Tour
+              About
             </NavLink>
           </li>
+
+
           <li>
             <NavLink
               to="/contact"
