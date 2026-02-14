@@ -26,7 +26,7 @@ export default function RishikeshGuide() {
       {/* HERO */}
       <section className="relative h-[75vh] overflow-hidden">
         <img
-          src="/src/assets/rishikesh-hero.jpg"
+          src="/src/assets/63.jpg"
           alt="Rishikesh"
           className="absolute inset-0 w-full h-full object-cover scale-105"
         />

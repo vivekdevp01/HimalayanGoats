@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     host: true, // allow network access
-    allowedHosts: ["bits-consumers-downloads-wheat.trycloudflare.com"],
+    allowedHosts: ["zip-approximate-andale-offering.trycloudflare.com"],
   },
 });

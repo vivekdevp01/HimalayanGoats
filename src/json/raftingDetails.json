@@ -3,13 +3,13 @@
     "id": 101,
     "slug": "brahmpuri-rafting",
     "name": "Brahmpuri Club Rafting",
-    "location": "Brahmpuri to Rishikesh",
-    "river": "River Ganga",
-    "distance": "9 Kilometres",
+    "location": "Brahmpuri to Ram Jhula, Rishikesh",
+    "river": "River Ganga (Ganges)",
+    "distance": "12 Kilometres",
     "grade": "Grade I–II",
-    "duration": "1.5 – 2 Hours",
+    "duration": "1 – 1.5 Hours",
     "starting_point": "Brahmpuri",
-    "ending_point": "NIM Beach / Rishikesh",
+    "ending_point": "Ram Jhula / NIM Beach",
     "best_season": "September to June",
     "minimum_age": 12,
     "fitness_level": "Basic fitness required",
@@ -22,12 +22,12 @@
       "Non-swimmers"
     ],
 
-    "price": "600",
-    "oldPrice": "1,000",
+    "price": "250",
+    "oldPrice": "600",
 
-    "tagline": "The safest and most enjoyable rafting experience for beginners with calm waters and fun rapids.",
+    "tagline": "The safest and most enjoyable rafting experience for beginners with calm waters and fun splashy rapids.",
 
-    "overview": "Brahmpuri rafting is the most beginner-friendly stretch on the River Ganga. This route combines calm river flow with small, playful rapids, making it perfect for families, children, and first-time rafters. The stretch allows participants to learn paddling techniques, understand river behavior, and enjoy body surfing under expert supervision.",
+    "overview": "Brahmpuri rafting is the most beginner-friendly stretch on the River Ganga in Rishikesh. Covering 12 kilometres, this route combines long calm river sections with mild Grade I–II rapids, making it perfect for families, children above 12 years, and first-time rafters. The stretch allows participants to learn paddling techniques, understand river behavior, and even enjoy optional body surfing in safe sections under expert supervision.",
 
     "media": [
       {
@@ -37,37 +37,61 @@
       {
         "media_url": "/src/assets/22.jpg",
         "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/33.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/34.jpg",
+        "media_role": "activity"
+      },
+      {
+        "media_url": "/src/assets/37.jpg",
+        "media_role": "stay"
+      },
+      {
+        "media_url": "/src/assets/35.jpg",
+        "media_role": "destination"
+      },
+      {
+        "media_url": "/src/assets/36.jpg",
+        "media_role": "hero"
+      },
+      {
+        "media_url": "/src/assets/38.jpg",
+        "media_role": "gallery"
       }
     ],
 
     "rapids": [
       {
-        "name": "Sweet Sixteen",
+        "name": "Initiation",
         "grade": "Grade I",
         "difficulty": "Very Easy",
-        "rapid_type": "Introductory Wave Train",
-        "why_this_name": "The rapid is named 'Sweet Sixteen' because of its smooth, gentle waves that feel exciting yet harmless — much like a sweet introduction to rafting, especially for beginners.",
-        "description": "Sweet Sixteen is the first rapid most rafters encounter on this stretch. It consists of small rolling waves that gently rock the raft without strong turbulence. This rapid helps first-time rafters get comfortable with paddling, balance, and water movement.",
+        "rapid_type": "Introductory Rapid",
+        "why_this_name": "It is called 'Initiation' because it gently introduces first-time rafters to river rafting with smooth flowing waves.",
+        "description": "Initiation rapid consists of soft rolling waves that lightly move the raft without strong turbulence. It helps participants get comfortable with paddling and understanding guide commands.",
         "what_to_expect": [
-          "Small splashy waves",
-          "Very stable raft movement",
-          "Ideal for learning paddling commands"
+          "Gentle splashy waves",
+          "Stable raft movement",
+          "Confidence-building experience"
         ],
-        "safety_notes": "Extremely safe rapid with minimal risk. Perfect for children and nervous participants."
+        "safety_notes": "Extremely safe rapid suitable for beginners and children above 12 years."
       },
       {
-        "name": "Body Surfing",
+        "name": "Double Trouble",
         "grade": "Grade II",
         "difficulty": "Easy & Fun",
-        "rapid_type": "Playful Drop & Flow",
-        "why_this_name": "This rapid is famous for guided body surfing sessions where participants float through calm currents using life jackets, hence the name 'Body Surfing'.",
-        "description": "Body Surfing rapid has a slightly faster current that allows rafters to safely jump into the water under guide supervision. Participants float downstream while holding safety lines, experiencing the river directly.",
+        "rapid_type": "Playful Wave Rapid",
+        "why_this_name": "Named 'Double Trouble' due to its two consecutive splashy wave formations that create fun excitement without high risk.",
+        "description": "Double Trouble rapid provides moderate splash action and slightly faster current, adding excitement while remaining safe for beginners.",
         "what_to_expect": [
-          "Fun floating experience",
-          "Direct interaction with river water",
-          "Guide-controlled entry and exit"
+          "Fun splashes",
+          "Mild bouncing effect",
+          "Safe thrill experience"
         ],
-        "safety_notes": "Life jackets are mandatory. Guides closely monitor all participants during body surfing."
+        "safety_notes": "Life jackets and helmets are mandatory. Guides maintain full control throughout the rapid."
       }
     ],
 
@@ -75,27 +99,27 @@
       {
         "step": 1,
         "title": "Arrival at Brahmpuri",
-        "description": "Guests arrive at the Brahmpuri rafting point where registration and equipment allocation takes place."
+        "description": "Guests arrive at the Brahmpuri rafting office where registration, waiver signing, and equipment allocation takes place."
       },
       {
         "step": 2,
         "title": "Safety Briefing",
-        "description": "Professional river guides explain paddling techniques, safety commands, and emergency procedures."
+        "description": "Certified river guides explain paddling techniques, safety commands, rescue positions, and emergency procedures."
       },
       {
         "step": 3,
         "title": "Rafting Begins",
-        "description": "Rafting starts with calm waters, allowing participants to practice paddling before entering small rapids."
+        "description": "Rafting starts with calm river stretches allowing participants to practice paddling before entering Grade I–II rapids."
       },
       {
         "step": 4,
-        "title": "Rapids & Body Surfing",
-        "description": "Participants navigate Sweet Sixteen and Body Surfing rapids, with optional body surfing activity."
+        "title": "Rapids & Optional Body Surfing",
+        "description": "Participants navigate Initiation and Double Trouble rapids, with optional supervised body surfing in safe river sections."
       },
       {
         "step": 5,
         "title": "Finish & Departure",
-        "description": "Rafting ends near Rishikesh. Participants change clothes and depart."
+        "description": "Rafting ends near Ram Jhula / NIM Beach. Participants change clothes and depart with memorable experiences."
       }
     ],
 
@@ -104,12 +128,13 @@
       "Safety Helmet",
       "High-quality Paddle",
       "Certified River Guide",
-      "Pre-rafting Safety Briefing"
+      "Pre-rafting Safety Briefing",
+      "Safety Kayaker (if required)"
     ],
 
     "exclusions": [
       "Photos & Videos",
-      "Transportation to rafting point",
+      "Transportation to rafting starting point",
       "Personal insurance",
       "Meals"
     ],
@@ -129,7 +154,7 @@
       },
       {
         "q": "What if water level increases?",
-        "a": "Rafting is stopped immediately if river conditions become unsafe."
+        "a": "Rafting operations are stopped immediately if river conditions become unsafe. Guests are either refunded or rescheduled."
       }
     ],
 
@@ -153,47 +178,254 @@
     ],
 
     "seo": {
-      "meta_title": "Brahmpuri Club Rafting in Rishikesh | Beginner River Rafting",
-      "meta_description": "Enjoy safe and fun Brahmpuri rafting in Rishikesh. Ideal for beginners, families, and kids with Grade I–II rapids."
+      "meta_title": "Brahmpuri Club Rafting in Rishikesh | 12 Km Beginner Rafting ₹250",
+      "meta_description": "Book Brahmpuri rafting in Rishikesh at ₹250. Safe 12 km Grade I–II rafting stretch ideal for beginners, families and kids."
     }
   },
-
-  "shivpuri-rafting": {
+  "club-house-rafting": {
     "id": 102,
-    "slug": "shivpuri-rafting",
-    "name": "Shivpuri Thrill Rafting",
-    "location": "Shivpuri to Rishikesh",
-    "river": "River Ganga",
-    "distance": "16 Kilometres",
-    "grade": "Grade II–III",
-    "duration": "2.5 – 3 Hours",
-    "starting_point": "Shivpuri",
-    "ending_point": "NIM Beach / Rishikesh",
+    "slug": "club-house-rafting",
+    "name": "Club House (Phool Chatti) Rafting",
+    "location": "Phool Chatti (Club House) to Ram Jhula, Rishikesh",
+    "river": "River Ganga (Ganges)",
+    "route": "Club House to Ram Jhula",
+    "distance": "14 Kilometres",
+    "distance_km": 14,
+    "grade": "Grade II",
+    "duration": "1.5 – 2 Hours",
+    "starting_point": "Phool Chatti (Club House)",
+    "ending_point": "Ram Jhula / NIM Beach",
     "best_season": "September to June",
     "minimum_age": 14,
-    "fitness_level": "Moderate fitness required",
+    "fitness_level": "Basic fitness required",
+    "rating": 4.8,
 
     "ideal_for": [
-      "First-time thrill seekers",
-      "Young adults",
-      "Groups & friends",
-      "Adventure lovers"
+      "Beginners",
+      "Groups",
+      "College trips",
+      "Adventure starters",
+      "First-time rafters"
     ],
 
-    "price": "1,000",
-    "oldPrice": "1,500",
+    "price": 300,
+    "oldPrice": 800,
 
-    "tagline": "The most popular rafting stretch in Rishikesh packed with thrilling rapids and long river flow.",
+    "tagline": "A perfect step-up rafting experience with longer distance and exciting Grade II rapids.",
 
-    "overview": "Shivpuri rafting is the most popular and balanced rafting stretch on the River Ganga. It offers a perfect mix of excitement and safety with continuous rapids, stronger currents, and iconic wave trains. This stretch is ideal for beginners who want thrill and for regular rafters looking for fun without extreme difficulty.",
+    "overview": "Club House rafting, starting from Phool Chatti, offers a slightly longer and more adventurous experience than Brahmpuri. Covering 14 kilometres on the River Ganga, this stretch includes consistent Grade II rapids combined with scenic calm stretches. It is ideal for beginners who want more excitement and groups looking for a balanced adventure experience in Rishikesh.",
+
+    "image": "/src/assets/22.jpg",
 
     "media": [
       {
-        "media_url": "/src/assets/22.jpg",
+        "media_url": "/src/assets/21.jpg",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/src/assets/23.jpg",
+        "media_url": "/src/assets/22.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/33.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/34.jpg",
+        "media_role": "activity"
+      },
+      {
+        "media_url": "/src/assets/37.jpg",
+        "media_role": "stay"
+      },
+      {
+        "media_url": "/src/assets/35.jpg",
+        "media_role": "destination"
+      },
+      {
+        "media_url": "/src/assets/36.jpg",
+        "media_role": "hero"
+      },
+      {
+        "media_url": "/src/assets/38.jpg",
+        "media_role": "gallery"
+      }
+    ],
+
+    "rapids": [
+      {
+        "name": "Three Blind Mice",
+        "grade": "Grade II",
+        "difficulty": "Moderate & Fun",
+        "rapid_type": "Wave Train Rapid",
+        "why_this_name": "Named due to its three consecutive wave formations that test coordination and teamwork.",
+        "description": "Three Blind Mice rapid consists of back-to-back rolling waves creating continuous splash action. It requires synchronized paddling and teamwork.",
+        "what_to_expect": [
+          "Continuous splashes",
+          "Slight bouncing motion",
+          "Team coordination challenge"
+        ],
+        "safety_notes": "Safe under guide supervision with mandatory life jackets and helmets."
+      },
+      {
+        "name": "Crossfire",
+        "grade": "Grade II",
+        "difficulty": "Moderate",
+        "rapid_type": "Diagonal Wave Rapid",
+        "why_this_name": "The rapid creates diagonal cross currents that move across the raft’s path.",
+        "description": "Crossfire rapid offers moderate wave impact and directional water flow, adding excitement without extreme risk.",
+        "what_to_expect": [
+          "Side splashes",
+          "Quick paddle commands",
+          "Fun wave interactions"
+        ],
+        "safety_notes": "Guides provide advance paddling commands to safely navigate the rapid."
+      }
+    ],
+
+    "itinerary": [
+      {
+        "step": 1,
+        "title": "Arrival & Registration",
+        "description": "Guests arrive at Phool Chatti rafting office for registration and safety gear distribution."
+      },
+      {
+        "step": 2,
+        "title": "Safety Briefing",
+        "description": "Certified river guides explain rafting commands, paddling techniques, and safety instructions."
+      },
+      {
+        "step": 3,
+        "title": "Rafting Begins",
+        "description": "Rafting starts with calm stretches followed by multiple Grade II rapids."
+      },
+      {
+        "step": 4,
+        "title": "Rapids & Fun Activities",
+        "description": "Participants navigate Three Blind Mice and Crossfire rapids with optional body surfing in safe zones."
+      },
+      {
+        "step": 5,
+        "title": "Finish at Ram Jhula",
+        "description": "Rafting ends near Ram Jhula / NIM Beach. Guests change and depart."
+      }
+    ],
+
+    "inclusions": [
+      "ISI Certified Life Jacket",
+      "Safety Helmet",
+      "High-quality Paddle",
+      "Professional River Guide",
+      "Pre-rafting Safety Briefing",
+      "Safety Kayaker (if required)"
+    ],
+
+    "exclusions": [
+      "Transportation to starting point",
+      "Photos & Videos",
+      "Personal insurance",
+      "Meals"
+    ],
+
+    "faqs": [
+      {
+        "q": "Is Club House rafting suitable for beginners?",
+        "a": "Yes, it is slightly more adventurous than Brahmpuri but still safe for beginners and groups."
+      },
+      {
+        "q": "What is the rafting duration?",
+        "a": "It usually takes around 1.5 to 2 hours depending on river flow."
+      },
+      {
+        "q": "Is swimming required?",
+        "a": "No, swimming is not mandatory as life jackets are compulsory."
+      }
+    ],
+
+    "policies": [
+      {
+        "id": 1,
+        "title": "Weather & Safety Policy",
+        "points": [
+          "Rafting may be cancelled if river conditions are unsafe.",
+          "Full refund or reschedule provided for weather-related cancellations."
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Cancellation Policy",
+        "points": [
+          "Free cancellation up to 24 hours before activity.",
+          "Same-day cancellations are non-refundable."
+        ]
+      }
+    ],
+
+    "seo": {
+      "meta_title": "Club House (Phool Chatti) Rafting in Rishikesh – 14 Km ₹300",
+      "meta_description": "Book 14 km Club House rafting in Rishikesh at ₹300. Enjoy Grade II rapids and scenic river rafting adventure."
+    }
+  },
+  "shivpuri-rafting": {
+    "id": 103,
+    "slug": "shivpuri-rafting",
+    "name": "Shivpuri Rafting",
+    "location": "Shivpuri to Ram Jhula, Rishikesh",
+    "river": "River Ganga (Ganges)",
+    "route": "Shivpuri to Ram Jhula",
+    "distance": "16 Kilometres",
+    "distance_km": 16,
+    "grade": "Grade II–III",
+    "duration": "2 – 2.5 Hours",
+    "starting_point": "Shivpuri",
+    "ending_point": "Ram Jhula / NIM Beach",
+    "best_season": "September to June",
+    "minimum_age": 14,
+    "fitness_level": "Moderate fitness required",
+    "rating": 4.9,
+
+    "ideal_for": ["First Timers", "Groups", "Young adults", "Adventure lovers"],
+
+    "price": 350,
+    "oldPrice": 1000,
+
+    "tagline": "The most popular rafting stretch in Rishikesh packed with thrilling Grade II–III rapids.",
+
+    "overview": "Shivpuri rafting is the most popular rafting stretch in Rishikesh, offering the perfect balance of thrill and safety. Covering 16 kilometres on the River Ganga, this route includes iconic Grade II–III rapids such as Roller Coaster and Golf Course. It is ideal for first-timers who want real excitement and for groups looking for an adventurous river experience.",
+
+    "image": "/src/assets/23.jpg",
+
+    "media": [
+      {
+        "media_url": "/src/assets/21.jpg",
+        "media_role": "hero_banner"
+      },
+      {
+        "media_url": "/src/assets/22.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/33.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/34.jpg",
+        "media_role": "activity"
+      },
+      {
+        "media_url": "/src/assets/37.jpg",
+        "media_role": "stay"
+      },
+      {
+        "media_url": "/src/assets/35.jpg",
+        "media_role": "destination"
+      },
+      {
+        "media_url": "/src/assets/36.jpg",
+        "media_role": "hero"
+      },
+      {
+        "media_url": "/src/assets/38.jpg",
         "media_role": "gallery"
       }
     ],
@@ -204,70 +436,70 @@
         "grade": "Grade II",
         "difficulty": "Easy–Moderate",
         "rapid_type": "Wide Wave Train",
-        "why_this_name": "Named by local river guides as a respectful greeting to the holy River Ganga, marking the beginning of the thrilling rafting stretch.",
-        "description": "This rapid welcomes rafters with wide, rolling waves that create excitement without being aggressive. It helps rafters build rhythm and confidence early in the run.",
+        "why_this_name": "Named as a tribute to the holy River Ganga, marking the beginning of the thrilling section.",
+        "description": "This rapid welcomes rafters with strong rolling waves that build excitement and confidence early in the journey.",
         "what_to_expect": [
           "Strong splashes",
-          "Smooth wave patterns",
-          "Perfect warm-up rapid"
+          "Wave train action",
+          "Great warm-up rapid"
         ],
-        "safety_notes": "Safe rapid with controlled water flow. Ideal to prepare for upcoming rapids."
+        "safety_notes": "Safe rapid under guide supervision."
       },
       {
         "name": "Roller Coaster",
         "grade": "Grade III",
         "difficulty": "Moderate",
-        "rapid_type": "Continuous Wave Train",
-        "why_this_name": "Named after the roller-coaster-like motion of the raft going up and down through powerful standing waves.",
-        "description": "Roller Coaster is one of the most exciting rapids in Shivpuri rafting. The raft moves through a series of high, continuous waves that lift and drop the raft repeatedly, delivering pure adrenaline.",
+        "rapid_type": "Continuous Standing Waves",
+        "why_this_name": "The raft moves up and down like a roller coaster through powerful standing waves.",
+        "description": "One of the most thrilling rapids in Rishikesh, Roller Coaster delivers high waves and strong raft movement for an adrenaline-filled experience.",
         "what_to_expect": [
-          "High waves",
-          "Strong raft movement",
-          "Heavy splashes"
+          "High splash waves",
+          "Strong raft lift & drop motion",
+          "Adrenaline rush"
         ],
-        "safety_notes": "Guides provide clear commands. Falling out is rare but swimmers are quickly rescued."
+        "safety_notes": "Guides give strong paddle commands. Safety kayaker present."
       },
       {
         "name": "Golf Course",
         "grade": "Grade III",
         "difficulty": "Moderate",
         "rapid_type": "Technical Rapid",
-        "why_this_name": "The rapid passes alongside a golf course, and the scattered rocks resemble a golf field layout.",
-        "description": "Golf Course rapid requires coordinated paddling as the raft navigates through multiple channels. It tests teamwork and guide skill.",
+        "why_this_name": "Named because the river passes alongside a golf course and the rock formations resemble a golf layout.",
+        "description": "A technical rapid requiring synchronized paddling and quick turns through multiple channels.",
         "what_to_expect": [
           "Directional turns",
           "Fast-moving current",
-          "Technical paddling"
+          "Team coordination challenge"
         ],
-        "safety_notes": "Requires listening carefully to guide instructions."
+        "safety_notes": "Follow guide commands carefully for safe navigation."
       },
       {
         "name": "Club House",
         "grade": "Grade II+",
         "difficulty": "Easy–Moderate",
         "rapid_type": "Exit Rapid",
-        "why_this_name": "Named because it marks the end of the main rapid section, similar to reaching a clubhouse after a game.",
-        "description": "Club House is a fun rapid that signals the end of the intense section. It has playful waves and allows rafters to relax and celebrate.",
+        "why_this_name": "Marks the end of the major rapid section similar to finishing a round at a clubhouse.",
+        "description": "A playful rapid with splashy waves allowing rafters to celebrate the thrilling experience.",
         "what_to_expect": ["Fun splashes", "Relaxed paddling", "Photo moments"],
-        "safety_notes": "Very safe rapid with low risk."
+        "safety_notes": "Very safe rapid with minimal risk."
       }
     ],
 
     "itinerary": [
       {
         "step": 1,
-        "title": "Arrival at Shivpuri",
-        "description": "Guests report at Shivpuri rafting point for registration and equipment distribution."
+        "title": "Arrival & Check-in",
+        "description": "Guests report at Shivpuri rafting office for registration and equipment allocation."
       },
       {
         "step": 2,
         "title": "Safety Briefing",
-        "description": "Detailed safety briefing covering paddling techniques, commands, and rescue methods."
+        "description": "Certified river guides explain paddling commands, safety instructions, and rescue procedures."
       },
       {
         "step": 3,
         "title": "Rafting Begins",
-        "description": "Rafting starts with mild rapids, gradually increasing in intensity."
+        "description": "Rafting starts with moderate rapids gradually increasing in intensity."
       },
       {
         "step": 4,
@@ -276,8 +508,8 @@
       },
       {
         "step": 5,
-        "title": "Finish & Departure",
-        "description": "Rafting ends near Rishikesh. Participants change clothes and depart."
+        "title": "Finish at Ram Jhula",
+        "description": "Rafting ends near Ram Jhula / NIM Beach."
       }
     ],
 
@@ -292,7 +524,7 @@
 
     "exclusions": [
       "Photos & Videos",
-      "Transportation",
+      "Transportation to starting point",
       "Personal insurance",
       "Meals"
     ],
@@ -300,15 +532,15 @@
     "faqs": [
       {
         "q": "Is Shivpuri rafting suitable for beginners?",
-        "a": "Yes, beginners with basic fitness can safely enjoy this stretch under professional guidance."
+        "a": "Yes, beginners with moderate fitness can safely enjoy this stretch under professional guidance."
       },
       {
         "q": "Is swimming required?",
-        "a": "No, swimming is not required. Life jackets ensure safety."
+        "a": "No, swimming is not mandatory as life jackets are compulsory."
       },
       {
         "q": "How intense are the rapids?",
-        "a": "Rapids are Grade II–III, offering excitement without extreme danger."
+        "a": "Rapids are Grade II–III, offering strong excitement without extreme danger."
       }
     ],
 
@@ -318,7 +550,7 @@
         "title": "Weather & Safety Policy",
         "points": [
           "Rafting may be cancelled if river conditions become unsafe.",
-          "Full refund or reschedule for weather-related cancellations."
+          "Full refund or reschedule provided for weather-related cancellations."
         ]
       },
       {
@@ -332,21 +564,21 @@
     ],
 
     "seo": {
-      "meta_title": "Shivpuri Thrill Rafting in Rishikesh | Grade II–III Rapids",
-      "meta_description": "Experience the most popular Shivpuri rafting in Rishikesh with thrilling Grade II–III rapids like Roller Coaster and Golf Course."
+      "meta_title": "Shivpuri Rafting in Rishikesh – 16 Km Grade II–III Rapids ₹350",
+      "meta_description": "Book Shivpuri rafting in Rishikesh at ₹350. Experience Roller Coaster, Golf Course and thrilling Grade II–III rapids."
     }
   },
   "marine-drive-rafting": {
-    "id": 103,
+    "id": 104,
     "slug": "marine-drive-rafting",
     "name": "Marine Drive Extreme Rafting",
     "location": "Marine Drive to Shivpuri",
     "river": "River Ganga",
-    "distance": "26 Kilometres",
+    "distance": "24 Kilometres",
     "grade": "Grade III–IV",
     "duration": "4 – 4.5 Hours",
     "starting_point": "Marine Drive",
-    "ending_point": "Shivpuri / NIM Beach",
+    "ending_point": "Ram Jhula / NIM Beach",
     "best_season": "September to June",
     "minimum_age": 16,
     "fitness_level": "Good physical fitness required",
@@ -367,11 +599,35 @@
 
     "media": [
       {
-        "media_url": "/src/assets/23.jpg",
+        "media_url": "/src/assets/21.jpg",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/src/assets/21.jpg",
+        "media_url": "/src/assets/22.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/33.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/34.jpg",
+        "media_role": "activity"
+      },
+      {
+        "media_url": "/src/assets/37.jpg",
+        "media_role": "stay"
+      },
+      {
+        "media_url": "/src/assets/35.jpg",
+        "media_role": "destination"
+      },
+      {
+        "media_url": "/src/assets/36.jpg",
+        "media_role": "hero"
+      },
+      {
+        "media_url": "/src/assets/38.jpg",
         "media_role": "gallery"
       }
     ],
@@ -519,16 +775,16 @@
     }
   },
   "kaudiyala-rafting": {
-    "id": 104,
+    "id": 105,
     "slug": "kaudiyala-rafting",
     "name": "Kaudiyala Challenge Rafting",
     "location": "Kaudiyala to Rishikesh",
     "river": "River Ganga",
-    "distance": "35 Kilometres",
+    "distance": "36 Kilometres",
     "grade": "Grade IV+",
     "duration": "5 – 6 Hours",
     "starting_point": "Kaudiyala",
-    "ending_point": "Rishikesh / NIM Beach",
+    "ending_point": "Ram Jhula / NIM Beach",
     "best_season": "October to May",
     "minimum_age": 18,
     "fitness_level": "Excellent physical fitness required",
@@ -549,11 +805,35 @@
 
     "media": [
       {
-        "media_url": "/src/assets/24.jpg",
+        "media_url": "/src/assets/21.jpg",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/src/assets/23.jpg",
+        "media_url": "/src/assets/22.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/33.jpg",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/src/assets/34.jpg",
+        "media_role": "activity"
+      },
+      {
+        "media_url": "/src/assets/37.jpg",
+        "media_role": "stay"
+      },
+      {
+        "media_url": "/src/assets/35.jpg",
+        "media_role": "destination"
+      },
+      {
+        "media_url": "/src/assets/36.jpg",
+        "media_role": "hero"
+      },
+      {
+        "media_url": "/src/assets/38.jpg",
         "media_role": "gallery"
       }
     ],

@@ -32,7 +32,7 @@
           "best_time": "6:00 – 7:00 PM (Aarti time)",
           "distance": "Central Rishikesh",
           "tips": "Reach at least 30 minutes early for a good spot during Aarti.",
-          "image": "/src/assets/places/triveni-ghat.jpg",
+          "image": "/src/assets/64.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=triveni+ghat&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -41,7 +41,7 @@
           "best_time": "Morning or Evening",
           "distance": "Ram Jhula Area",
           "tips": "Wear modest clothes and maintain silence inside the ashram.",
-          "image": "/src/assets/places/parmarth-niketan.jpg",
+          "image": "/src/assets/52.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=parmarth+niketan+ashram&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -50,25 +50,17 @@
           "best_time": "Morning (8:00 – 11:00 AM)",
           "distance": "Near Ram Jhula",
           "tips": "Carry water and wear comfortable shoes; entry ticket required.",
-          "image": "/src/assets/places/beatles-ashram.jpg",
+          "image": "/src/assets/53.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=beatles+ashram&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
-        {
-          "name": "Lakshman Jhula",
-          "description": "An iconic suspension bridge believed to be the place where Lakshman crossed the Ganga using jute ropes. Surrounded by temples, shops and cafés.",
-          "best_time": "Early Morning or Evening",
-          "distance": "Lakshman Jhula Area",
-          "tips": "Avoid peak afternoon hours due to heavy crowd.",
-          "image": "/src/assets/places/lakshman-jhula.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=lakshman+jhula&cp=30.103121%7E78.299606&lvl=16&style=r"
-        },
+
         {
           "name": "Ram Jhula",
           "description": "A suspension bridge connecting Sivananda Ashram to Swarg Ashram. A peaceful spiritual stretch with temples, ashrams and river views.",
           "best_time": "Morning Walks",
           "distance": "Near Parmarth Niketan",
           "tips": "Best explored early morning for calm vibes.",
-          "image": "/src/assets/places/ram-jhula.jpg",
+          "image": "/src/assets/54.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=ram+jhula&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -77,7 +69,7 @@
           "best_time": "Early Morning",
           "distance": "32 km from Rishikesh",
           "tips": "Road is scenic but narrow; ride carefully on scooty.",
-          "image": "/src/assets/places/neelkanth-mahadev.jpg",
+          "image": "/src/assets/61.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=neelkanth+mahadev+temple&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -86,17 +78,8 @@
           "best_time": "Morning or Sunset",
           "distance": "Tapovan Area",
           "tips": "Great alternative to Lakshman Jhula for peaceful walks.",
-          "image": "/src/assets/places/janki-setu.jpg",
+          "image": "/src/assets/57.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=janki+setu+rishikesh&cp=30.136023%7E78.172970&lvl=10.7&style=r"
-        },
-        {
-          "name": "Bajrang Setu",
-          "description": "A modern suspension bridge connecting key spiritual zones of Rishikesh, designed to reduce crowd pressure on older bridges.",
-          "best_time": "Anytime",
-          "distance": "Near Tapovan",
-          "tips": "Best experienced during sunset for photos.",
-          "image": "/src/assets/places/bajrang-setu.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=bajrang+setu+rishikesh&cp=30.136023%7E78.172970&lvl=10.7&style=r"
         }
       ]
     },
@@ -111,7 +94,7 @@
           "best_time": "Morning (8:00 – 11:00 AM)",
           "distance": "6 km from Lakshman Jhula",
           "tips": "Wear good trekking shoes and avoid weekends for less crowd.",
-          "image": "/src/assets/places/neer-garh-waterfall.jpg",
+          "image": "/src/assets/56.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=neer+garh+waterfall&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -120,7 +103,7 @@
           "best_time": "Early Morning or Sunset",
           "distance": "14 km from Tapovan",
           "tips": "Road is narrow but scenic; ideal for scooty rides. Carry water and avoid riding after dark.",
-          "image": "/src/assets/places/kyarki-view-point.jpg",
+          "image": "/src/assets/58.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=kyarki+view+point&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -129,25 +112,17 @@
           "best_time": "Morning",
           "distance": "7 km from Lakshman Jhula",
           "tips": "Avoid visiting during heavy rainfall season.",
-          "image": "/src/assets/places/patna-waterfall.jpg",
+          "image": "/src/assets/55.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=patna+waterfall&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
-        {
-          "name": "Phool Chatti Waterfall",
-          "description": "A hidden gem waterfall near Phool Chatti Ashram. Surrounded by forest trails and natural rock formations.",
-          "best_time": "Morning",
-          "distance": "5 km from Ram Jhula",
-          "tips": "Best visited early; limited food stalls nearby.",
-          "image": "/src/assets/places/phool-chatti-waterfall.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=phool+chatti+waterfall&cp=30.103121%7E78.299606&lvl=16&style=r"
-        },
+
         {
           "name": "Shivpuri",
           "description": "A scenic riverside destination known for white water rafting camps, forest surroundings, and sunset river views.",
           "best_time": "Anytime (Sunset recommended)",
           "distance": "16 km from Rishikesh",
           "tips": "Great stop while riding towards Devprayag road.",
-          "image": "/src/assets/places/shivpuri.jpg",
+          "image": "/src/assets/59.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=shivpuri+rishikesh&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -156,7 +131,7 @@
           "best_time": "Early Morning or Sunset",
           "distance": "24 km from Rishikesh",
           "tips": "Carry water; limited shops on the route.",
-          "image": "/src/assets/places/marine-drive.jpg",
+          "image": "/src/assets/60.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=marine+drive+rishikesh&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -165,7 +140,7 @@
           "best_time": "Morning",
           "distance": "36 km from Rishikesh",
           "tips": "Best for experienced riders; roads are curvy.",
-          "image": "/src/assets/places/kaudiyala.jpg",
+          "image": "/src/assets/50.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=kaudiyala&cp=30.103121%7E78.299606&lvl=16&style=r"
         },
         {
@@ -174,60 +149,8 @@
           "best_time": "Morning or Evening",
           "distance": "Various spots around Tapovan & Shivpuri",
           "tips": "Avoid swimming; currents can be strong.",
-          "image": "/src/assets/places/ganga-beach.jpg",
+          "image": "/src/assets/60.jpg",
           "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=ganga+beach+rishikesh&cp=30.103121%7E78.299606&lvl=16&style=r"
-        }
-      ]
-    },
-    {
-      "id": "cafes",
-      "title": "Cafes & Chill Spots",
-      "icon": "cafes",
-      "places": [
-        {
-          "name": "Ganga View Cafes (Lakshman Jhula)",
-          "description": "Popular rooftop cafes offering uninterrupted views of River Ganga. Ideal for relaxing breakfasts, peaceful evenings, and solo travel vibes.",
-          "best_time": "Morning or Sunset",
-          "distance": "Lakshman Jhula area",
-          "tips": "Visit early morning for quiet ambience; evenings get crowded.",
-          "image": "/src/assets/places/ganga-view-cafe.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=ganga+view+cafe+lakshman+jhula&cp=30.136023%7E78.172970&lvl=10.7&style=r"
-        },
-        {
-          "name": "Beatles Café (Little Buddha Café)",
-          "description": "One of the most iconic cafes in Rishikesh, inspired by The Beatles. Known for international cuisine, chilled music, and river-facing seating.",
-          "best_time": "Afternoon to Evening",
-          "distance": "Tapovan",
-          "tips": "Best tables are riverside—wait if needed.",
-          "image": "/src/assets/places/beatles-cafe.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=beatles+cafe+rishikesh&cp=30.136023%7E78.172970&lvl=10.7&style=r"
-        },
-        {
-          "name": "Freedom Café",
-          "description": "A peaceful café with yoga-friendly vibes, perfect for digital nomads and travelers seeking calm food spots with spiritual surroundings.",
-          "best_time": "Morning",
-          "distance": "Near Lakshman Jhula",
-          "tips": "Try their herbal teas and breakfast bowls.",
-          "image": "/src/assets/places/freedom-cafe.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=freedom+cafe+rishikesh&cp=30.136023%7E78.172970&lvl=10.7&style=r"
-        },
-        {
-          "name": "Shambala Café",
-          "description": "Hidden riverside café with low seating, perfect for sunset watching and relaxed conversations near the flowing Ganga.",
-          "best_time": "Late Afternoon / Sunset",
-          "distance": "Tapovan riverside",
-          "tips": "Scooty parking nearby; walk last few meters.",
-          "image": "/src/assets/places/shambala-cafe.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=shambala+cafe+rishikesh&cp=30.136023%7E78.172970&lvl=10.7&style=r"
-        },
-        {
-          "name": "Sunset Point Cafes (Tapovan)",
-          "description": "A cluster of small cafés facing west, offering stunning sunset views over the river and mountains.",
-          "best_time": "Sunset",
-          "distance": "Tapovan",
-          "tips": "Reach 30 minutes before sunset for best seats.",
-          "image": "/src/assets/places/sunset-point-cafes.jpg",
-          "map_link": "https://www.bing.com/maps/search?FORM=HDRSC6&q=sunset+point+cafes+tapovan&cp=30.136023%7E78.172970&lvl=10.7&style=r"
         }
       ]
     }
