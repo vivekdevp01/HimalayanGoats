@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logosrc from '../assets/MOUNTAINS.png'
+import logosrc from '../assets/Mountains.png'
 export default function Header({
   links,
   variant = "default",
