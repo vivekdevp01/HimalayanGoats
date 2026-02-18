@@ -5,8 +5,8 @@ const testimonials = [
   {
     name: "Amelia Warner",
     role: "Tourist",
-    image: "/src/assets/4.jpg",
-    avatars: ["/src/assets/1.jpg", "/src/assets/2.jpg", "/src/assets/3.jpg"],
+    image: "/assets/4.jpg",
+    avatars: ["/assets/1.jpg", "/assets/2.jpg", "/assets/3.jpg"],
     text: `Once the travel bug bites, there is no known antidote. 
     A journey is best measured in friends rather than miles.`,
     rating: 5,
@@ -14,8 +14,8 @@ const testimonials = [
   {
     name: "Daniel Brooks",
     role: "Adventure Lover",
-    image: "/src/assets/5.jpg",
-    avatars: ["/src/assets/2.jpg", "/src/assets/3.jpg", "/src/assets/1.jpg"],
+    image: "/assets/5.jpg",
+    avatars: ["/assets/2.jpg", "/assets/3.jpg", "/assets/1.jpg"],
     text: `Everything was perfectly planned. From hotels to experiences,
     it felt effortless and memorable.`,
     rating: 5,
@@ -23,8 +23,8 @@ const testimonials = [
   {
     name: "Sophia Lee",
     role: "Solo Traveller",
-    image: "/src/assets/6.jpg",
-    avatars: ["/src/assets/3.jpg", "/src/assets/1.jpg", "/src/assets/2.jpg"],
+    image: "/assets/6.jpg",
+    avatars: ["/assets/3.jpg", "/assets/1.jpg", "/assets/2.jpg"],
     text: `I felt safe, excited, and inspired throughout my journey.
     Highly recommended for solo travelers!`,
     rating: 4,

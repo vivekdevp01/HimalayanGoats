@@ -57,7 +57,7 @@ export default function AboutHero() {
           <div className="absolute -top-10 -left-10 w-72 h-72 bg-emerald-100 rounded-full blur-2xl" />
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             <img
-              src="/src/assets/1.jpg"
+              src="/assets/1.jpg"
               alt="Himalayan travel experience"
               className="w-full h-[420px] object-cover"
             />

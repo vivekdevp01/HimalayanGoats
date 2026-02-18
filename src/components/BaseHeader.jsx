@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { ChevronDown } from "lucide-react";
-import logosrc from '../assets/TRIPSHALA.png'
+
 
 export default function BaseHeader({ links }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+const logosrc = '/assets/TRIPSHALA.png';
   const navLinks = links || [
     { key: "home", label: "Home", to: "/" },
     {

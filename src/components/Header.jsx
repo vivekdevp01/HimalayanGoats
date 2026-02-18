@@ -8,7 +8,7 @@ export default function Header({
   title = "ABOUT US",
   subtitle,
   badges = [],
-  bgImage = "/src/assets/15.png",
+  bgImage = "/assets/15.png",
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

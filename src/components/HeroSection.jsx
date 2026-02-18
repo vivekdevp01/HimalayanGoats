@@ -7,7 +7,7 @@ export default function HeroSection() {
     <section className="relative h-[90vh] w-full overflow-hidden">
       {/* Background Image */}
       <img
-        src="/src/assets/1.jpg"
+        src="/assets/1.jpg"
         alt="Himalayan Trekking"
         className="absolute inset-0 w-full h-full object-cover"
       />

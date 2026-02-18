@@ -9,7 +9,7 @@ const PopularActivitiesCardGrid = () => {
       category: "Adventure",
       price: "₹999",
       rating: 4.8,
-      image: "/src/assets/36.jpg",
+      image: "/assets/36.jpg",
       route: "/raftings",
     },
     {
@@ -18,7 +18,7 @@ const PopularActivitiesCardGrid = () => {
       category: "Extreme Adventure",
       price: "₹3,499",
       rating: 4.9,
-      image: "/src/assets/20.jpg",
+      image: "/assets/20.jpg",
       route: "/bungee",
     },
     // {
@@ -36,7 +36,7 @@ const PopularActivitiesCardGrid = () => {
       category: "Local Travel",
       price: "₹499",
       rating: 4.6,
-      image: "/src/assets/65.jpg",
+      image: "/assets/65.jpg",
       route: "/guide",
     },
   ];

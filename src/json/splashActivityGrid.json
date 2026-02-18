@@ -11,7 +11,7 @@
     "price": 999,
     "oldPrice": 1499,
     "rating": 4.6,
-    "image": "/src/assets/splash/sky-walk.jpg",
+    "image": "/assets/splash/sky-walk.jpg",
     "route": "bungy/sky-walk"
   },
   {
@@ -26,7 +26,7 @@
     "price": 1999,
     "oldPrice": 2499,
     "rating": 4.8,
-    "image": "/src/assets/splash/rocket-bungy.jpg",
+    "image": "/assets/splash/rocket-bungy.jpg",
     "route": "bungy/rocket-bungy-85m"
   },
   {
@@ -41,7 +41,7 @@
     "price": 1199,
     "oldPrice": 1999,
     "rating": 4.7,
-    "image": "/src/assets/splash/zipline.jpg",
+    "image": "/assets/splash/zipline.jpg",
     "route": "bungy/zipline-500m"
   },
   {
@@ -56,7 +56,7 @@
     "price": 1199,
     "oldPrice": 1999,
     "rating": 4.8,
-    "image": "/src/assets/splash/tower-swing.jpg",
+    "image": "/assets/splash/tower-swing.jpg",
     "route": "bungy/tower-top-swing"
   },
   {
@@ -71,7 +71,7 @@
     "price": 3999,
     "oldPrice": 4999,
     "rating": 4.9,
-    "image": "/src/assets/splash/109m-bungy.jpg",
+    "image": "/assets/splash/109m-bungy.jpg",
     "route": "bungy/splash-bungy-109m"
   },
 
@@ -89,7 +89,7 @@
     "price": 3500,
     "oldPrice": 5500,
     "rating": 4.9,
-    "image": "/src/assets/splash/combo-1.jpg",
+    "image": "/assets/splash/combo-1.jpg",
     "route": "bungy/combo-1"
   },
   {
@@ -105,7 +105,7 @@
     "price": 6000,
     "oldPrice": 8500,
     "rating": 5.0,
-    "image": "/src/assets/splash/combo-2.jpg",
+    "image": "/assets/splash/combo-2.jpg",
     "route": "bungy/combo-2"
   },
   {
@@ -121,7 +121,7 @@
     "price": 5000,
     "oldPrice": 7500,
     "rating": 4.8,
-    "image": "/src/assets/splash/combo-3.jpg",
+    "image": "/assets/splash/combo-3.jpg",
     "route": "bungy/combo-3"
   },
   {
@@ -143,7 +143,7 @@
     "price": 5500,
     "oldPrice": 7999,
     "rating": 5.0,
-    "image": "/src/assets/splash/combo-6.jpg",
+    "image": "/assets/splash/combo-6.jpg",
     "route": "bungy/combo-6"
   }
 ]

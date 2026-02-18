@@ -3,11 +3,11 @@ import React, { useRef, useState, useEffect } from "react";
 import GalleryCard from "./GalleryCard";
 
 const cardsData = [
-  { image: "/src/assets/1.jpg", title: "Valley Of Flowers", category: "Events" },
-  { image: "/src/assets/2.jpg", title: "Raja Ji National Park", category: "Wildlife" },
-  { image: "/src/assets/3.jpg", title: "Rishikesh", category: "Events" },
-  { image: "/src/assets/4.jpg", title: "Badrinath Temple", category: "Pilgrimage" },
-  { image: "/src/assets/5.jpg", title: "Nainital Lake", category: "Nature" },
+  { image: "/assets/1.jpg", title: "Valley Of Flowers", category: "Events" },
+  { image: "/assets/2.jpg", title: "Raja Ji National Park", category: "Wildlife" },
+  { image: "/assets/3.jpg", title: "Rishikesh", category: "Events" },
+  { image: "/assets/4.jpg", title: "Badrinath Temple", category: "Pilgrimage" },
+  { image: "/assets/5.jpg", title: "Nainital Lake", category: "Nature" },
 ];
 
 export default function GallerySection({ auto = true, delay = 3500 }) {

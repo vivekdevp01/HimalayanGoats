@@ -10,13 +10,13 @@ const CATEGORIES = [
 ];
 
 const IMAGES = [
-  { src: "/src/assets/1.jpg", alt: "Mountain Trek", category: "trek" },
-  { src: "/src/assets/2.jpg", alt: "Snow Peaks", category: "nature" },
-  { src: "/src/assets/3.jpg", alt: "River Rafting", category: "rafting" },
-  { src: "/src/assets/4.jpg", alt: "Camping Under Stars", category: "camp" },
-  { src: "/src/assets/5.jpg", alt: "Forest Escape", category: "nature" },
-  { src: "/src/assets/6.jpg", alt: "High Altitude Trek", category: "trek" },
-  { src: "/src/assets/7.jpg", alt: "Riverside Camp", category: "camp" },
+  { src: "/assets/1.jpg", alt: "Mountain Trek", category: "trek" },
+  { src: "/assets/2.jpg", alt: "Snow Peaks", category: "nature" },
+  { src: "/assets/3.jpg", alt: "River Rafting", category: "rafting" },
+  { src: "/assets/4.jpg", alt: "Camping Under Stars", category: "camp" },
+  { src: "/assets/5.jpg", alt: "Forest Escape", category: "nature" },
+  { src: "/assets/6.jpg", alt: "High Altitude Trek", category: "trek" },
+  { src: "/assets/7.jpg", alt: "Riverside Camp", category: "camp" },
 ];
 
 export default function GallerySection2() {

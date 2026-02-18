@@ -8,31 +8,31 @@ import { FiX } from "react-icons/fi";
 export default function HeroHeader({
   slides = [
     {
-      url: "/src/assets/1.jpg",
+      url: "/assets/1.jpg",
       title: "INDIA Tour Packages",
       discount: "40% OFF",
       price: "5,999",
     },
     {
-      url: "/src/assets/2.jpg",
+      url: "/assets/2.jpg",
       title: "SIKKIM Adventure",
       discount: "30% OFF",
       price: "7,499",
     },
     {
-      url: "/src/assets/3.jpg",
+      url: "/assets/3.jpg",
       title: "SIKKIM Adventure",
       discount: "30% OFF",
       price: "7,499",
     },
     {
-      url: "/src/assets/4.jpg",
+      url: "/assets/4.jpg",
       title: "SIKKIM Adventure",
       discount: "30% OFF",
       price: "7,499",
     },
     {
-      url: "/src/assets/5.jpg",
+      url: "/assets/5.jpg",
       title: "SIKKIM Adventure",
       discount: "30% OFF",
       price: "7,499",

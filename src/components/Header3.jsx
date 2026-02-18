@@ -1,7 +1,7 @@
 import React, { useState } from "react"; 
 import { NavLink } from "react-router-dom";
 import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
-import logosrc from '../assets/TRIPSHALA.png'
+import logosrc from '/assets/TRIPSHALA.png'
 
 const Header3 = ({ isDropdownOpen, setIsDropdownOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -5,14 +5,14 @@ export default function GalleryDoubleRowScroller({
   title = "Explore Moments",
   subtitle = "Beautiful places captured by our travelers",
   images = [
-    { src: "/src/assets/1.jpg" },
-    { src: "/src/assets/2.jpg" },
-    { src: "/src/assets/3.jpg" },
-    { src: "/src/assets/4.jpg" },
-    { src: "/src/assets/5.jpg" },
-    { src: "/src/assets/6.jpg" },
-    { src: "/src/assets/7.jpg" },
-    { src: "/src/assets/8.jpg" },
+    { src: "/assets/1.jpg" },
+    { src: "/assets/2.jpg" },
+    { src: "/assets/3.jpg" },
+    { src: "/assets/4.jpg" },
+    { src: "/assets/5.jpg" },
+    { src: "/assets/6.jpg" },
+    { src: "/assets/7.jpg" },
+    { src: "/assets/8.jpg" },
   ],
 }) {
   const scrollerRef = useRef(null);

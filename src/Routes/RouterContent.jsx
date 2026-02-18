@@ -53,21 +53,21 @@ export default function RouterContent() {
 
   const bungySlides = [
     {
-      url: "/src/assets/18.jpg",
+      url: "/assets/18.jpg",
       tagline: "CONQUER THE HEIGHT OF", // Replaces "Get up to"
       title: "Splash Bungy Rishikesh",
       discount: "109 METRES", // Highlights height instead of %
       price: "3,999",
     },
     {
-      url: "/src/assets/19.jpg",
+      url: "/assets/19.jpg",
       tagline: "RELIVE THE MOMENT WITH",
       title: "Cinematic Memories",
       discount: "FREE DSLR VIDEO", // Highlights the value-add
       price: "3,999",
     },
     {
-      url: "/src/assets/20.jpg",
+      url: "/assets/20.jpg",
       tagline: "SAVE BIG ON ADRENALINE",
       title: "Extreme Combo Packs",
       discount: "30% OFF",
@@ -83,21 +83,21 @@ export default function RouterContent() {
 
   const raftingSlides = [
     {
-      url: "/src/assets/21.jpg", // Replace with your actual asset
+      url: "/assets/21.jpg", // Replace with your actual asset
       tagline: "CONQUER THE ROARING RAPIDS OF",
       title: "Ganges River Rafting",
       discount: "GRADE III+ RAPIDS", // Highlights the thrill level
       price: "1,500",
     },
     {
-      url: "/src/assets/22.jpg",
+      url: "/assets/22.jpg",
       tagline: "CHALLENGE THE LONGEST STRETCH",
       title: "Marine Drive to Rishikesh",
       discount: "26 KILOMETRES", // Highlights the distance/endurance
       price: "2,500",
     },
     {
-      url: "/src/assets/23.jpg",
+      url: "/assets/23.jpg",
       tagline: "SAFETY IS OUR TOP PRIORITY",
       title: "Certified Instructors",
       discount: "US COAST GUARD GEAR", // Highlights the safety equipment
