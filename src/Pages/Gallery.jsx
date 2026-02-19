@@ -16,7 +16,7 @@ import EnquiryModal from "../components/Packages/EnquiryModal";
 import { useState } from "react";
 import ContactMappCard from "../components/ContactMappCard";
 
-export default function Contact() {
+export default function Gallery() {
   const navigate = useNavigate();
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   return (

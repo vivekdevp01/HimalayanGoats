@@ -26,7 +26,7 @@ export default function RishikeshGuide() {
       {/* HERO */}
       <section className="relative h-[75vh] overflow-hidden">
         <img
-          src="/src/assets/63.jpg"
+          src="/assets/63.jpg"
           alt="Rishikesh"
           className="absolute inset-0 w-full h-full object-cover scale-105"
         />
@@ -171,7 +171,7 @@ export default function RishikeshGuide() {
               {placesToShow.map((place, i) => (
                 <div
                   key={i}
-                  className="group relative bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+                  className="group  relative bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
                 >
                   {/* BADGE */}
                   {/* {(cat.id === "nature" || place.scooty_friendly) && (
@@ -360,7 +360,7 @@ export default function RishikeshGuide() {
       {/* IMAGE MODAL */}
       {activeImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-200 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setActiveImage(null)}
         >
           <div className="relative max-w-5xl w-full">

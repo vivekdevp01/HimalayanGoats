@@ -150,7 +150,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center">
             <img
-              src="/src/assets/Mountains.png"
+              src="/assets/Mountains.png"
               alt="Thrillophilia Logo"
               className="h-10 object-contain brightness-110"
             />
