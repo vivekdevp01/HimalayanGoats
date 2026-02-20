@@ -6,8 +6,8 @@ import TourSlider from "./PackageGrid";
 const categories = [
   // { key: "trek", label: "Treks" },
   { key: "camp", label: "Camps" },
-  { key: "rafting", label: "Rafting" },
-  { key: "adventure", label: "Adventure" },
+  // { key: "rafting", label: "Rafting" },
+  // { key: "adventure", label: "Adventure" },
 ];
 
 export default function FeaturedExperiences() {
