@@ -4,14 +4,14 @@ import BookingTrustCard from "./BookingTrustCard";
 import TourSlider from "./PackageGrid";
 
 const categories = [
-  { key: "trek", label: "Treks" },
+  // { key: "trek", label: "Treks" },
   { key: "camp", label: "Camps" },
   { key: "rafting", label: "Rafting" },
   { key: "adventure", label: "Adventure" },
 ];
 
 export default function FeaturedExperiences() {
-  const [active, setActive] = useState("trek");
+  const [active, setActive] = useState("camp");
 
   return (
     <section className="py-20 bg-white">

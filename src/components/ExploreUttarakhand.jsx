@@ -6,7 +6,7 @@ const categories = [
   {
     title: "Trek",
     icon: Mountain,
-    slug: "/packages/trek",
+    slug: "/treks",
     desc: "Himalayan treks & guided trails",
   },
   {

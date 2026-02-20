@@ -16,8 +16,8 @@ const logosrc = '/assets/TRIPSHALA.png';
       hasDropdown: true,
       subLinks: [
         { label: "Camps", to: "/packages/camp" },
-        { label: "Treks", to: "/packages/trek" },
-        { label: "Rafting", to: "/packages/rafting" },
+        { label: "Adventure", to: "/bungee" },
+        { label: "Rafting", to: "/raftings" },
       ],
     },
     { key: "gallery", label: "Gallery", to: "/gallery" },

@@ -26,6 +26,7 @@ import Tour3 from "../components/Tour3";
 import Guides from "../Pages/Guides";
 import ComingSoonHotels from "../components/ComingSoonHotels";
 import CreateInvoice from "../Pages/Admin/CreateInvoice";
+import ComingSoonTreks from "../components/ComingSoonTreks";
 // import Dashboard from "../Pages/Admin/Dashboard";
 
 // import Home from "./Pages/Home";
@@ -41,7 +42,7 @@ export default function RouterContent() {
   const isHome = location.pathname === "/";
   const isPackage = location.pathname.startsWith("/packages");
   const isBungeeMain = location.pathname === "/bungee";
-  const isRaftingMain = location.pathname === "/rafting";
+  const isRaftingMain = location.pathname === "/raftings";
   const isAbout = location.pathname.startsWith("/aboutus");
   // const isTour = location.pathname.startsWith("/trek/");
   const isTour =
@@ -158,6 +159,7 @@ export default function RouterContent() {
         <Route path="/packages/:category" element={<Packages />} />
         <Route path="/trek/:slug" element={<Tour />} />
         <Route path="/stays" element={<ComingSoonHotels />} />
+         <Route path="/treks" element={<ComingSoonTreks/>} />
         <Route path="/bungee" element={<ActivityGrid />} />
         <Route path="/bungy/:slug" element={<Tour2 />} />
         <Route path="/raftings" element={<ActivityGrid />} />

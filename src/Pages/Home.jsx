@@ -42,10 +42,10 @@ export default function Home() {
   return (
     <div className="space-y-10">
       <HeroSection />
-      <ExploreActivities />
+       <ExploreUttarakhand />
       <HowItWorksMini />
       <FeaturedExperiences />
-      <ExploreUttarakhand />
+      <ExploreActivities />
       <LocalAdvantageSection />
       {/* <ActivityCategories /> */}
       {/* <WhyChooseUsSection /> */}
