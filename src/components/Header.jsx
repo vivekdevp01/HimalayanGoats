@@ -21,8 +21,8 @@ export default function Header({
       hasDropdown: true,
       subLinks: [
         { label: "Camps", to: "/packages/camp" },
-        { label: "Treks", to: "/packages/trek" },
-        { label: "Rafting", to: "/packages/rafting" },
+        { label: "Adventure", to: "/bungee" },
+        { label: "Rafting", to: "/raftings" },
       ],
     },
     { key: "blog", label: "GALLERY", to: "/gallery" },

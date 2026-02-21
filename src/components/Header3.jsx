@@ -12,8 +12,8 @@ const Header3 = ({ isDropdownOpen, setIsDropdownOpen }) => {
     hasDropdown: true,
     subLinks: [
       { label: "Camps", to: "/packages/camp" },
-      { label: "Treks", to: "/packages/trek" },
-      { label: "Rafting", to: "/packages/rafting" },
+      { label: "Adventure", to: "/bungee" },
+      { label: "Rafting", to: "/raftings" },
     ],
   };
 

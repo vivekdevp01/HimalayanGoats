@@ -3,6 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
   const navigate = useNavigate();
+  const handleScrollToExplore = () => {
+    // If we are already on the home page, just scroll
+    if (window.location.pathname === "/") {
+      const element = document.getElementById("explore");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If we are on a different page, navigate to home with hash
+      navigate("/#explore");
+    }
+  };
   return (
     <section className="relative h-[90vh] w-full overflow-hidden">
       {/* Background Image */}
@@ -59,20 +71,20 @@ export default function HeroSection() {
           className="max-w-3xl text-white"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            Discover The <span className="text-amber-400">Himalayas</span>
+            Discover  <span className="text-amber-400">Rishikesh</span>
             <br />
             Beyond The Ordinary
           </h1>
 
           <p className="mt-6 text-lg text-white/90">
             From adrenaline-filled adventures and riverside camping to scenic
-            stays and guided Himalayan journeys — experience travel crafted for
+            stays  — experience travel crafted for
             thrill, comfort and unforgettable memories.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <button
-              onClick={() => navigate("/packages")}
+              onClick={() => handleScrollToExplore()}
               className="bg-amber-400 text-teal-900 px-6 py-3 rounded-full font-semibold hover:bg-amber-300 transition"
             >
               Explore Experiences

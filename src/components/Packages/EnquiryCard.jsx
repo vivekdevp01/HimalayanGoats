@@ -94,13 +94,21 @@ export default function EnquiryCard({ onSuccess, packageId = null }) {
             />
           </div>
 
-          <input
-            name="travel_date"
-            type="date"
-            className="w-full px-4 py-3 rounded-xl border border-slate-200
-                       text-slate-800 placeholder:text-slate-400
-                       focus:ring-2 focus:ring-orange-400 outline-none"
-          />
+        <input
+  name="travel_date"
+  type="date"
+  required
+  /* Use 'before' to show the placeholder text when the value is empty */
+  className="w-full px-4 py-3 rounded-xl border border-slate-200
+             text-slate-800 placeholder:text-slate-400
+             focus:ring-2 focus:ring-[#F7A325] outline-none
+             
+             /* This part handles the mobile display */
+             before:content-[attr(placeholder)] before:text-slate-400 before:mr-4
+             invalid:before:block valid:before:hidden
+             focus:before:content-none"
+  placeholder="Travel Date"
+/>
 
           <input
             name="travellers"

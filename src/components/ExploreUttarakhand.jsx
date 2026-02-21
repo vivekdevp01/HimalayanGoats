@@ -45,7 +45,7 @@ export default function ExploreUttarakhand() {
   const navigate = useNavigate();
 
   return (
-    <section className="py-20 bg-white">
+    <section id="explore" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header - Added Animation for Consistency */}
         <motion.div
