@@ -13,7 +13,7 @@ import img4 from "/assets/4.jpg";
 import img5 from "/assets/5.jpg";
 import u1 from "/assets/1.jpg";
 import u2 from "/assets/2.jpg";
-// import u3 from "/assets/3.jpg";
+import u3 from "/assets/3.jpg";
 
 /**
  * TopDestination.jsx
@@ -137,11 +137,11 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
                     className="w-8 h-8 rounded-full border-2 border-white"
                     alt="user 2"
                   />
-                  {/* <img
+                  <img
                     src={u3}
                     className="w-8 h-8 rounded-full border-2 border-white"
                     alt="user 3"
-                  /> */}
+                  />
                 </div>
                 <div>
                   <div className="text-white font-semibold">3.5k</div>
