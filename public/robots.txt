@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Direct link to your sitemap
+Sitemap: https://www.tripshalla.in/sitemap.xml

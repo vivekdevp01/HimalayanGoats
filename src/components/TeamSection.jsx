@@ -4,22 +4,22 @@ const teamMembers = [
   {
     name: "Vivek Pundir",
     role: " Developer",
-    image: "/src/assets/team/vivek.jpg",
+    image: "/assets/dev2.jpeg",
   },
   {
     name: "Harshit Rawat",
     role: "Developer",
-    image: "/src/assets/team/harshit.jpg",
+    image: "/assets/dev1.jpeg",
   },
   {
     name: "Gourav Kerni",
     role: "Content & Social Media",
-    image: "/src/assets/team/gourav.jpg",
+    image: "/assets/dev4.PNG",
   },
   {
     name: "Shubham Bisht",
     role: "Content & Social Media",
-    image: "/src/assets/team/shubham.jpg",
+    image: "/assets/dev3.jpeg",
   },
   {
     name: "Abhinav Singh",

@@ -28,15 +28,6 @@ export default function Footer() {
                   About Us
                 </NavLink>
               </li>
-              <li className="flex items-center gap-2 text-red-500 font-medium pt-2">
-                <FaExclamationTriangle size={14} />
-                <NavLink
-                  to="/fraud-alert"
-                  className="hover:underline text-[13px]"
-                >
-                  Beware Of Frauds
-                </NavLink>
-              </li>
             </ul>
           </div>
 
@@ -89,7 +80,7 @@ export default function Footer() {
               </li>
               <li>
                 <NavLink
-                  to="/partner"
+                  to="/contact"
                   className="hover:text-white transition pl-7 block"
                 >
                   Partner With Tripshalla

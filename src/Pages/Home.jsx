@@ -23,8 +23,9 @@ import ContactCTASection from "../components/ContactCtaSection";
 import EnquiryModal from "../components/Packages/EnquiryModal";
 import HowItWorksMini from "../components/HowItWorksMini";
 import LocalAdvantageSection from "../components/LocalAdvantageSection";
-
+import { Helmet } from 'react-helmet-async';
 export default function Home() {
+  
   const [showEnquiry, setShowEnquiry] = useState(false);
 
   useEffect(() => {
@@ -40,6 +41,19 @@ export default function Home() {
     }
   }, []);
   return (
+<>
+    <Helmet>
+        <title>Tripshalla | Best Rishikesh Camping , Himalayan Treks and Adventure Sports</title>
+        <meta name="description" content="Explore the best of Rishikesh with Tripshalla. Book riverside camping, Himalayan trekking,Adventure sports like bungy jumping and reliable scooty rentals for your next adventure." />
+        <meta name="keywords" content="Rishikesh camping, trekking in Uttarakhand, scooty rental Rishikesh, Tripshalla adventure,Bungy Jumping" />
+        
+        {/* Open Graph (For when you share on WhatsApp/Facebook) */}
+        <meta property="og:title" content="Tripshalla - Adventure Beyond Ordinary" />
+        <meta property="og:description" content="Handcrafted treks and camping experiences in the heart of the Himalayas." />
+        <meta property="og:image" content="https://www.tripshalla.com/assets/og-preview.jpg" />
+        <meta property="og:url" content="https://www.tripshalla.in" />
+      </Helmet>
+
     <div className="space-y-10">
       <HeroSection />
        <ExploreUttarakhand />
@@ -70,5 +84,6 @@ export default function Home() {
         onClose={() => setShowEnquiry(false)}
       />
     </div>
+    </>
   );
 }

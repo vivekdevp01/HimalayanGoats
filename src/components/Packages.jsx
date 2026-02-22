@@ -10,7 +10,7 @@ import PackageGrid from "./PackageGrid";
 import ResultsSummary from "./ResultSummary";
 import TrustAssuranceStrip from "./TrustAssuranceStrip";
 import PackageFAQs from "./PackageFAQs";
-
+import { Helmet } from 'react-helmet-async';
 export default function Packages() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [filters, setFilters] = useState({
@@ -23,6 +23,12 @@ export default function Packages() {
   const [resultCount, setResultCount] = useState(null);
 
   return (
+    <>
+    <Helmet>
+  <title>Riverside Camping in Rishikesh | Luxury & Adventure Camps | Tripshalla</title>
+  <meta name="description" content="Book the best riverside and forest camps in Rishikesh. Enjoy stargazing, bonfires, and comfortable stays near the Ganga with Tripshalla Camping." />
+  <meta name="keywords" content="Rishikesh camping, riverside camps Ganga, luxury camping Rishikesh, adventure camps" />
+</Helmet>
     <div className="w-full">
       {/* INTRO SECTION */}
       <section className="pt-16">
@@ -74,5 +80,6 @@ export default function Packages() {
         packageId={null}
       />
     </div>
+    </>
   );
 }

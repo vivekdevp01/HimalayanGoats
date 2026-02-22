@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Phone, Star } from "lucide-react";
 import { supabase } from "../lib/supabase";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate ,useLocation} from "react-router-dom";
 import EnquiryModal from "./Packages/EnquiryModal";
 import { motion } from "framer-motion";
 import AdventureLoader from "./AdventureLoader";
@@ -16,8 +16,12 @@ export default function PackageGrid({
   category: propCategory,
   onCountChange, // 👈 ADD THIS
 }) {
-const getInitialLimit = () => 3;
-  const [visibleCount, setVisibleCount] = useState(getInitialLimit);
+  const location = useLocation(); // 👈 Get current path
+  
+  // Logic to determine initial limit: 3 for Home, 100 for others
+  const isHomePage = location.pathname === "/";
+  const initialLimit = isHomePage ? 3 : 100;
+  const [visibleCount, setVisibleCount] = useState(initialLimit);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -35,8 +39,8 @@ const getInitialLimit = () => 3;
   }, [resolvedCategory]);
 
   useEffect(() => {
-    setVisibleCount(getInitialLimit());
-  }, [resolvedCategory]);
+    setVisibleCount(initialLimit);
+  }, [resolvedCategory],location.pathname);
   async function fetchPackages() {
     setLoading(true);
 

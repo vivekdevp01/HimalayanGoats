@@ -37,7 +37,7 @@ export default function WhoWeAre() {
               Instead of accepting this as “how travel works,” we decided to
               change it. That decision became{" "}
               <span className="font-semibold text-emerald-700">
-                HimalayanGoats
+                Tripshalla
               </span>
               .
             </p>
@@ -49,13 +49,28 @@ export default function WhoWeAre() {
               What We Aim To Do
             </h3>
 
-            <ul className="space-y-4 text-slate-700">
-              <li>• Design better and more scenic trekking routes</li>
-              <li>• Provide essential facilities without unnecessary luxury</li>
-              <li>• Keep pricing honest, fair, and affordable</li>
-              <li>• Offer experiences that feel calm, real, and meaningful</li>
-              <li>• Respect nature and the places we travel through</li>
-            </ul>
+           <ul className="space-y-4 text-slate-700">
+  <li className="flex gap-3">
+    <span className="text-orange-500 font-bold">•</span>
+    <span>Curate high-safety, high-thrill rafting runs through the best Ganga rapids</span>
+  </li>
+  <li className="flex gap-3">
+    <span className="text-orange-500 font-bold">•</span>
+    <span>Hand-pick riverside and jungle camps that balance nature with essential comforts</span>
+  </li>
+  <li className="flex gap-3">
+    <span className="text-orange-500 font-bold">•</span>
+    <span>Maintain honest, transparent pricing for adventure sports without hidden costs</span>
+  </li>
+  <li className="flex gap-3">
+    <span className="text-orange-500 font-bold">•</span>
+    <span>Deliver authentic mountain experiences—from sunrise treks to evening bonfires</span>
+  </li>
+  <li className="flex gap-3">
+    <span className="text-orange-500 font-bold">•</span>
+    <span>Promote 'Clean Rishikesh' by respecting the river and our local Himalayan trails</span>
+  </li>
+</ul>
           </div>
         </div>
 
