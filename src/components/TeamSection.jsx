@@ -48,7 +48,7 @@ export default function TeamSection() {
             Our Team
           </p>
           <h2 className="mt-3 text-3xl md:text-4xl font-extrabold text-emerald-900">
-            The People Behind HimalayanGoats
+            The People Behind Tripshalla
           </h2>
           <p className="mt-4 text-slate-600">
             A close-knit team of engineers, creators, and trekkers building
