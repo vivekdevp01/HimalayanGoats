@@ -196,20 +196,31 @@ export default function Tour2() {
 
       {/* 3. FOOTER SECTIONS */}
       <section className="mt-14">
-        <section className="bg-[#FFF7ED] py-10">
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <PackageSummary
-              inclusions={pkg.inclusions}
-              exclusions={pkg.exclusions}
-            />
-          </div>
-        </section>
-
-        <section className="bg-white py-10">
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <PolicyAccordion policies={pkg.policies} />
-          </div>
-        </section>
+     <section className="bg-[#FFF7ED] py-10">
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <PackageSummary inclusions={pkg.inclusions} exclusions={pkg.exclusions} />
+    
+                {/* 📱 MOBILE ONLY PRICE CARD - Appears right after Summary */}
+                <div className="mt-8 lg:hidden">
+                  <PriceCard pricing={{
+                    final_price: pkg.price,
+                    discount_price: pkg.oldPrice,
+                  }} />
+                </div>
+              </div>
+            </section>
+    
+            <section className="bg-white py-10">
+              <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <PolicyAccordion policies={pkg.policies} />
+    
+                {/* 📱 MOBILE ONLY SUPPORT CARDS - Optional but recommended for conversion */}
+                <div className="mt-8 space-y-6 lg:hidden">
+                  <GotAQuestionCard />
+                  <GroupOfferCard />
+                </div>
+              </div>
+            </section>
 
         <section className="bg-[#FAFAFA] py-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
