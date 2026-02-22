@@ -38,5 +38,10 @@
     "globals": "^16.4.0",
     "patch-package": "^8.0.1",
     "vite": "^7.1.7"
+  },
+  "overrides": {
+  "react-helmet-async": {
+    "react": "$react"
   }
+}
 }
