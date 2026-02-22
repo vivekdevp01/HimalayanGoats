@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function GalleryHero({
-  image = "/assets/1.jpg",
+  image = "/assets/camp1.webp",
   title = "Travel Moments",
   subtitle = "Discover places that feel like dreams",
 }) {

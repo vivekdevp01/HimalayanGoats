@@ -1,49 +1,56 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const CATEGORIES = [
-  { label: 'All', value: 'all' },
+  { label: "All", value: "all" },
   // { label: "Trek", value: "trek" },
-  { label: 'Camp', value: 'camp' },
-  { label: 'Rafting', value: 'rafting' },
-  { label: 'Adventure', value: 'adventure' },
-]
+  { label: "Camp", value: "camp" },
+  { label: "Rafting", value: "rafting" },
+  { label: "Adventure", value: "adventure" },
+];
 
 const IMAGES = [
-  { src: '/assets/101.webp', alt: 'Mountain Trek', category: 'adventure' },
-  { src: '/assets/2.jpg', alt: 'Snow Peaks', category: 'camp' },
-  { src: '/assets/raft1.webp', alt: 'River Rafting', category: 'rafting' },
-  { src: '/assets/4.jpg', alt: 'Camping Under Stars', category: 'camp' },
-  { src: '/assets/103.webp', alt: 'Mountain Trek', category: 'adventure' },
-  { src: '/assets/106.webp', alt: 'Mountain Trek', category: 'adventure' },
-  { src: '/assets/107.webp', alt: 'Mountain Trek', category: 'adventure' },
-  { src: '/assets/102.webp', alt: 'Forest Escape', category: 'adventure' },
-  { src: '/assets/raft2.webp', alt: 'River Rafting', category: 'rafting' },
-  { src: '/assets/35.webp', alt: 'River Rafting', category: 'rafting' },
-  { src: '/assets/raft4.webp', alt: 'River Rafting', category: 'rafting' },
-   { src: '/assets/21.webp', alt: 'River Rafting', category: 'rafting' },
-    { src: '/assets/22.webp', alt: 'River Rafting', category: 'rafting' },
-     { src: '/assets/23.webp', alt: 'River Rafting', category: 'rafting' },
-      { src: '/assets/33.webp', alt: 'River Rafting', category: 'rafting' },
-       { src: '/assets/34.webp', alt: 'River Rafting', category: 'rafting' },
-  { src: '/assets/7.jpg', alt: 'Riverside Camp', category: 'camp' },
-]
+  { src: "/assets/camp2.webp", category: "camp" },
+  { src: "/assets/raft1.webp", category: "rafting" },
+  { src: "/assets/adv1.webp", category: "adventure" },
+  { src: "/assets/camp1.webp", category: "camp" },
+  { src: "/assets/adv2.webp", category: "adventure" },
+  { src: "/assets/adv5.webp", category: "adventure" },
+  { src: "/assets/raft5.webp", category: "rafting" },
+  { src: "/assets/adv3.webp", category: "adventure" },
+  { src: "/assets/adv4.webp", category: "adventure" },
+  { src: "/assets/103.webp", category: "adventure" },
+  { src: "/assets/105.webp", category: "adventure" },
+  { src: "/assets/110.webp", category: "adventure" },
+  { src: "/assets/raft2.webp", category: "rafting" },
+  { src: "/assets/35.webp", category: "rafting" },
+  { src: "/assets/raft4.webp", category: "rafting" },
+  { src: "/assets/raft6.webp", category: "rafting" },
+  { src: "/assets/raft7.webp", category: "rafting" },
+  { src: "/assets/33.webp", category: "rafting" },
+  { src: "/assets/34.webp", category: "rafting" },
+  { src: "/assets/room2.webp", category: "camp" },
+  { src: "/assets/camp3.webp", category: "camp" },
+  { src: "/assets/room3.webp", category: "camp" },
+  { src: "/assets/room4.webp", category: "camp" },
+  { src: "/assets/room5.webp", category: "camp" },
+];
 
 export default function GallerySection2() {
-  const [activeImage, setActiveImage] = useState(null)
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeImage, setActiveImage] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("all");
 
   /* 🔒 Lock background scroll ONLY for modal */
   useEffect(() => {
-    document.body.style.overflow = activeImage ? 'hidden' : ''
-    return () => (document.body.style.overflow = '')
-  }, [activeImage])
+    document.body.style.overflow = activeImage ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [activeImage]);
 
   const filteredImages = useMemo(() => {
-    return activeCategory === 'all'
+    return activeCategory === "all"
       ? IMAGES
-      : IMAGES.filter((img) => img.category === activeCategory)
-  }, [activeCategory])
+      : IMAGES.filter((img) => img.category === activeCategory);
+  }, [activeCategory]);
 
   return (
     <section className="py-20 bg-white">
@@ -67,8 +74,8 @@ export default function GallerySection2() {
               className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200
                 ${
                   activeCategory === cat.value
-                    ? 'bg-emerald-700 text-white'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? "bg-emerald-700 text-white"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                 }`}
             >
               {cat.label}
@@ -85,7 +92,7 @@ export default function GallerySection2() {
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
                 onClick={() => setActiveImage(img)}
                 className="relative cursor-pointer overflow-hidden rounded-3xl shadow-lg bg-slate-100"
               >
@@ -130,7 +137,7 @@ export default function GallerySection2() {
               initial={{ scale: 0.96 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.96 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               className="max-w-[95%] max-h-[90%] rounded-2xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
@@ -138,5 +145,5 @@ export default function GallerySection2() {
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }
