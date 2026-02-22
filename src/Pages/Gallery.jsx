@@ -15,11 +15,17 @@ import EnquiryModal from "../components/Packages/EnquiryModal";
 
 import { useState } from "react";
 import ContactMappCard from "../components/ContactMappCard";
-
+import { Helmet } from 'react-helmet-async';
 export default function Gallery() {
   const navigate = useNavigate();
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   return (
+    <>
+    <Helmet>
+  <title>Tripshalla Gallery | Real Moments from Himalayan Treks,Camping and Adventure Sports</title>
+  <meta name="description" content="Take a look at the Tripshalla adventure experience. Photos from our latest Himalayan treks, Rishikesh camping trips, and riverside adventures." />
+  <meta name="keywords" content="Rishikesh travel photos, Himalayan trekking images, adventure photography India ,Bungy jumping images" />
+</Helmet>
     <div className="space-y-10">
       <GalleryHero />
       <GallerySection2 />
@@ -36,5 +42,6 @@ export default function Gallery() {
       />
       {/* <GalleryScroller /> */}
     </div>
+    </>
   );
 }

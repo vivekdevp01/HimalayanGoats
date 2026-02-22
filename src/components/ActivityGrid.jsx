@@ -140,7 +140,7 @@ const raftingUIData = raftingPackage.map((pkg) => ({
 import { supabase } from "../lib/supabase";
 import splashActivityGrid from "../json/splashActivityGrid.json";
 import CorporateCollaborationCard from "./CorporateCollaborationCard";
-
+import { Helmet } from 'react-helmet-async';
 export default function ActivityGrid() {
   const [visibleCount, setVisibleCount] = useState(3);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -152,6 +152,22 @@ export default function ActivityGrid() {
   const [activePlatform, setActivePlatform] = useState("all");
 
   const [pricingMap, setPricingMap] = useState({});
+
+  const meta = {
+    "/raftings": {
+      title: "River Rafting in Rishikesh | Ganga Rafting Packages | Tripshalla",
+      description: "Book the best Ganga rafting experience in Rishikesh. From 9km to 26km stretches with certified guides and cliff jumping.",
+      keywords: "river rafting rishikesh, ganga rafting, adventure rafting india"
+    },
+    "/bungee": {
+      title: "Adventure Sports in Rishikesh | Bungee, Zipline & More | Tripshalla",
+      description: "Push your limits with Tripshalla. Book Bungee Jumping, Giant Swings, and Ziplining adventures in the heart of Rishikesh.",
+      keywords: "bungee jumping rishikesh, zipline rishikesh, adventure sports uttarakhand"
+    }
+  };
+
+  // Default to adventure if path doesn't match perfectly
+  const currentMeta = meta[path] || meta["/bungee"];
 
   useEffect(() => {
     async function fetchPricing() {
@@ -234,6 +250,13 @@ export default function ActivityGrid() {
       : basePackages.filter((pkg) => pkg.platform === activePlatform);
 
   return (
+    <>
+    <Helmet>
+        <title>{currentMeta.title}</title>
+        <meta name="description" content={currentMeta.description} />
+        <meta name="keywords" content={currentMeta.keywords} />
+    
+      </Helmet>
     <section className="max-w-7xl mx-auto px-6 py-16 bg-white">
       <div ref={gridTopRef} />
 
@@ -401,5 +424,6 @@ export default function ActivityGrid() {
       />
     </section>
     // <CorporateCollaborationCard />
+    </>
   );
 }

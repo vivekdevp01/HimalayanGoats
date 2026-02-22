@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import guide from "../json/Guides.json";
 import { useRef, useState } from "react";
-
+import { Helmet } from 'react-helmet-async';
 export default function RishikeshGuide() {
   const [expanded, setExpanded] = useState({});
   const categoryIcons = {
@@ -22,6 +22,12 @@ export default function RishikeshGuide() {
   const sectionRefs = useRef({});
 
   return (
+    <>
+    <Helmet>
+  <title>Local Rishikesh Guide | Scooty Rentals, Cafes & Secret Waterfalls</title>
+  <meta name="description" content="The ultimate traveler's guide to Rishikesh. Find the best scooty rentals, hidden cafes, and must-visit nature spots with Tripshalla." />
+</Helmet>
+
     <main className="bg-[#FAFAFA] text-slate-800">
       {/* HERO */}
       <section className="relative h-[75vh] overflow-hidden">
@@ -381,5 +387,6 @@ export default function RishikeshGuide() {
         </div>
       )}
     </main>
+    </>
   );
 }

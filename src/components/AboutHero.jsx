@@ -7,28 +7,28 @@ export default function AboutHero() {
         {/* LEFT – Text */}
         <div>
           <p className="text-amber-500 font-semibold tracking-wide uppercase">
-            About HimalayanGoats
+            About Tripshalla
           </p>
 
           <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-extrabold text-emerald-900 leading-tight">
-            Built for the Mountains. <br />
+            Built for the Adventure. <br />
             Designed for Real Journeys.
           </h1>
 
           <p className="mt-6 text-lg text-slate-700 max-w-xl">
             At{" "}
             <span className="font-semibold text-emerald-800">
-              HimalayanGoats
+              Tripshalla
             </span>
             , we believe travel should be smooth, honest, and deeply connected
             to the places you visit — not rushed, confusing, or commercial.
           </p>
 
           <p className="mt-4 text-slate-600 max-w-xl leading-relaxed">
-            Born from real travel experiences, we created HimalayanGoats to fix
+            Born from real travel experiences, we created Tripshalla to fix
             what most trips get wrong. From transparent planning to dependable
             on-ground support, our focus is on delivering genuine journeys —
-            especially across the Himalayas and off-beat destinations.
+            especially across Rishikesh and off-beat destinations.
           </p>
 
           <p className="mt-6 font-medium text-emerald-700">

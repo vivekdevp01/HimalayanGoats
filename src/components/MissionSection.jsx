@@ -16,17 +16,12 @@ export default function MissionSection() {
         {/* Mission Text */}
         <p className="mt-8 max-w-3xl mx-auto text-lg text-slate-700 leading-relaxed">
           At{" "}
-          <span className="font-semibold text-emerald-800">HimalayanGoats</span>
-          , our mission is to make genuine trekking experiences accessible,
-          comfortable, and affordable — without compromising on safety,
-          transparency, or the beauty of nature.
+          <span className="font-semibold text-emerald-800">Tripshalla</span>
+          , Our mission is to make authentic Rishikesh adventures accessible, comfortable, and affordable—from the roar of the rapids to the peace of the riverside—without compromising on safety, transparency, or the sanctity of the Ganga.
         </p>
 
         <p className="mt-4 max-w-3xl mx-auto text-slate-600 leading-relaxed">
-          We focus on providing the best essential facilities at fair prices,
-          removing unnecessary extras and hidden costs. Every trek we plan is
-          designed to feel calm, well-supported, and deeply connected to the
-          environment around you.
+         We focus on providing the best essential facilities—from certified rafting gear to hygienic riverside camps—at fair prices, removing unnecessary extras and hidden costs. Every adventure we host is designed to be safe, well-supported, and deeply connected to the spirit of the Ganga and the mountains around you.
         </p>
 
         {/* Mission Pillars */}

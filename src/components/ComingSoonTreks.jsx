@@ -9,7 +9,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import { Helmet } from 'react-helmet-async';
 export default function ComingSoonTreks() {
   const navigate = useNavigate();
   const [showInput, setShowInput] = useState(false);
@@ -34,6 +34,11 @@ export default function ComingSoonTreks() {
   };
 
   return (
+    <>
+    <Helmet>
+  <title>Himalayan Trekking Packages 2026 | Explore Uttarakhand Peak</title>
+  <meta name="description" content="Join Tripshalla for expert-led Himalayan treks. From beginner trails to high-altitude summits, discover the best trekking in India." />
+</Helmet>
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden font-sans">
       {/* 1. Background Image with Gritty Overlay */}
       <div
@@ -155,5 +160,6 @@ export default function ComingSoonTreks() {
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-[#00796B]/30 rounded-full blur-[120px]" />
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-[#F7A325]/20 rounded-full blur-[120px]" />
     </div>
+    </>
   );
 }

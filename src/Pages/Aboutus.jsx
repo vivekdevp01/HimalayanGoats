@@ -16,9 +16,15 @@ import MissionSection from "../components/MissionSection";
 import TeamSection from "../components/TeamSection";
 import ValuesSection from "../components/ValueSection";
 import HowWeWork from "../components/HowWeWork";
-
+import { Helmet } from 'react-helmet-async';
 export default function Aboutus() {
   return (
+    <>
+    <Helmet>
+  <title>About Tripshalla | Our Story & Rishikesh Mission</title>
+  <meta name="description" content="Learn about Tripshalla, your local adventure experts in Rishikesh. We're dedicated to provide best rafting activities,camping packages and Bungy sports and authentic Himalayan experiences." />
+  <meta name="keywords" content="about Tripshalla, travel startup Rishikesh, adventure guides Uttarakhand" />
+</Helmet>
     <div className="space-y-10">
       <AboutHero />
       <WhoWeAre />
@@ -35,5 +41,6 @@ export default function Aboutus() {
       {/* <ExploreMapSection/> */}
       {/* <BlogGridSection /> */}
     </div>
+    </>
   );
 }
