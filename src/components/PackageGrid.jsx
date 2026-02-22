@@ -16,7 +16,7 @@ export default function PackageGrid({
   category: propCategory,
   onCountChange, // 👈 ADD THIS
 }) {
-const getInitialLimit = () => 3;
+  const getInitialLimit = () => 4;
   const [visibleCount, setVisibleCount] = useState(getInitialLimit);
 
   const params = useParams();
@@ -281,7 +281,6 @@ const getInitialLimit = () => 3;
               </motion.div>
             ))}
           </div>
-       
         </>
       )}
       {/* show less */}
