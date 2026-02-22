@@ -13,7 +13,7 @@ import img4 from "/assets/4.jpg";
 import img5 from "/assets/5.jpg";
 import u1 from "/assets/1.jpg";
 import u2 from "/assets/2.jpg";
-import u3 from "/assets/3.jpg";
+// import u3 from "/assets/3.jpg";
 
 /**
  * TopDestination.jsx
@@ -71,7 +71,7 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
         }
       }
     },
-    [pageScrollAmount]
+    [pageScrollAmount],
   );
 
   // autoplay
@@ -119,15 +119,29 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
               </motion.h2>
 
               <p className="text-teal-100 mt-4 text-sm leading-relaxed max-w-lg">
-                Choosing a destination can be exciting but also a bit overwhelming with so many amazing places out there! Let's narrow it down a little.
-                Are you dreaming of peaceful nature, buzzing cities, historical wonders, or relaxing beaches?
+                Choosing a destination can be exciting but also a bit
+                overwhelming with so many amazing places out there! Let's narrow
+                it down a little. Are you dreaming of peaceful nature, buzzing
+                cities, historical wonders, or relaxing beaches?
               </p>
 
               <div className="flex items-center gap-4 mt-5">
                 <div className="flex -space-x-3">
-                  <img src={u1} className="w-8 h-8 rounded-full border-2 border-white" alt="user 1" />
-                  <img src={u2} className="w-8 h-8 rounded-full border-2 border-white" alt="user 2" />
-                  <img src={u3} className="w-8 h-8 rounded-full border-2 border-white" alt="user 3" />
+                  <img
+                    src={u1}
+                    className="w-8 h-8 rounded-full border-2 border-white"
+                    alt="user 1"
+                  />
+                  <img
+                    src={u2}
+                    className="w-8 h-8 rounded-full border-2 border-white"
+                    alt="user 2"
+                  />
+                  {/* <img
+                    src={u3}
+                    className="w-8 h-8 rounded-full border-2 border-white"
+                    alt="user 3"
+                  /> */}
                 </div>
                 <div>
                   <div className="text-white font-semibold">3.5k</div>
@@ -141,10 +155,12 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
             </div>
 
             <div className="md:w-1/2 relative hidden md:block">
-              <h1 className="absolute right-12 top-6 text-[90px] md:text-[110px] font-extrabold text-white/10 select-none pointer-events-none">DESTINATION</h1>
-              <h1 className="absolute right-12 top-24 text-[40px] md:text-[72px] font-extrabold text-amber-400 select-none pointer-events-none">TOP!</h1>
-
-             
+              <h1 className="absolute right-12 top-6 text-[90px] md:text-[110px] font-extrabold text-white/10 select-none pointer-events-none">
+                DESTINATION
+              </h1>
+              <h1 className="absolute right-12 top-24 text-[40px] md:text-[72px] font-extrabold text-amber-400 select-none pointer-events-none">
+                TOP!
+              </h1>
             </div>
           </div>
         </div>
@@ -164,7 +180,9 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
               leftActive ? "bg-amber-400 scale-95" : "bg-white"
             }`}
           >
-            <ChevronLeft className={`${leftActive ? "text-white" : "text-amber-400"}`} />
+            <ChevronLeft
+              className={`${leftActive ? "text-white" : "text-amber-400"}`}
+            />
           </button>
 
           <div className="rounded-3xl bg-[#0D6773] px-6 py-8 overflow-visible">
@@ -176,14 +194,23 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
               style={{ scrollSnapType: "x mandatory" }}
             >
               {cards.map((c, idx) => (
-                <div key={idx} className="flex-shrink-0" style={{ scrollSnapAlign: "center" }}>
+                <div
+                  key={idx}
+                  className="flex-shrink-0"
+                  style={{ scrollSnapAlign: "center" }}
+                >
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: idx * 0.06 }}
                   >
-                    <DestinationCard2 img={c.img} title={c.title} listings={c.listings} featured={c.featured} />
+                    <DestinationCard2
+                      img={c.img}
+                      title={c.title}
+                      listings={c.listings}
+                      featured={c.featured}
+                    />
                   </motion.div>
                 </div>
               ))}
@@ -203,7 +230,9 @@ export default function TopDestination({ autoplayInterval = 3000 }) {
               rightActive ? "bg-amber-400 scale-95" : "bg-white"
             }`}
           >
-            <ChevronRight className={`${rightActive ? "text-white" : "text-amber-400"}`} />
+            <ChevronRight
+              className={`${rightActive ? "text-white" : "text-amber-400"}`}
+            />
           </button>
         </div>
       </div>
