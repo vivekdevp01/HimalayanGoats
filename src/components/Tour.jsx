@@ -562,10 +562,7 @@ export default function Tour() {
             <PolicyAccordion policies={policies} />
 
             {/* 📱 MOBILE ONLY SUPPORT CARDS - Optional but recommended for conversion */}
-            <div className="mt-8 space-y-6 lg:hidden">
-              <GotAQuestionCard />
-              <GroupOfferCard />
-            </div>
+      
           </div>
         </section>
         <section className="bg-[#FAFAFA] py-10">
