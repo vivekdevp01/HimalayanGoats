@@ -30,7 +30,7 @@ export default function WhyChooseHimalayan() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-14">
-          Why Choose Thrillophilia
+          Why Choose Tripshalla
         </h2>
 
         {/* Grid */}
