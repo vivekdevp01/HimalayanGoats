@@ -423,7 +423,7 @@ export default function ActivityGrid() {
         packageId={selectedPackageId}
       />
     </section>
-    // <CorporateCollaborationCard />
+
     </>
   );
 }
