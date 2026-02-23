@@ -44,13 +44,13 @@ export default function GroupOfferCard() {
       </div>
 
       {/* 2. Interactive CTA Button */}
-      <button className="relative w-full group/btn flex items-center justify-center gap-2 bg-orange-500 py-4 text-white font-black text-xs uppercase tracking-[0.2em] overflow-hidden transition-all hover:bg-orange-600">
+      {/* <button className="relative w-full group/btn flex items-center justify-center gap-2 bg-orange-500 py-4 text-white font-black text-xs uppercase tracking-[0.2em] overflow-hidden transition-all hover:bg-orange-600">
         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite]" />
         
         <Sparkles size={16} className="text-white" />
         <span>Get a Callback</span>
         <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-      </button>
+      </button> */}
 
       {/* Custom Shimmer Animation added via style tag or Tailwind config */}
       <style>{`

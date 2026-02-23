@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import {
   ChevronDown,
   ChevronLeft,
@@ -11,6 +12,10 @@ import {
 } from "lucide-react";
 
 export default function PackageItinerary({ days = [] }) {
+  const location = useLocation();
+  const isCamp = location.pathname.startsWith('/trek/');
+
+
   const [openDay, setOpenDay] = useState(0);
   const [activeImage, setActiveImage] = useState({});
 
@@ -66,7 +71,7 @@ export default function PackageItinerary({ days = [] }) {
             >
               <div>
                 <span className="inline-block bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full mb-2">
-                  DAY {item.day}
+                  {isCamp ?"Day":"Step"} {item.day}
                 </span>
                 <h3 className="text-lg md:text-xl font-semibold text-slate-900">
                   {item.title}

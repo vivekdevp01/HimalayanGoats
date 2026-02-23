@@ -175,7 +175,7 @@ export default function Header({
         >
           <div className="p-6 flex justify-between items-center border-b">
             <span className="font-black text-emerald-800 italic text-xl">
-              travlla
+              Tripshalla
             </span>
             <button
               onClick={() => setIsMobileMenuOpen(false)}

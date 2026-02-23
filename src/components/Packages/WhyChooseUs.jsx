@@ -5,12 +5,12 @@ export default function WhyChooseUs() {
   const benefits = [
     {
       title: "Verified Reviews",
-      desc: "25,000+ pictures and reviews shared by our community.",
+      desc: "500+ pictures and reviews shared by our community.",
       icon: <ShieldCheck size={20} />,
     },
     {
-      title: "10,000+ Adventures",
-      desc: "Curated experiences across 17+ countries for every traveler.",
+      title: "100+ Adventures",
+      desc: "Curated experiences across Rishikesh for every traveler.",
       icon: <Globe2 size={20} />,
     },
     {

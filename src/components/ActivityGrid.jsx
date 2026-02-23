@@ -370,9 +370,9 @@ export default function ActivityGrid() {
                     e.stopPropagation();
                     window.location.href = "tel:+917454875874";
                   }}
-                  className="p-4 bg-white/10 hover:bg-amber-500 rounded-2xl transition-all border border-white/20"
+                  // className="p-4 bg-white/10 hover:bg-amber-500 rounded-2xl transition-all border border-white/20"
                 >
-                  <Phone size={22} />
+                  {/* <Phone size={22} /> */}
                 </button>
                 <button
                   onClick={(e) => {
@@ -382,7 +382,7 @@ export default function ActivityGrid() {
                   }}
                   className="flex-1 bg-white text-emerald-950 font-black py-4 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all transform active:scale-95 text-center"
                 >
-                  BOOK MY JUMP
+                  BOOK NOW
                 </button>
               </div>
             </div>
@@ -396,10 +396,10 @@ export default function ActivityGrid() {
       <div className="mt-16 flex flex-col items-center gap-4">
         {visibleCount < currentPackages.length ? (
           <button
-            onClick={() => setVisibleCount((prev) => prev + 3)}
+            onClick={() => setVisibleCount((prev) => prev + 100)}
             className="group flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-600 transition-all shadow-xl active:scale-95"
           >
-            VIEW ALL JUMPS{" "}
+            VIEW ALL PACKAGES{" "}
             <ChevronDown className="group-hover:translate-y-1 transition-transform" />
           </button>
         ) : (
