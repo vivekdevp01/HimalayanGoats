@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Phone, Star } from "lucide-react";
 import { supabase } from "../lib/supabase";
-import { useParams, useNavigate ,useLocation} from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import EnquiryModal from "./Packages/EnquiryModal";
 import { motion } from "framer-motion";
 import AdventureLoader from "./AdventureLoader";
@@ -17,7 +17,7 @@ export default function PackageGrid({
   onCountChange, // 👈 ADD THIS
 }) {
   const location = useLocation(); // 👈 Get current path
-  
+
   // Logic to determine initial limit: 3 for Home, 100 for others
   const isHomePage = location.pathname === "/";
   const initialLimit = isHomePage ? 3 : 100;
@@ -38,9 +38,13 @@ export default function PackageGrid({
     fetchPackages();
   }, [resolvedCategory]);
 
-  useEffect(() => {
-    setVisibleCount(initialLimit);
-  }, [resolvedCategory],location.pathname);
+  useEffect(
+    () => {
+      setVisibleCount(initialLimit);
+    },
+    [resolvedCategory],
+    location.pathname,
+  );
   async function fetchPackages() {
     setLoading(true);
 
@@ -242,15 +246,69 @@ export default function PackageGrid({
 
                   <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
                   <p className="text-xs opacity-80 mb-4">{pkg.tagline}</p>
+                  {/* PRICE SECTION */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-end gap-3">
+                      {/* Final Price */}
+                      <span
+                        className="
+      text-3xl sm:text-4xl 
+      font-extrabold 
+      text-orange-400 
+      drop-shadow-md
+    "
+                      >
+                        ₹{pkg.starting_price}
+                      </span>
 
-                  <div className="flex items-end gap-2 mb-4">
+                      {/* Old Price */}
+                      {pkg.old_price && (
+                        <span
+                          className="
+        text-sm sm:text-base
+        line-through
+        text-red-400
+        opacity-70
+        font-medium
+      "
+                        >
+                          ₹{pkg.old_price}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Discount Badge */}
+                    {pkg.old_price && (
+                      <span
+                        className="
+      bg-orange-500 
+      text-white 
+      text-xs 
+      font-bold 
+      px-3 py-1 
+      rounded-full 
+      shadow-lg
+      animate-pulse
+    "
+                      >
+                        {Math.round(
+                          ((pkg.old_price - pkg.starting_price) /
+                            pkg.old_price) *
+                            100,
+                        )}
+                        % OFF
+                      </span>
+                    )}
+                  </div>
+
+                  {/* <div className="flex items-end gap-2 mb-4">
                     <span className="text-2xl font-black italic">
                       ₹{pkg.starting_price}
                     </span>
                     <span className="text-xs line-through opacity-60">
                       ₹{pkg.old_price}
                     </span>
-                  </div>
+                  </div> */}
 
                   <div className="flex gap-3">
                     <button

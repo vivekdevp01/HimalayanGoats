@@ -16,7 +16,7 @@ const CONTENT_BY_CATEGORY = {
       with safety, comfort, and authentic mountain experiences in mind.
     `,
     extra: `
-      With HimalayanGoats, you trek with experienced local guides, well-planned itineraries,
+      With Tripshalla, you trek with experienced local guides, well-planned itineraries,
       and complete on-ground support—making every step memorable and safe.
     `,
   },
@@ -24,7 +24,7 @@ const CONTENT_BY_CATEGORY = {
   camp: {
     title: "Camping Experiences in India",
     intro: `
-      Escape city life and reconnect with nature through HimalayanGoats’ curated camping
+      Escape city life and reconnect with nature through Tripshalla’s curated camping
       experiences set in the most scenic landscapes of India.
     `,
     body: `
@@ -40,7 +40,7 @@ const CONTENT_BY_CATEGORY = {
   rafting: {
     title: "River Rafting Adventures",
     intro: `
-      HimalayanGoats offers adrenaline-pumping river rafting experiences across India’s
+      Tripshalla offers adrenaline-pumping river rafting experiences across India’s
       most thrilling river stretches.
     `,
     body: `
@@ -56,7 +56,7 @@ const CONTENT_BY_CATEGORY = {
   tour: {
     title: "India Tour Packages",
     intro: `
-      Explore the cultural, spiritual, and natural diversity of India with HimalayanGoats’
+      Explore the cultural, spiritual, and natural diversity of India with Tripshalla’s
       thoughtfully designed tour packages.
     `,
     body: `
@@ -74,8 +74,7 @@ export default function PackagesDescription() {
   const { category } = useParams();
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const content =
-    CONTENT_BY_CATEGORY[category] || CONTENT_BY_CATEGORY.trek;
+  const content = CONTENT_BY_CATEGORY[category] || CONTENT_BY_CATEGORY.trek;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">

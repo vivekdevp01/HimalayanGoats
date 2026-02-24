@@ -81,9 +81,9 @@ export default function PackageFilters({ filters, setFilters }) {
           </div>
           <input
             type="range"
-            min="3000"
-            max="100000"
-            step="1000"
+            min="1100"
+            max="10000"
+            step="300"
             value={filters.budget}
             onChange={(e) =>
               setFilters({ ...filters, budget: Number(e.target.value) })
@@ -120,7 +120,7 @@ export default function PackageFilters({ filters, setFilters }) {
         </div>
 
         {/* 🧗 DIFFICULTY */}
-        <div>
+        {/* <div>
           <label className="text-sm font-semibold text-slate-700 mb-2 block">
             Difficulty
           </label>
@@ -144,7 +144,7 @@ export default function PackageFilters({ filters, setFilters }) {
             <option value="moderate">Moderate</option>
             <option value="hard">Hard</option>
           </select>
-        </div>
+        </div> */}
 
         {/* 🔃 SORT */}
         <div>
@@ -182,7 +182,7 @@ export default function PackageFilters({ filters, setFilters }) {
           onClick={() =>
             setFilters({
               search: "",
-              budget: 100000,
+              budget: 10000,
               duration: [],
               difficulty: [],
               sortBy: "popularity",
