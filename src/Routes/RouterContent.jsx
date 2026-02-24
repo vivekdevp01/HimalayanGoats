@@ -88,21 +88,21 @@ export default function RouterContent() {
       tagline: "CONQUER THE ROARING RAPIDS OF",
       title: "Ganges River Rafting",
       discount: "GRADE III+ RAPIDS", // Highlights the thrill level
-      price: "1,500",
+      price: "450",
     },
     {
       url: "/assets/22.webp",
       tagline: "CHALLENGE THE LONGEST STRETCH",
       title: "Marine Drive to Rishikesh",
       discount: "26 KILOMETRES", // Highlights the distance/endurance
-      price: "2,500",
+      price: "450",
     },
     {
       url: "/assets/23.webp",
       tagline: "SAFETY IS OUR TOP PRIORITY",
       title: "Certified Instructors",
       discount: "US COAST GUARD GEAR", // Highlights the safety equipment
-      price: "1,200",
+      price: "450",
     },
   ];
 
@@ -159,7 +159,7 @@ export default function RouterContent() {
         <Route path="/packages/:category" element={<Packages />} />
         <Route path="/trek/:slug" element={<Tour />} />
         <Route path="/stays" element={<ComingSoonHotels />} />
-         <Route path="/treks" element={<ComingSoonTreks/>} />
+        <Route path="/treks" element={<ComingSoonTreks />} />
         <Route path="/bungee" element={<ActivityGrid />} />
         <Route path="/bungy/:slug" element={<Tour2 />} />
         <Route path="/raftings" element={<ActivityGrid />} />

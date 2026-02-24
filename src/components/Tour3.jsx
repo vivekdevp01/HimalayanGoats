@@ -332,7 +332,7 @@ export default function Tour3() {
                 {
                   id: pkg.id,
                   title: "Standard Rafting Slot",
-                  final_price: pkg.price,
+                  final_price: Math.floor(pkg.price),
                   image: pkg.media[1]?.media_url,
                 },
               ]}
@@ -378,27 +378,31 @@ export default function Tour3() {
       {/* FOOTER SECTIONS */}
       <section className="mt-14">
         <section className="bg-[#FFF7ED] py-10">
-                     <div className="max-w-7xl mx-auto px-4 md:px-6">
-                       <PackageSummary inclusions={pkg.inclusions} exclusions={pkg.exclusions} />
-           
-                       {/* 📱 MOBILE ONLY PRICE CARD - Appears right after Summary */}
-                       <div className="mt-8 lg:hidden">
-                         <PriceCard pricing={{
-                           final_price: pkg.price,
-                           discount_price: pkg.oldPrice,
-                         }} />
-                       </div>
-                     </div>
-                   </section>
-           
-                   <section className="bg-white py-10">
-                     <div className="max-w-7xl mx-auto px-4 md:px-6">
-                       <PolicyAccordion policies={pkg.policies} />
-           
-                       {/* 📱 MOBILE ONLY SUPPORT CARDS - Optional but recommended for conversion */}
-                     
-                     </div>
-                   </section>
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <PackageSummary
+              inclusions={pkg.inclusions}
+              exclusions={pkg.exclusions}
+            />
+
+            {/* 📱 MOBILE ONLY PRICE CARD - Appears right after Summary */}
+            <div className="mt-8 lg:hidden">
+              <PriceCard
+                pricing={{
+                  final_price: Math.floor(pkg.price),
+                  discount_price: pkg.oldPrice,
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-10">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <PolicyAccordion policies={pkg.policies} />
+
+            {/* 📱 MOBILE ONLY SUPPORT CARDS - Optional but recommended for conversion */}
+          </div>
+        </section>
 
         <section className="bg-[#FAFAFA] py-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6">

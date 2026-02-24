@@ -22,44 +22,44 @@
       "Non-swimmers"
     ],
 
-    "price": "250",
-    "oldPrice": "600",
+    "price": "449",
+    "oldPrice": "699",
 
     "tagline": "The safest and most enjoyable rafting experience for beginners with calm waters and fun splashy rapids.",
 
     "overview": "Brahmpuri rafting is the most beginner-friendly stretch on the River Ganga in Rishikesh. Covering 12 kilometres, this route combines long calm river sections with mild Grade I–II rapids, making it perfect for families, children above 12 years, and first-time rafters. The stretch allows participants to learn paddling techniques, understand river behavior, and even enjoy optional body surfing in safe sections under expert supervision.",
 
-    "media": [
+     "media": [
       {
-        "media_url": "/assets/21.jpg",
+        "media_url": "/assets/21.webp",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/assets/22.jpg",
+        "media_url": "/assets/22.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/33.jpg",
+        "media_url": "/assets/33.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/34.jpg",
+        "media_url": "/assets/34.webp",
         "media_role": "activity"
       },
       {
-        "media_url": "/assets/37.jpg",
+        "media_url": "/assets/37.webp",
         "media_role": "stay"
       },
       {
-        "media_url": "/assets/35.jpg",
+        "media_url": "/assets/35.webp",
         "media_role": "destination"
       },
       {
-        "media_url": "/assets/36.jpg",
+        "media_url": "/assets/36.webp",
         "media_role": "hero"
       },
       {
-        "media_url": "/assets/38.jpg",
+        "media_url": "/assets/38.webp",
         "media_role": "gallery"
       }
     ],
@@ -217,37 +217,37 @@
 
     "image": "/assets/22.jpg",
 
-    "media": [
+   "media": [
       {
-        "media_url": "/assets/21.jpg",
+        "media_url": "/assets/21.webp",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/assets/22.jpg",
+        "media_url": "/assets/22.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/33.jpg",
+        "media_url": "/assets/33.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/34.jpg",
+        "media_url": "/assets/34.webp",
         "media_role": "activity"
       },
       {
-        "media_url": "/assets/37.jpg",
+        "media_url": "/assets/37.webp",
         "media_role": "stay"
       },
       {
-        "media_url": "/assets/35.jpg",
+        "media_url": "/assets/35.webp",
         "media_role": "destination"
       },
       {
-        "media_url": "/assets/36.jpg",
+        "media_url": "/assets/36.webp",
         "media_role": "hero"
       },
       {
-        "media_url": "/assets/38.jpg",
+        "media_url": "/assets/38.webp",
         "media_role": "gallery"
       }
     ],
@@ -366,8 +366,190 @@
       "meta_description": "Book 14 km Club House rafting in Rishikesh at ₹300. Enjoy Grade II rapids and scenic river rafting adventure."
     }
   },
-  "shivpuri-rafting": {
+  "marine-drive-shivpuri-rafting": {
     "id": 103,
+    "slug": "marine-drive-shivpuri-rafting",
+    "name": "Marine Drive Rafting",
+    "location": "Marine Drive to Shivpuri, Rishikesh",
+    "river": "River Ganga (Ganges)",
+    "distance": "12 Kilometres",
+    "grade": "Grade II–III",
+    "duration": "1.5 – 2 Hours",
+    "starting_point": "Marine Drive",
+    "ending_point": "Shivpuri",
+    "best_season": "September to June",
+    "minimum_age": 14,
+    "fitness_level": "Moderate fitness recommended",
+
+    "ideal_for": [
+      "Beginners looking for thrill",
+      "College groups",
+      "Adventure seekers",
+      "Friends & corporate outings"
+    ],
+
+    "price": "599",
+    "oldPrice": "899",
+
+    "tagline": "A perfect 12KM stretch packed with thrilling Grade II–III rapids and scenic Himalayan river views.",
+
+    "overview": "Marine Drive rafting is one of the most exciting mid-level rafting stretches in Rishikesh. Covering 12 kilometres on the River Ganga, this route offers an ideal combination of moderate rapids and calm scenic sections. Participants experience continuous splashy action with Grade II–III rapids, making it perfect for those seeking more excitement than beginner routes while still being safe under expert supervision.",
+
+    "media": [
+      {
+        "media_url": "/assets/21.webp",
+        "media_role": "hero_banner"
+      },
+      {
+        "media_url": "/assets/22.webp",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/assets/33.webp",
+        "media_role": "gallery"
+      },
+      {
+        "media_url": "/assets/34.webp",
+        "media_role": "activity"
+      },
+      {
+        "media_url": "/assets/37.webp",
+        "media_role": "stay"
+      },
+      {
+        "media_url": "/assets/35.webp",
+        "media_role": "destination"
+      },
+      {
+        "media_url": "/assets/36.webp",
+        "media_role": "hero"
+      },
+      {
+        "media_url": "/assets/38.webp",
+        "media_role": "gallery"
+      }
+    ],
+
+    "rapids": [
+      {
+        "name": "Three Blind Mice",
+        "grade": "Grade III",
+        "difficulty": "Moderate",
+        "rapid_type": "Wave Train Rapid",
+        "why_this_name": "The rapid consists of three consecutive wave formations that hit the raft one after another.",
+        "description": "Three Blind Mice is a fun yet powerful rapid that creates continuous bouncing motion and splashy waves.",
+        "what_to_expect": [
+          "Strong splashes",
+          "Fast-moving water",
+          "Team paddling coordination"
+        ],
+        "safety_notes": "Participants must strictly follow guide commands during this rapid."
+      },
+      {
+        "name": "Crossfire",
+        "grade": "Grade II–III",
+        "difficulty": "Moderate & Fun",
+        "rapid_type": "Diagonal Wave Rapid",
+        "why_this_name": "Named Crossfire due to its criss-cross wave pattern hitting from different angles.",
+        "description": "Crossfire offers exciting side splashes and requires synchronized paddling for smooth navigation.",
+        "what_to_expect": [
+          "Side splashes",
+          "Slight raft tilting",
+          "Adrenaline-filled excitement"
+        ],
+        "safety_notes": "Life jackets and helmets are mandatory at all times."
+      }
+    ],
+
+    "itinerary": [
+      {
+        "step": 1,
+        "title": "Arrival at Marine Drive",
+        "description": "Guests report at Marine Drive rafting office for registration and equipment allocation."
+      },
+      {
+        "step": 2,
+        "title": "Safety Briefing",
+        "description": "Certified river guides explain paddle commands, rescue techniques, and safety measures."
+      },
+      {
+        "step": 3,
+        "title": "Rafting Begins",
+        "description": "Rafting starts with moderate current sections before entering Grade II–III rapids."
+      },
+      {
+        "step": 4,
+        "title": "Major Rapids Experience",
+        "description": "Navigate thrilling rapids like Three Blind Mice and Crossfire under expert supervision."
+      },
+      {
+        "step": 5,
+        "title": "Finish at Shivpuri",
+        "description": "Rafting ends at Shivpuri beach where participants relax and depart."
+      }
+    ],
+
+    "inclusions": [
+      "ISI / US Coast Guard approved Life Jacket",
+      "Safety Helmet",
+      "High-quality Paddle",
+      "Certified River Guide",
+      "Pre-rafting Safety Briefing",
+      "Safety Kayaker (if required)"
+    ],
+
+    "exclusions": [
+      "Photos & Videos",
+      "Transportation to starting point",
+      "Personal insurance",
+      "Meals"
+    ],
+
+    "faqs": [
+      {
+        "q": "Is Marine Drive rafting safe for beginners?",
+        "a": "Yes, it is suitable for beginners with basic fitness, but offers more thrill compared to Brahmpuri stretch."
+      },
+      {
+        "q": "Is swimming required?",
+        "a": "No, swimming is not mandatory as life jackets are provided."
+      },
+      {
+        "q": "What is the minimum age?",
+        "a": "Participants must be at least 14 years old."
+      },
+      {
+        "q": "Can we do body surfing?",
+        "a": "Yes, body surfing may be allowed in safe sections depending on river conditions."
+      }
+    ],
+
+    "policies": [
+      {
+        "id": 1,
+        "title": "Weather & Safety Policy",
+        "points": [
+          "Rafting may be cancelled if river flow becomes unsafe.",
+          "Full refund or reschedule provided for weather-related cancellations."
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Cancellation Policy",
+        "points": [
+          "Free cancellation up to 24 hours before activity.",
+          "Same-day cancellations are non-refundable."
+        ]
+      }
+    ],
+
+    "seo": {
+      "meta_title": "Marine Drive Rafting in Rishikesh | 12KM Grade II–III Rapids ₹700",
+      "meta_description": "Book Marine Drive rafting in Rishikesh. Enjoy 12KM thrilling Grade II–III rapids from Marine Drive to Shivpuri with certified guides."
+    }
+  },
+  "shivpuri-rafting": {
+    "id": 104,
     "slug": "shivpuri-rafting",
     "name": "Shivpuri Rafting",
     "location": "Shivpuri to Ram Jhula, Rishikesh",
@@ -397,35 +579,35 @@
 
     "media": [
       {
-        "media_url": "/assets/21.jpg",
+        "media_url": "/assets/21.webp",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/assets/22.jpg",
+        "media_url": "/assets/22.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/33.jpg",
+        "media_url": "/assets/33.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/34.jpg",
+        "media_url": "/assets/34.webp",
         "media_role": "activity"
       },
       {
-        "media_url": "/assets/37.jpg",
+        "media_url": "/assets/37.webp",
         "media_role": "stay"
       },
       {
-        "media_url": "/assets/35.jpg",
+        "media_url": "/assets/35.webp",
         "media_role": "destination"
       },
       {
-        "media_url": "/assets/36.jpg",
+        "media_url": "/assets/36.webp",
         "media_role": "hero"
       },
       {
-        "media_url": "/assets/38.jpg",
+        "media_url": "/assets/38.webp",
         "media_role": "gallery"
       }
     ],
@@ -569,7 +751,7 @@
     }
   },
   "marine-drive-rafting": {
-    "id": 104,
+    "id": 105,
     "slug": "marine-drive-rafting",
     "name": "Marine Drive Extreme Rafting",
     "location": "Marine Drive to Shivpuri",
@@ -599,35 +781,35 @@
 
     "media": [
       {
-        "media_url": "/assets/21.jpg",
+        "media_url": "/assets/21.webp",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/assets/22.jpg",
+        "media_url": "/assets/22.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/33.jpg",
+        "media_url": "/assets/33.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/34.jpg",
+        "media_url": "/assets/34.webp",
         "media_role": "activity"
       },
       {
-        "media_url": "/assets/37.jpg",
+        "media_url": "/assets/37.webp",
         "media_role": "stay"
       },
       {
-        "media_url": "/assets/35.jpg",
+        "media_url": "/assets/35.webp",
         "media_role": "destination"
       },
       {
-        "media_url": "/assets/36.jpg",
+        "media_url": "/assets/36.webp",
         "media_role": "hero"
       },
       {
-        "media_url": "/assets/38.jpg",
+        "media_url": "/assets/38.webp",
         "media_role": "gallery"
       }
     ],
@@ -775,7 +957,7 @@
     }
   },
   "kaudiyala-rafting": {
-    "id": 105,
+    "id": 106,
     "slug": "kaudiyala-rafting",
     "name": "Kaudiyala Challenge Rafting",
     "location": "Kaudiyala to Rishikesh",
@@ -803,37 +985,37 @@
 
     "overview": "Kaudiyala rafting is the longest and most demanding stretch in Rishikesh, featuring continuous high-grade rapids, strong currents, and technical river features. This stretch is strictly recommended for experienced rafters who are comfortable with turbulent water, aggressive waves, and extended paddling under expert supervision.",
 
-    "media": [
+     "media": [
       {
-        "media_url": "/assets/21.jpg",
+        "media_url": "/assets/21.webp",
         "media_role": "hero_banner"
       },
       {
-        "media_url": "/assets/22.jpg",
+        "media_url": "/assets/22.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/33.jpg",
+        "media_url": "/assets/33.webp",
         "media_role": "gallery"
       },
       {
-        "media_url": "/assets/34.jpg",
+        "media_url": "/assets/34.webp",
         "media_role": "activity"
       },
       {
-        "media_url": "/assets/37.jpg",
+        "media_url": "/assets/37.webp",
         "media_role": "stay"
       },
       {
-        "media_url": "/assets/35.jpg",
+        "media_url": "/assets/35.webp",
         "media_role": "destination"
       },
       {
-        "media_url": "/assets/36.jpg",
+        "media_url": "/assets/36.webp",
         "media_role": "hero"
       },
       {
-        "media_url": "/assets/38.jpg",
+        "media_url": "/assets/38.webp",
         "media_role": "gallery"
       }
     ],
