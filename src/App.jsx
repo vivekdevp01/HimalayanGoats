@@ -52,33 +52,44 @@
 // export default RouterContent;
 
 // App.jsx
-import React, { useState, useEffect } from "react"; // Added React and hooks
+
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import RouterContent from "./Routes/RouterContent";
 import ScrollToTop from "./components/ScrollToTop";
 import StickyWhatsApp from "./components/Packages/StickyWhatsappButton";
-import AdventureLoader from "./components/AdventureLoader"; // Import your new loader
+import AdventureLoader from "./components/AdventureLoader";
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // SEO optimization: If it's a bot, don't show the loader
+  const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+  const [isLoading, setIsLoading] = useState(!isBot); 
 
   useEffect(() => {
-    // This timer simulates the time taken to load assets
-    // You can adjust '2000' (2 seconds) to your liking
+    if (isBot) return; // Don't run timers for Google
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isBot]);
 
   return (
     <BrowserRouter>
-      {/* 1. Show loader if isLoading is true */}
+      {/* Show loader only for humans */}
       {isLoading && <AdventureLoader />}
 
-      {/* 2. Wrap the rest in a div that fades in once loading is done */}
-      <div className={`transition-opacity duration-700 ${isLoading ? "opacity-0" : "opacity-100"}`}>
+      {/* For Google: Content is always visible (isLoading is false).
+        For Humans: Content stays hidden/invisible for 2s then fades in.
+      */}
+      <div 
+        style={{ 
+          visibility: isLoading ? 'hidden' : 'visible', 
+          opacity: isLoading ? 0 : 1 
+        }} 
+        className="transition-opacity duration-700"
+      >
         <ScrollToTop />
         <StickyWhatsApp />
         <RouterContent />
